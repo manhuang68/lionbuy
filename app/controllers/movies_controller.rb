@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
 
   def show
+    puts "hkkll"
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
     # will render app/views/movies/show.<extension> by default
@@ -13,6 +14,10 @@ class MoviesController < ApplicationController
   def new
     # default: render 'new' template
   end
+
+
+
+
   def search
     @similar_movies = Movie.similar_movies(params[:title])
     if @similar_movies.nil?

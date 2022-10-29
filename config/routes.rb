@@ -6,5 +6,8 @@ Rottenpotatoes::Application.routes.draw do
 
   resources :posts
   # map '/' to be a redirect to '/movies'
+
   root :to => redirect('/posts')
+  get 'signup/' => 'movies#signup', as: :signup
+  get 'signin/' => 'movies#signin', as: :signin
 end
