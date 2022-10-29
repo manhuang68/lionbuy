@@ -20,8 +20,23 @@ movies = [{:title => 'Aladdin', :rating => 'G', :release_date => '25-Nov-1992'},
 					{:title => 'Alien', :rating => 'R', :release_date => '25-May-1979'},
   	 ]
 
-
-
 movies.each do |movie|
   Movie.create!(movie)
+end
+
+posts = [{:item => 'Laptop MAC', :description => 'Used laptop 2015 good condition', :price => '800', :user => 'JohnHarrison', :email => 'jh4142@columbia.edu'},
+		 {:item => 'Queen size bed frame', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'SamAlexander', :email => 'sa6156@columbia.edu'},
+		 {:item => 'Chemical Engineering Textbooks', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu'},
+		 {:item => 'Air Purifier', :description => 'Brand new. Morningside campus only.', :price => '15', :user => 'ShuyuWang', :email => 'sw4231@columbia.edu'},
+		 {:item => 'Desk Lamp', :description => '3 brightness levels, light bulb included', :price => '25', :user => 'JenniferLee', :email => 'jl4152@columbia.edu'},
+		]
+
+posts.each do |post|
+  Post.create!(post)
+end
+
+users = [{:email => '123@columbia.com', :password=> '123' }]
+
+users.each do |user|
+  User.create!(user)
 end
