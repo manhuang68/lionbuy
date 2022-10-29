@@ -20,6 +20,8 @@ movies = [{:title => 'Aladdin', :rating => 'G', :release_date => '25-Nov-1992'},
 					{:title => 'Alien', :rating => 'R', :release_date => '25-May-1979'},
   	 ]
 
+
+
 movies.each do |movie|
   Movie.create!(movie)
 end
