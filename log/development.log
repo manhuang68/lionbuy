@@ -2485,3 +2485,1392 @@ Processing by MoviesController#index as HTML
   Rendered movies/index.html.erb within layouts/application (18.4ms)
   Rendered layouts/_flash.erb (0.1ms)
 Completed 200 OK in 31ms (Views: 14.5ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 01:43:49 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.8ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (6.9ms)
+  Rendered layouts/_flash.erb (0.4ms)
+Completed 200 OK in 217ms (Views: 206.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 01:46:02 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.6ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (5.9ms)
+  Rendered layouts/_flash.erb (0.3ms)
+Completed 200 OK in 102ms (Views: 92.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 01:48:37 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.8ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (6.5ms)
+  Rendered layouts/_flash.erb (0.3ms)
+Completed 200 OK in 115ms (Views: 106.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 01:50:21 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    12:     <%# These classes come from the Bootstrap CSS framework. %>
+    13:     <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
+    14:       <h1 class="title">Lionbuy!</h1>
+    15:       <%= link_to 'Sign up', search_similar_movies_path(@movie.title), :class => 'btn btn-primary col-2'  %>
+    16:     </nav>
+    17:     <div class="container">
+    18:       <%# Render "flash" messages in our application. This loads _flash.erb %>
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__3149830627021264651_70039787117120'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.2ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.1ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.3ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 01:51:08 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.7ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (2.5ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.7ms)
+
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    12:     <%# These classes come from the Bootstrap CSS framework. %>
+    13:     <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
+    14:       <h1 class="title">Lionbuy!</h1>
+    15:       <%= link_to 'Sign up', new_movie_path(@movie.title), :class => 'btn btn-primary col-2'  %>
+    16:     </nav>
+    17:     <div class="container">
+    18:       <%# Render "flash" messages in our application. This loads _flash.erb %>
+  app/views/layouts/application.html.erb:15:in `_app_views_layouts_application_html_erb__3149830627021264651_70039788274420'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (6.1ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 01:51:37 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 01:52:13 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined local variable or method `signup_movie_path' for #<#<Class:0x00007f66d08f66d0>:0x00007f66d15f3798>):
+    13:     <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
+    14:       <h1 class="title">Lionbuy!</h1>
+    15:       <%= link_to 'Sign up', new_movie_path, :class => 'btn btn-primary col-2'  %>
+    16:         <%= link_to 'Sign up', signup_movie_path, :class => 'btn btn-primary col-2'  %>
+    17:     </nav>
+    18:     <div class="container">
+    19:       <%# Render "flash" messages in our application. This loads _flash.erb %>
+  app/views/layouts/application.html.erb:16:in `_app_views_layouts_application_html_erb__3149830627021264651_70039788044360'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (6.1ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 01:53:48 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (2.7ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 01:54:27 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (3.3ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (undefined local variable or method `signup_movie_path' for #<#<Class:0x00007f66d251eb00>:0x00007f66d2527b60>
+Did you mean?  signup_movies_path
+               signup_movies_url):
+    13:     <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
+    14:       <h1 class="title">Lionbuy!</h1>
+    15:       <%= link_to 'Sign up', new_movie_path, :class => 'btn btn-primary col-2'  %>
+    16:         <%= link_to 'Sign up', signup_movie_path, :class => 'btn btn-primary col-2'  %>
+    17:     </nav>
+    18:     <div class="container">
+    19:       <%# Render "flash" messages in our application. This loads _flash.erb %>
+  app/views/layouts/application.html.erb:16:in `_app_views_layouts_application_html_erb__3149830627021264651_70039788044360'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.5ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (6.7ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 01:55:34 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 01:56:58 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 01:57:09 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 5ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:5:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (6.4ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2022-10-29 01:57:21 -0400
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.erb within layouts/application (9.1ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 12.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 01:57:37 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:5:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (8.2ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 01:59:25 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 0ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:5:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (5.7ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:00:48 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.1ms)
+
+ActionView::Template::Error (undefined local variable or method `signup_movie_path' for #<#<Class:0x00007f66d251eb00>:0x00007f66d2331590>
+Did you mean?  signup_movies_path
+               signup_movies_url):
+    13:     <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
+    14:       <h1 class="title">Lionbuy!</h1>
+    15:       <%= link_to 'Sign up', new_movie_path, :class => 'btn btn-primary col-2'  %>
+    16:         <%= link_to 'Sign up', signup_movie_path, :class => 'btn btn-primary col-2'  %>
+    17:     </nav>
+    18:     <div class="container">
+    19:       <%# Render "flash" messages in our application. This loads _flash.erb %>
+  app/views/layouts/application.html.erb:16:in `_app_views_layouts_application_html_erb__3149830627021264651_70039795004500'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.5ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (5.8ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:01:17 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 7.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:01:33 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (5.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 13.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:02:12 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (2.9ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:02:31 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:05:42 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 11ms (Views: 9.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:06:16 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:5:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (6.1ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:07:41 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:07:42 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.4ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:5:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (5.8ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:07:56 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:5:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (7.8ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:08:20 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:6:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (6.8ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2022-10-29 02:08:27 -0400
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2022-10-29 02:09:17 -0400
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 8ms (Views: 7.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:10:01 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (3.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 23ms (Views: 9.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:10:06 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:6:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (7.9ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:13:08 -0400
+
+SyntaxError (/home/yoga2119/lionbuy/config/routes.rb:6: syntax error, unexpected ':', expecting end
+  get 'movies/signup' :to => redirect('/signup.html'...
+                      ^):
+  config/routes.rb:6: syntax error, unexpected ':', expecting end
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (8.4ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:13:56 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.5ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:6:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.7ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (7.4ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:14:09 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:6:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (6.6ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:14:54 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:6:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (7.3ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:17:00 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (3.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:17:03 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:5:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (5.9ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:21:20 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.3ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (20.8ms)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 0.4ms)
+
+ActionView::Template::Error (undefined local variable or method `signup_path' for #<#<Class:0x00007f66d25715f8>:0x00007f66d2575e28>
+Did you mean?  signup_movie_path):
+    13:     <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
+    14:       <h1 class="title">Lionbuy!</h1>
+    15:       <%= link_to 'Sign up', new_movie_path, :class => 'btn btn-primary col-2'  %>
+    16:         <%= link_to 'Sign up', signup_path, :class => 'btn btn-primary col-2'  %>
+    17:     </nav>
+    18:     <div class="container">
+    19:       <%# Render "flash" messages in our application. This loads _flash.erb %>
+  app/views/layouts/application.html.erb:16:in `_app_views_layouts_application_html_erb__3149830627021264651_70039645108140'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (7.1ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:21:32 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.3ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:21:35 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:5:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (6.5ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:23:07 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.8ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:5:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.4ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (7.1ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:23:14 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:5:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (6.3ms)
+
+
+Started GET "/movies/2" for 127.0.0.1 at 2022-10-29 02:23:40 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 2]]
+  Rendered movies/show.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 8ms (Views: 6.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/similar_movies/The%20Terminator" for 127.0.0.1 at 2022-10-29 02:24:15 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"The Terminator"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "The Terminator"]]
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "The Terminator"]]
+  Rendered movies/search.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/similar_movies/The%20Terminator" for 127.0.0.1 at 2022-10-29 02:25:11 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"The Terminator"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "The Terminator"]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "The Terminator"]]
+  Rendered movies/search.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/similar_movies/The%20Terminator" for 127.0.0.1 at 2022-10-29 02:25:19 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"The Terminator"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "The Terminator"]]
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "The Terminator"]]
+  Rendered movies/search.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/similar_movies/The%20Terminator" for 127.0.0.1 at 2022-10-29 02:25:27 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"The Terminator"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "The Terminator"]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "The Terminator"]]
+  Rendered movies/search.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:26:11 -0400
+
+ArgumentError ('' is not a supported controller name. This can lead to potential routing problems. See http://guides.rubyonrails.org/routing.html#specifying-a-controller-to-use):
+  config/routes.rb:6:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.1ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (8.4ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:27:01 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:6:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.1ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (6.6ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:27:17 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:6:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (5.9ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:27:18 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 16ms (ActiveRecord: 0.0ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:6:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.5ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (6.8ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:27:18 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 0]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.1ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:6:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.2ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (6.1ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:28:10 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.3ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:6:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.3ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (6.1ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:32:34 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 29ms (Views: 28.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/similar_movies/Aladdin" for 127.0.0.1 at 2022-10-29 02:32:41 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"Aladdin"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Aladdin"]]
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Aladdin"]]
+  Rendered movies/search.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/similar_movies/Aladdin" for 127.0.0.1 at 2022-10-29 02:33:51 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"Aladdin"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "Aladdin"]]
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "Aladdin"]]
+  Rendered movies/search.html.erb within layouts/application (0.1ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.8ms)
+
+ActionView::Template::Error (undefined method `search_similar_movies_path' for #<#<Class:0x00007f66d12a05a0>:0x00007f66d12b01a8>
+Did you mean?  search_similar_movie_path
+               search_similar_movie_url):
+    14:       <h1 class="title">Lionbuy!</h1>
+    15:       <%= link_to 'Sign up', new_movie_path, :class => 'btn btn-primary col-2'  %>
+    16:         <%= link_to 'Sign up', signup_path, :class => 'btn btn-primary col-2'  %>
+    17:         <%= link_to 'Find Movies With Same Director', search_similar_movies_path("Aladdin"), :class => 'btn btn-primary col-2'  %>
+    18:     </nav>
+    19:     <div class="container">
+    20:       <%# Render "flash" messages in our application. This loads _flash.erb %>
+  app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb__3149830627021264651_70039796109220'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (8.1ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:34:23 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `search_similar_movies_path' for #<#<Class:0x00007f66d12a05a0>:0x00007f66c066af20>
+Did you mean?  search_similar_movie_path
+               search_similar_movie_url):
+    14:       <h1 class="title">Lionbuy!</h1>
+    15:       <%= link_to 'Sign up', new_movie_path, :class => 'btn btn-primary col-2'  %>
+    16:         <%= link_to 'Sign up', signup_path, :class => 'btn btn-primary col-2'  %>
+    17:         <%= link_to 'Find Movies With Same Director', search_similar_movies_path("Aladdin"), :class => 'btn btn-primary col-2'  %>
+    18:     </nav>
+    19:     <div class="container">
+    20:       <%# Render "flash" messages in our application. This loads _flash.erb %>
+  app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb__3149830627021264651_70039796109220'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (7.5ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:34:41 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.2ms)
+
+ActionView::Template::Error (undefined method `search_similar_movies_path' for #<#<Class:0x00007f66d12a05a0>:0x00007f66d1360328>
+Did you mean?  search_similar_movie_path
+               search_similar_movie_url):
+    14:       <h1 class="title">Lionbuy!</h1>
+    15:       <%= link_to 'Sign up', new_movie_path, :class => 'btn btn-primary col-2'  %>
+    16:         <%= link_to 'Sign up', signup_path, :class => 'btn btn-primary col-2'  %>
+    17:         <%= link_to 'Find Movies With Same Director', search_similar_movies_path("Aladdin"), :class => 'btn btn-primary col-2'  %>
+    18:     </nav>
+    19:     <div class="container">
+    20:       <%# Render "flash" messages in our application. This loads _flash.erb %>
+  app/views/layouts/application.html.erb:17:in `_app_views_layouts_application_html_erb__3149830627021264651_70039796109220'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (1.5ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (6.4ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:35:06 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/similar_movies/Aladdin" for 127.0.0.1 at 2022-10-29 02:35:09 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"Aladdin"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "Aladdin"]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "Aladdin"]]
+  Rendered movies/search.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 4.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:35:57 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 5.2ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:35:59 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:36:18 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 8.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:36:19 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 15ms (Views: 14.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:41:01 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:41:02 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:41:03 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:41:04 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:41:06 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:48:01 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:49:13 -0400
+
+ActionController::RoutingError (No route matches [GET] "/signup"):
+  actionpack (4.2.10) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.10) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.10) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.10) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.10) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.10) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.10) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.10) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.10) lib/action_dispatch/middleware/static.rb:120:in `call'
+  rack (1.6.10) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.10) lib/rails/engine.rb:518:in `call'
+  railties (4.2.10) lib/rails/application.rb:165:in `call'
+  rack (1.6.10) lib/rack/lock.rb:17:in `call'
+  rack (1.6.10) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.10) lib/rack/handler/webrick.rb:88:in `service'
+  /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:140:in `service'
+  /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/httpserver.rb:96:in `run'
+  /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/2.6.0/webrick/server.rb:307:in `block in start_thread'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.0ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/routes/_table.html.erb (17.0ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (53.5ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:49:23 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.2ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/movies/signup" for 127.0.0.1 at 2022-10-29 02:49:25 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"signup"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1[0m  [["id", 0]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find Movie with 'id'=signup):
+  app/controllers/movies_controller.rb:6:in `show'
+
+
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_source.erb (2.5ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /home/yoga2119/.rbenv/versions/2.6.6/lib/ruby/gems/2.6.0/gems/actionpack-4.2.10/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (9.3ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:50:17 -0400
+Processing by MoviesController#index as HTML
+  [1m[35mMovie Load (0.5ms)[0m  SELECT "movies".* FROM "movies"
+  Rendered movies/index.html.erb within layouts/application (4.9ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 13ms (Views: 11.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:50:18 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 6.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/similar_movies/Aladdin" for 127.0.0.1 at 2022-10-29 02:50:27 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"Aladdin"}
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Aladdin"]]
+  [1m[35mMovie Load (21.9ms)[0m  SELECT "movies".* FROM "movies"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Aladdin"]]
+  Rendered movies/search.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 29ms (Views: 5.1ms | ActiveRecord: 22.1ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:50:29 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/similar_movies/Aladdin" for 127.0.0.1 at 2022-10-29 02:50:31 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"Aladdin"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "Aladdin"]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "Aladdin"]]
+  Rendered movies/search.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:50:32 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies" for 127.0.0.1 at 2022-10-29 02:50:34 -0400
+Processing by MoviesController#index as HTML
+  [1m[36mMovie Load (0.2ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  Rendered movies/index.html.erb within layouts/application (1.7ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/movies/6" for 127.0.0.1 at 2022-10-29 02:50:36 -0400
+Processing by MoviesController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[35mMovie Load (0.2ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."id" = ? LIMIT 1  [["id", 6]]
+  Rendered movies/show.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:50:48 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:51:21 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/similar_movies/Aladdin" for 127.0.0.1 at 2022-10-29 02:51:24 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"Aladdin"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Aladdin"]]
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Aladdin"]]
+  Rendered movies/search.html.erb within layouts/application (0.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:51:25 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:51:28 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2022-10-29 02:51:29 -0400
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:51:30 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 4.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2022-10-29 02:51:31 -0400
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:51:32 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 5.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2022-10-29 02:51:32 -0400
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:51:33 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2022-10-29 02:51:33 -0400
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2022-10-29 02:51:35 -0400
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 6.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:51:37 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 7.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2022-10-29 02:51:39 -0400
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.erb within layouts/application (14.7ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 19ms (Views: 18.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:51:45 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/movies/new" for 127.0.0.1 at 2022-10-29 02:51:46 -0400
+Processing by MoviesController#new as HTML
+  Rendered movies/new.html.erb within layouts/application (1.3ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:51:53 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/similar_movies/Aladdin" for 127.0.0.1 at 2022-10-29 02:52:09 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"Aladdin"}
+  [1m[35mMovie Load (0.1ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "Aladdin"]]
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT "movies".* FROM "movies"[0m
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1  [["title", "Aladdin"]]
+  Rendered movies/search.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_flash.erb (0.2ms)
+Completed 200 OK in 6ms (Views: 4.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:52:18 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.5ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/similar_movies/Aladdin" for 127.0.0.1 at 2022-10-29 02:52:22 -0400
+Processing by MoviesController#search as HTML
+  Parameters: {"title"=>"Aladdin"}
+  [1m[36mMovie Load (0.1ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Aladdin"]]
+  [1m[35mMovie Load (0.1ms)[0m  SELECT "movies".* FROM "movies"
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "movies".* FROM "movies" WHERE "movies"."title" = ? LIMIT 1[0m  [["title", "Aladdin"]]
+  Rendered movies/search.html.erb within layouts/application (0.1ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:52:23 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:58:02 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (2.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:58:47 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (2.0ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 02:59:29 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:05:52 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.6ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:05:58 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/siginp" for 127.0.0.1 at 2022-10-29 03:05:59 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (2.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:06:00 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/siginp" for 127.0.0.1 at 2022-10-29 03:06:01 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:06:03 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/siginp" for 127.0.0.1 at 2022-10-29 03:06:04 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:06:06 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/siginp" for 127.0.0.1 at 2022-10-29 03:06:06 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 4.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:06:07 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (1.0ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 22ms (Views: 21.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/siginp" for 127.0.0.1 at 2022-10-29 03:06:08 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:06:18 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/siginp" for 127.0.0.1 at 2022-10-29 03:06:18 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:06:19 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/siginp" for 127.0.0.1 at 2022-10-29 03:06:19 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:06:20 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:06:51 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:06:53 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2022-10-29 03:06:53 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 3.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:06:54 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2022-10-29 03:06:54 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 4.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:06:55 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2022-10-29 03:07:16 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_flash.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 4.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:07:56 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2022-10-29 03:07:57 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signup" for 127.0.0.1 at 2022-10-29 03:07:58 -0400
+Processing by MoviesController#signup as HTML
+  Rendered movies/signup.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2022-10-29 03:08:36 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/signin" for 127.0.0.1 at 2022-10-29 03:08:58 -0400
+Processing by MoviesController#signin as HTML
+  Rendered movies/signin.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_flash.erb (0.0ms)
+Completed 200 OK in 4ms (Views: 4.2ms | ActiveRecord: 0.0ms)

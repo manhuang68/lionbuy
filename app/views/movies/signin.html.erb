@@ -1,0 +1,13 @@
+<h2>Sign in</h2>
+
+  <%= form_tag movies_path, :class => 'form' do %>
+    <%= label :movie, :title, ' Email address', :class => 'col-form-label' %>
+    <%= text_field :movie, :title, :class => 'form-control' %>
+    <small id="emailHelp" class="form-text text-muted">Enter Columbia email</small>
+    <%= label :movie, :title, 'Password', :class => 'col-form-label' %>
+    <%= text_field :movie, :title, :class => 'form-control' %>
+    <br/>
+
+    <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
+    <%= link_to 'Cancel', movies_path, :class => 'btn btn-secondary' %>
+<% end %>
