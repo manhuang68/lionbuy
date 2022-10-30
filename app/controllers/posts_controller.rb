@@ -8,8 +8,31 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @movies = Movie.all
-    # byebug
+    if not params[:categories] and not params[:sort]
+      if session[:sort] or session[:categories]
+        params[:categories] = session[:categories]
+        params[:sort] = session[:sort]
+        redirect_to posts_path({:categories => params[:categories], :sort => params[:sort]})
+        return
+      end
+    end
+    session.delete(:categories)
+    session.delete(:sort)
+
+    @all_categories = Post.all_categories
+    @categories_to_show = params[:categories] ? params[:categories].keys : @all_categories
+    @title_header_hilite_to_show = params[:sort] == 'title' ? 'hilite bg-warning' : ''
+    @release_date_header_hilite_to_show = params[:sort] == 'release_date' ? 'hilite bg-warning' : ''
+    
+    @posts = Post.with_categories(@categories_to_show)
+    if params[:sort]
+      @posts = @posts.order(params[:sort])
+      session[:sort] = params[:sort]
+    end
+
+    if params[:categories]
+      session[:categories] = params[:categories]
+    end
   end
 
   def new

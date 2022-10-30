@@ -1,6 +1,17 @@
 <!--  This file is app/views/posts/index.html.erb -->
 <h2>All Posts</h2>
 
+<%= form_tag posts_path, method: :get, id: 'categories_form' do %>
+  Include:
+  <% @all_categories.each do |category| %>
+    <div class="form-check  form-check-inline">
+      <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
+      <%= check_box_tag "categories[#{category}]", "1",  @categories_to_show.include?(category), class: 'form-check-input' %>
+    </div>
+  <% end %>
+  <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-primary'%>
+<% end %>
+
 <table class="table table-striped col-md-12" id="posts">
   <thead>
     <tr>
@@ -12,7 +23,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= @posts.each do |post| %>
+    <% @posts.each do |post| %>
       <tr>
         <td>
           <%= post.item %>
@@ -34,5 +45,3 @@
   </tbody>
 </table>
 <%= link_to 'Add new post', new_post_path, :class => 'btn btn-primary' %>
-
-<%= @posts %>
