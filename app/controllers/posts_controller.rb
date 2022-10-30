@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
 
   def show
+    if session[:user_id] == nil
+      redirect_to "/signin"
+    end
     id = params[:id] # retrieve post ID from URI route
     @post = Post.find(id) # look up post by unique ID
     # will render app/views/posts/show.<extension> by default
@@ -10,6 +13,9 @@ class PostsController < ApplicationController
     @posts = Post.all
     @movies = Movie.all
     # byebug
+    if session[:user_id] == nil
+      redirect_to "/signin"
+    end
   end
 
   def new

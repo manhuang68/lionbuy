@@ -1,0 +1,13 @@
+<h2>Sign in</h2>
+
+<br>
+<form action="/sessions" method="POST">
+  <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <%= label :post, :title, ' Email address', :class => 'col-form-label' %>
+  <input class='form-control' type ="email" name="login[email]" placeholder="email">
+    <small id="emailHelp" class="form-text text-muted">Enter Columbia email</small>
+    <%= label :post, :title, 'Password', :class => 'col-form-label' %>
+  <input class='form-control' type ="password" name="login[password]" placeholder="password">
+  <br>
+  <input class= 'btn btn-primary' type="submit" name="submit" class="submit">
+</form>
