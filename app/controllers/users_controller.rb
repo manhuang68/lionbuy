@@ -6,7 +6,12 @@ class UsersController < ApplicationController
 
   def create
     puts "this is"
-    puts user_params
+    #puts (user_params[:email].include? "@columbia.edu")
+    if (!user_params[:email].include? "@columbia.edu") and (!user_params[:email].include? "@barnard.edu")
+      flash[:notice] = 'Please use Columbia / Barnard Email to register!'
+      redirect_to "/signup" and return
+
+    end
     user = User.find_by(email: user_params[:email])
     puts user
     if user != nil
@@ -19,6 +24,7 @@ class UsersController < ApplicationController
       flash[:notice] = 'Password does not match!'
       redirect_to "/signup" and return
     end
+
 
     puts "tt"
     puts user_params
