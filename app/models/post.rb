@@ -1,9 +1,9 @@
 class Post < ActiveRecord::Base
     def self.with_categories(categories_list)
         if categories_list.length != 0
-          return Post.where(category:categories_list)   
+            return Post.all 
         else
-          return Post.all 
+            return Post.all 
         end
     end
     

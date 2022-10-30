@@ -1,6 +1,9 @@
 class PostsController < ApplicationController
 
   def show
+    if session[:user_id] == nil
+      redirect_to "/signin"
+    end
     id = params[:id] # retrieve post ID from URI route
     @post = Post.find(id) # look up post by unique ID
     # will render app/views/posts/show.<extension> by default
@@ -8,30 +11,35 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    if not params[:categories] and not params[:sort]
-      if session[:sort] or session[:categories]
-        params[:categories] = session[:categories]
-        params[:sort] = session[:sort]
-        redirect_to posts_path({:categories => params[:categories], :sort => params[:sort]})
-        return
-      end
-    end
-    session.delete(:categories)
-    session.delete(:sort)
+    # if not params[:categories] and not params[:sort]
+    #   if session[:sort] or session[:categories]
+    #     params[:categories] = session[:categories]
+    #     params[:sort] = session[:sort]
+    #     redirect_to posts_path({:categories => params[:categories], :sort => params[:sort]})
+    #     return
+    #   end
+    # end
+    # session.delete(:categories)
+    # session.delete(:sort)
 
     @all_categories = Post.all_categories
     @categories_to_show = params[:categories] ? params[:categories].keys : @all_categories
-    @title_header_hilite_to_show = params[:sort] == 'title' ? 'hilite bg-warning' : ''
-    @release_date_header_hilite_to_show = params[:sort] == 'release_date' ? 'hilite bg-warning' : ''
+    # @title_header_hilite_to_show = params[:sort] == 'title' ? 'hilite bg-warning' : ''
+    # @release_date_header_hilite_to_show = params[:sort] == 'release_date' ? 'hilite bg-warning' : ''
     
-    @posts = Post.with_categories(@categories_to_show)
-    if params[:sort]
-      @posts = @posts.order(params[:sort])
-      session[:sort] = params[:sort]
-    end
+    # @posts = Post.with_categories(@categories_to_show)
+    # if params[:sort]
+    #   @posts = @posts.order(params[:sort])
+    #   session[:sort] = params[:sort]
+    # end
 
-    if params[:categories]
-      session[:categories] = params[:categories]
+    # if params[:categories]
+    #   session[:categories] = params[:categories]
+
+    # @movies = Movie.all
+    # byebug
+    if session[:user_id] == nil
+      redirect_to "/signin"
     end
   end
 

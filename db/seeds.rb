@@ -34,3 +34,9 @@ posts = [{:item => 'Laptop MAC', :description => 'Used laptop 2015 good conditio
 posts.each do |post|
   Post.create!(post)
 end
+
+users = [{:email => '123@columbia.edu', :password=> '123' }]
+
+users.each do |user|
+  User.create!(user)
+end
