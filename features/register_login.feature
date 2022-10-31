@@ -19,6 +19,7 @@ Scenario: Register a new account
     Then I fill in "password" with "123456"
     Then I fill in "password_confirmation" with "123456"
     And  I press "Register"
+    Then I should be on the post page
     Then I should see "Welcome Man Huang Ho"
 
 Scenario: Login to existing account and then sign in to another account
@@ -27,12 +28,14 @@ Scenario: Login to existing account and then sign in to another account
   Then I fill in "email" with "123@columbia.edu"
   Then I fill in "password" with "123"
   And  I press "Sign in"
+  Then I should be on the post page
   Then I should see "Welcome John Ho"
   And  I follow "Log out"
   Then I should be on the signin page
   Then I fill in "email" with "anabel@barnard.edu"
   Then I fill in "password" with "12345"
   And  I press "Sign in"
+  Then I should be on the post page
   Then I should see "Welcome Anabel Ho"
 
 Scenario: Register with a existing account and flash an error
