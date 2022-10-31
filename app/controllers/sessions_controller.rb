@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    puts "log out successfully"
+    #puts "log out successfully"
     session[:user_id] = nil
     session[:fname] = nil
     session[:lname] = nil

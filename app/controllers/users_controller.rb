@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    puts "this is"
+    #puts "this is"
     #puts (user_params[:email].include? "@columbia.edu")
     if (!user_params[:email].include? "@columbia.edu") and (!user_params[:email].include? "@barnard.edu")
       flash[:notice] = 'Please use Columbia / Barnard Email to register!'
@@ -13,26 +13,28 @@ class UsersController < ApplicationController
 
     end
     user = User.find_by(email: user_params[:email])
-    puts user
+    #puts user
     if user != nil
       flash[:notice] = 'Email already exist!'
       redirect_to "/signup" and return
     end
     if user_params[:password] != user_params[:password_confirmation]
-      puts user_params[:password]
-      puts user_params[:password_confirmation]
+      #puts user_params[:password]
+      #puts user_params[:password_confirmation]
       flash[:notice] = 'Password does not match!'
       redirect_to "/signup" and return
     end
 
 
-    puts "tt"
-    puts user_params
+    #puts "tt"
+    #puts user_params
     r = user_params.except(:password_confirmation)
-    puts r
+    #puts r
     user = User.new(r)
     if user.save
       session[:user_id] = user.id
+      session[:fname] = user.fname
+      session[:lname] = user.lname
       redirect_to root_url and return
     else
       flash[:notice] = user.errors.full_messages
