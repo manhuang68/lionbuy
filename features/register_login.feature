@@ -67,6 +67,26 @@ Scenario: Register with a wrong password and flash an error
         And  I press "Register"
         Then I should see "Password does not match!"
 
+Scenario: Register with a empty first name or last name and flash an error
+        Given I am on the signup page
+        Then I fill in "email" with "mario@columbia.edu"
+        Then I fill in "fname" with ""
+        Then I fill in "lname" with ""
+        Then I fill in "password" with "123456"
+        Then I fill in "password_confirmation" with "123456"
+        And  I press "Register"
+        Then I should see "Fields cannot be empty!"
+
+Scenario: Register with a empty password and flash an error
+        Given I am on the signup page
+        Then I fill in "email" with "mario@columbia.edu"
+        Then I fill in "fname" with "hello"
+        Then I fill in "lname" with "go"
+        Then I fill in "password" with ""
+        Then I fill in "password_confirmation" with ""
+        And  I press "Register"
+        Then I should see "Password cannot be empty!"
+
 Scenario: Signin with a wrong password and flash an error
         Given I am on the signin page
         Then I should see "Log in"

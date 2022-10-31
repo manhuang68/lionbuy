@@ -10,7 +10,15 @@ class UsersController < ApplicationController
     if (!user_params[:email].include? "@columbia.edu") and (!user_params[:email].include? "@barnard.edu")
       flash[:notice] = 'Please use Columbia / Barnard Email to register!'
       redirect_to "/signup" and return
+    end
+    if user_params[:fname].empty? or user_params[:lname].empty?
+      flash[:notice] = 'Fields cannot be empty!'
+      redirect_to "/signup" and return
+    end
 
+    if user_params[:password].empty?
+      flash[:notice] = 'Password cannot be empty!'
+      redirect_to "/signup" and return
     end
     user = User.find_by(email: user_params[:email])
     #puts user
