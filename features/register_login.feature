@@ -35,7 +35,7 @@ Scenario: Login to existing account and then sign in to another account
   And  I press "Sign in"
   Then I should see "Welcome Anabel Ho"
 
-Scenario: Register with a existing account
+Scenario: Register with a existing account and flash an error
   Given I am on the signup page
   Then I should see "Registration"
   Then I fill in "email" with "123@columbia.edu"
@@ -66,3 +66,19 @@ Scenario: Register with a wrong password and flash an error
         Then I fill in "password_confirmation" with "123456"
         And  I press "Register"
         Then I should see "Password does not match!"
+
+Scenario: Signin with a wrong password and flash an error
+        Given I am on the signin page
+        Then I should see "Log in"
+        Then I fill in "email" with "123@columbia.edu"
+        Then I fill in "password" with "123456"
+        And  I press "Sign in"
+        Then I should see "Invalid credentials!"
+
+Scenario: Signin with a wrong account and flash an error
+        Given I am on the signin page
+        Then I should see "Log in"
+        Then I fill in "email" with "12345@columbia.edu"
+        Then I fill in "password" with "123"
+        And  I press "Sign in"
+        Then I should see "Account does not exist!"

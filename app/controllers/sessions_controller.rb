@@ -10,13 +10,17 @@ class SessionsController < ApplicationController
     end
     user = User.find_by(email: login_params[:email])
     #puts "the us "
+    if user == nil
+      flash[:notice] = 'Account does not exist!'
+      redirect_to "/signin" and return
+    end
     if user && user.password == (login_params[:password])
       session[:user_id] = user.id
       session[:fname] = user.fname
       session[:lname] = user.lname
       redirect_to root_url
     else
-      flash[:notice] = 'Invalid credentials'
+      flash[:notice] = 'Invalid credentials!'
       redirect_to "/signin"
     end
   end
