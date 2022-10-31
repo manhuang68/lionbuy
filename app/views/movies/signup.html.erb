@@ -1,13 +1,14 @@
 <h2>Create a new Account</h2>
 
-<%= form_tag sign_path, :class => 'form' do %>
-    <%= label :movie, :title, 'Columbia Email address', :class => 'col-form-label' %>
-    <%= text_field :movie, :title, :class => 'form-control' %>
-    <small id="emailHelp" class="form-text text-muted">Enter Columbia email</small>
-    <%= label :movie, :title, 'Password', :class => 'col-form-label' %>
-    <%= text_field :movie, :title, :class => 'form-control' %>
+<%= form_tag register_path, :class => 'form' do %>
+    <%= label :user, :email, 'Columbia Email address', :class => 'col-form-label' %>
+    <%= text_field :user, :email, :class => 'form-control' %>
+    <small id="emailHelp" class="form-text text-muted">Only Columbia / Barnard email</small>
+    <%= label :user, :password, 'Password', :class => 'col-form-label' %>
+    <%= text_field :user, :password, :class => 'form-control' %>
+    <%= label :user, :password_confirmation, 'Retype Confirmation', :class => 'col-form-label' %>
+    <%= text_field :user, :password_confirmation, :class => 'form-control' %>
     <br/>
 
     <%= submit_tag 'Register', :class => 'btn btn-primary' %>
-    <%= link_to 'Cancel', movies_path, :class => 'btn btn-secondary' %>
 <% end %>

@@ -35,7 +35,7 @@ posts.each do |post|
   Post.create!(post)
 end
 
-users = [{:email => '123@columbia.edu', :password=> '123' }]
+users = [{:email => '123@columbia.edu', :password=> '123',:fname =>'John', :lname=> 'Ho' }]
 
 users.each do |user|
   User.create!(user)

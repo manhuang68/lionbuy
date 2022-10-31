@@ -4,13 +4,30 @@
 <br>
 <form action="/users" method="POST">
   <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-  <%= label :post, :title, ' Email address', :class => 'col-form-label' %>
-  <input class='form-control' type ="email" name="user[email]" placeholder="email">
+  <%= label :post, :title, 'Email address', :class => 'col-form-label' %>
+  <input class='form-control' type ="email" name="user[email]" placeholder="email@columbia.edu">
   <small id="emailHelp" class="form-text text-muted">Only Columbia / Barnard email</small>
+  <%= label :post, :title, 'First Name', :class => 'col-form-label' %>
+  <input class='form-control' type ="text" name="user[fname]" placeholder="First name">
+  <%= label :post, :title, 'Last Name', :class => 'col-form-label' %>
+  <input class='form-control' type ="text" name="user[lname]" placeholder="Last name">
   <%= label :post, :title, 'Password', :class => 'col-form-label' %>
   <input class='form-control' type ="password" name="user[password]" placeholder="password">
   <%= label :post, :title, 'Retype Password', :class => 'col-form-label' %>
   <input class='form-control' type ="password" name="user[password_confirmation]" placeholder="password confirmation">
   <br>
-    <input  class= 'btn btn-primary'  type="submit" name="submit" class="submit">
+    <button class= 'btn btn-primary'  type="submit" name="submit" class="submit">Register</button>
 </form>
+
+<%= form_tag register_path, :class => 'form' do %>
+    <%= label :user, :email, 'Columbia Email address', :class => 'col-form-label' %>
+    <%= text_field :user, :email, :class => 'form-control' %>
+    <small id="emailHelp" class="form-text text-muted">Only Columbia / Barnard email</small>
+    <%= label :user, :password, 'Password', :class => 'col-form-label' %>
+    <%= text_field :user, :password, :class => 'form-control' %>
+    <%= label :user, :password_confirmation, 'Retype Confirmation', :class => 'col-form-label' %>
+    <%= text_field :user, :password_confirmation, :class => 'form-control' %>
+    <br/>
+
+    <%= submit_tag 'Register', :class => 'btn btn-primary' %>
+<% end %>
