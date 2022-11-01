@@ -1,47 +1,40 @@
 <!--  This file is app/views/posts/index.html.erb -->
 <h2>All Posts</h2>
 
-<%= form_tag posts_path, method: :get, id: 'categories_form' do %>
-  Include:
+<%= form_tag posts_path, method: :get, id: 'filter_form' do %>
   <% @all_categories.each do |category| %>
     <div class="form-check  form-check-inline">
       <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
       <%= check_box_tag "categories[#{category}]", "1",  @categories_to_show.include?(category), class: 'form-check-input' %>
     </div>
   <% end %>
+  <label for="keyword_form">Search:</label>
+  <input type="text" id="keyword" name="keyword">
+  <label for="min_price_form">MIN:</label>
+  <input type="text" id="min_price" name="min_price">
+  <label for="max_price_form">MAX:</label>
+  <input type="text" id="max_price" name="max_price">
   <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-primary'%>
 <% end %>
 
-<table class="table table-striped col-md-12" id="posts">
-  <thead>
-    <tr>
-      <th>Item</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>User</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
+<br>
+<div class="container">
+  <div class="row">
     <% @posts.each do |post| %>
-      <tr>
-        <td>
-          <%= post.item %>
-        </td>
-        <td>
-          <%= post.description %>
-        </td>
-        <td>
-          <%= post.price %>
-        </td>
-        <td>
-          <%= post.user %>
-        </td>
-        <td>
-          <%= post.email %>
-        </td>
-      </tr>
+      <div class="col-md-4  mb-4   d-flex align-items-stretch">
+        <div class="card" style="width: 22rem;">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title"><%= post.item %></h5>
+            <p class="card-text"><%= post.description %></p>
+            <div class="card-text"><%= post.user %> </div>
+            <div class="card-text">  <%= post.email %> </div>
+            <div class="card-text mt-auto"><b>$<%= post.price %> </b></div>
+      <!--      <a href="#" class="btn btn-primary mt-auto  align-self-start">Go somewhere</a> -->
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-<%= link_to 'Add new post', new_post_path, :class => 'btn btn-primary' %>
+  </div>
+</div>
+
+<!-- %= link_to 'Add new post', new_post_path, :class => 'btn btn-primary' % -->

@@ -1,45 +1,82 @@
 class PostsController < ApplicationController
 
   def show
+    # Prevent hacker
     if session[:user_id] == nil
       redirect_to "/signin"
     end
     id = params[:id] # retrieve post ID from URI route
     @post = Post.find(id) # look up post by unique ID
-    # will render app/views/posts/show.<extension> by default
   end
 
   def index
+    session.delete(:min_price)
+    session.delete(:max_price)
+    # Prevent hacker
+    if session[:user_id] == nil
+      redirect_to "/signin"
+    end
+
     @posts = Post.all
-    # if not params[:categories] and not params[:sort]
-    #   if session[:sort] or session[:categories]
-    #     params[:categories] = session[:categories]
-    #     params[:sort] = session[:sort]
-    #     redirect_to posts_path({:categories => params[:categories], :sort => params[:sort]})
-    #     return
-    #   end
-    # end
-    # session.delete(:categories)
-    # session.delete(:sort)
+    if not params[:categories] and not params[:keyword] and not params[:min_price] and not params[:max_price]
+      if session[:categories] or session[:keyword] or (session[:min_price] and session[:max_price])
+        params[:categories] = session[:categories]
+        params[:keyword] = session[:keyword]
+        params[:min_price] = session[:min_price]
+        params[:max_price] = session[:max_price]
+        redirect_to posts_path({:categories => params[:categories], :keyword => params[:keyword], :min_price => params[:min_price], :max_price => params[:max_price]})
+        return
+      end
+    end
+    session.delete(:categories)
+    session.delete(:keyword)
+    session.delete(:min_price)
+    session.delete(:max_price)
 
     @all_categories = Post.all_categories
     @categories_to_show = params[:categories] ? params[:categories].keys : @all_categories
-    # @title_header_hilite_to_show = params[:sort] == 'title' ? 'hilite bg-warning' : ''
-    # @release_date_header_hilite_to_show = params[:sort] == 'release_date' ? 'hilite bg-warning' : ''
+    @posts = Post.with_categories(@categories_to_show)
+    @keyword_to_show = params[:keyword] ? params[:keyword] : ""
+    @min_price = params[:min_price] ? params[:min_price] : ""
+    @max_price = params[:max_price] ? params[:max_price] : ""
 
-    # @posts = Post.with_categories(@categories_to_show)
-    # if params[:sort]
-    #   @posts = @posts.order(params[:sort])
-    #   session[:sort] = params[:sort]
-    # end
+    # Keyword
+    res = []
+    @posts.each do |post|
+      if post.with_keyword(@keyword_to_show)
+          res.append(post)
+      end
+    end
+    @posts = res
 
-    # if params[:categories]
-    #   session[:categories] = params[:categories]
+    # Price Range
+    if @min_price.length != 0 or @max_price.length != 0
+      if (not @min_price.match?(/[[:digit:]]/) and not @max_price.match?(/[[:digit:]]/))
+        flash[:notice] = "Invalid price range"
+        redirect_to posts_path
+      end
+    end
 
-    # @movies = Movie.all
+    res = []
+    @posts.each do |post|
+      if post.with_price_range(@min_price, @max_price)
+          res.append(post)
+      end
+    end
+    @posts = res
+
     # byebug
-    if session[:user_id] == nil
-      redirect_to "/signin"
+    if params[:categories]
+      session[:categories] = params[:categories]
+    end
+    if params[:keyword]
+      session[:keyword] = params[:keyword]
+    end
+    if params[:min_price]
+      session[:min_price] = params[:min_price]
+    end
+    if params[:max_price]
+      session[:max_price] = params[:max_price]
     end
   end
 
@@ -47,26 +84,29 @@ class PostsController < ApplicationController
     # default: render 'new' template
   end
 
-  def search
-    @similar_posts = Post.similar_posts(params[:item])
-    if @similar_posts.nil?
-      flash[:notice] = "'#{params[:item]}' has no director info"
-      redirect_to root_url
-    end
-    @post = Post.find_by(item: params[:item])
-  end
-
   def create
+    # Prevent hacker
+    if session[:user_id] == nil
+      redirect_to "/signin"
+    end
     @post = Post.create!(post_params)
     flash[:notice] = "#{@post.item} was successfully created."
     redirect_to posts_path
   end
 
   def edit
+      # Prevent hacker
+      if session[:user_id] == nil
+        redirect_to "/signin"
+      end
     @post = Post.find params[:id]
   end
 
   def update
+    # Prevent hacker
+    if session[:user_id] == nil
+      redirect_to "/signin"
+    end
     @post = Post.find params[:id]
     @post.update_attributes!(post_params)
     flash[:notice] = "#{@post.item} was successfully updated."
@@ -74,6 +114,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    # Prevent hacker
+    if session[:user_id] == nil
+      redirect_to "/signin"
+    end
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "Post '#{@post.item}' deleted."
