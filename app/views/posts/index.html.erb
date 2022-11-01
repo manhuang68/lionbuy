@@ -2,7 +2,6 @@
 <h2>All Posts</h2>
 
 <%= form_tag posts_path, method: :get, id: 'filter_form' do %>
-  Include:
   <% @all_categories.each do |category| %>
     <div class="form-check  form-check-inline">
       <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
@@ -11,6 +10,10 @@
   <% end %>
   <label for="keyword_form">Search:</label>
   <input type="text" id="keyword" name="keyword">
+  <label for="min_price_form">MIN:</label>
+  <input type="text" id="min_price" name="min_price">
+  <label for="max_price_form">MAX:</label>
+  <input type="text" id="max_price" name="max_price">
   <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-primary'%>
 <% end %>
 
@@ -46,4 +49,4 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to 'Add new post', new_post_path, :class => 'btn btn-primary' %>
+<!-- %= link_to 'Add new post', new_post_path, :class => 'btn btn-primary' % -->

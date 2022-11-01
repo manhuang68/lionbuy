@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
     def with_keyword(with_keyword)
+        with_keyword.downcase!
         if with_keyword.length != 0
             if (self.description.downcase.include? with_keyword)
                 return true
@@ -9,6 +10,20 @@ class Post < ActiveRecord::Base
             return false
         end
         return true
+    end
+
+    def with_price_range(min_price, max_price)
+        min_price = min_price.to_f
+        max_price = max_price.to_f
+        if max_price == 0
+            max_price = Float::MAX 
+        end
+       
+        if self.price.to_f.between?(min_price, max_price)
+            return true
+        else 
+            return false
+        end
     end
 
     def self.with_categories(categories_list)

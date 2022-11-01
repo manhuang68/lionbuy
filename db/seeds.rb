@@ -26,7 +26,7 @@ end
 
 posts = [{:item => 'Laptop MAC', :description => 'Used laptop 2015 good condition', :price => '800', :user => 'JohnHarrison', :email => 'jh4142@columbia.edu', :category => 'Electronics'},
 		 {:item => 'Queen size bed frame', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'SamAlexander', :email => 'sa6156@columbia.edu', :category => 'Bedding'},
-		 {:item => 'Chemical Engineering Textbooks', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education'},
+		 {:item => 'Chemical Engineering Textbooks', :description => 'Textbooks for freshman to senior year', :price => '10', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education'},
 		 {:item => 'Air Purifier', :description => 'Brand new. Morningside campus only.', :price => '15', :user => 'ShuyuWang', :email => 'sw4231@columbia.edu', :category => 'Electronics'},
 		 {:item => 'Desk Lamp', :description => '3 brightness levels, light bulb included', :price => '25', :user => 'JenniferLee', :email => 'jl4152@columbia.edu', :category => 'Electronics'},
 		]

@@ -10,31 +10,56 @@ class PostsController < ApplicationController
   end
 
   def index
+    session.delete(:min_price)
+    session.delete(:max_price)
     # Prevent hacker
     if session[:user_id] == nil
       redirect_to "/signin"
     end
 
     @posts = Post.all
-    if not params[:categories] and not params[:keyword]
-      if session[:categories] or session[:keyword]
+    if not params[:categories] and not params[:keyword] and not params[:min_price] and not params[:max_price]
+      if session[:categories] or session[:keyword] or (session[:min_price] and session[:max_price])
         params[:categories] = session[:categories]
         params[:keyword] = session[:keyword]
-        redirect_to posts_path({:categories => params[:categories], :keyword => params[:keyword]})
+        params[:min_price] = session[:min_price]
+        params[:max_price] = session[:max_price]
+        redirect_to posts_path({:categories => params[:categories], :keyword => params[:keyword], :min_price => params[:min_price], :max_price => params[:max_price]})
         return
       end
     end
     session.delete(:categories)
     session.delete(:keyword)
+    session.delete(:min_price)
+    session.delete(:max_price)
 
     @all_categories = Post.all_categories
     @categories_to_show = params[:categories] ? params[:categories].keys : @all_categories
     @posts = Post.with_categories(@categories_to_show)
     @keyword_to_show = params[:keyword] ? params[:keyword] : ""
+    @min_price = params[:min_price] ? params[:min_price] : ""
+    @max_price = params[:max_price] ? params[:max_price] : ""
 
+    # Keyword
     res = []
     @posts.each do |post| 
       if post.with_keyword(@keyword_to_show)
+          res.append(post)
+      end
+    end
+    @posts = res
+
+    # Price Range
+    if @min_price.length != 0 or @max_price.length != 0 
+      if (not @min_price.match?(/[[:digit:]]/) and not @max_price.match?(/[[:digit:]]/))
+        flash[:notice] = "Invalid price range"
+        redirect_to posts_path
+      end
+    end
+    
+    res = []
+    @posts.each do |post| 
+      if post.with_price_range(@min_price, @max_price)
           res.append(post)
       end
     end
@@ -47,19 +72,16 @@ class PostsController < ApplicationController
     if params[:keyword]
       session[:keyword] = params[:keyword]
     end
+    if params[:min_price]
+      session[:min_price] = params[:min_price]
+    end
+    if params[:max_price]
+      session[:max_price] = params[:max_price]
+    end
   end
 
   def new
     # default: render 'new' template
-  end
-
-  def search
-    @similar_posts = Post.similar_posts(params[:item])
-    if @similar_posts.nil?
-      flash[:notice] = "'#{params[:item]}' has no director info"
-      redirect_to root_url
-    end
-    @post = Post.find_by(item: params[:item])
   end
 
   def create
