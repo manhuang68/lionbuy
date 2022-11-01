@@ -1,31 +1,42 @@
 source 'https://rubygems.org'
 
 ruby '2.6.6'
-gem 'rails', '4.2.10'
 
-# for Heroku deployment 
-group :development, :test do
-  gem 'sqlite3', '1.3.11'
-  gem 'byebug'
-  gem 'database_cleaner', '1.4.1'
-  gem 'capybara', '2.4.4'
-  gem 'launchy'
-  gem 'rspec-rails', '3.7.2'
-  gem 'ZenTest', '4.11.2'
-end
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.2.11'
 
-group :test do
-  gem 'cucumber-rails', :require => false
-  gem 'cucumber-rails-training-wheels'
-  gem 'simplecov', :require => false
-end
-group :production do
-  gem 'pg'
-end
-
-# Gems used only for assets and not required
-# in production environments by default.
-
-gem 'sass-rails', '~> 5.0.3'
-gem 'uglifier', '>= 2.7.1'
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+# Use jquery as the JavaScript library
 gem 'jquery-rails'
+
+
+# Use Unicorn as the app server
+# gem 'unicorn'
+
+gem 'themoviedb'
+
+# Window support
+gem 'tzinfo'
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
+
+group :development, :test do
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug'
+
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3', '~> 1.3.6'
+
+  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'web-console', '~> 2.0'
+end
+
+group :production do
+  gem 'pg', '~> 0.21' # for Heroku deployment
+  gem 'rails_12factor'
+end
