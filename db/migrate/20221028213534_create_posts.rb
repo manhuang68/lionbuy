@@ -6,6 +6,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :price
       t.string :user
       t.string :email
+      t.string :category
       # Add fields that let Rails automatically keep track
       # of when movies are added or modified:
       t.timestamps

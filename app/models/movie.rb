@@ -1,9 +1,4 @@
 class Movie < ActiveRecord::Base
-
-
-
-
-
   def self.similar_movies target
     tmp = []
     director = Movie.find_by(title: target).director
