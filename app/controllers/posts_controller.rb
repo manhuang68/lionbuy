@@ -42,7 +42,7 @@ class PostsController < ApplicationController
 
     # Keyword
     res = []
-    @posts.each do |post| 
+    @posts.each do |post|
       if post.with_keyword(@keyword_to_show)
           res.append(post)
       end
@@ -50,15 +50,15 @@ class PostsController < ApplicationController
     @posts = res
 
     # Price Range
-    if @min_price.length != 0 or @max_price.length != 0 
+    if @min_price.length != 0 or @max_price.length != 0
       if (not @min_price.match?(/[[:digit:]]/) and not @max_price.match?(/[[:digit:]]/))
         flash[:notice] = "Invalid price range"
         redirect_to posts_path
       end
     end
-    
+
     res = []
-    @posts.each do |post| 
+    @posts.each do |post|
       if post.with_price_range(@min_price, @max_price)
           res.append(post)
       end

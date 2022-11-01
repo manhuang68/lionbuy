@@ -10,3 +10,23 @@
 
     <%= submit_tag 'Sign in', :class => 'btn btn-primary' %>
 <% end %>
+
+<div class="container">
+  <div class="row">
+      <% @posts.each do |post| %>
+    <div class="col-md-4">
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%= post.item %></h5>
+          <p class="card-text"><%= post.description %></p>
+          <div class="card-text"><%= post.user %> </div>
+          <div class="card-text">  <%= post.email %> </div>
+          <div class="card-text"><%= post.price %> </div>
+          <br>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+      <% end %>
+  </div>
+</div>
