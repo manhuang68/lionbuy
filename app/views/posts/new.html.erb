@@ -1,16 +1,2 @@
 <h2>Create New Post</h2>
 
-<%= form_tag posts_path, :class => 'form' do %>
-  <%= label :post, :title, 'Title', :class => 'col-form-label' %>
-  <%= text_field :post, :title, :class => 'form-control' %>
-  <%= label :post, :rating, 'Rating', :class => 'col-form-label'  %>
-  <%= select :post, :rating, ['G','PG','PG-13','R','NC-17'], {}, {:class => 'form-control col-1'} %>
-  <%= label :post, :release_date, 'Released On', :class => 'col-form-label'  %>
-  <%= date_select :post, :release_date, {}, :class => 'form-control col-2 d-inline' %>
-  <br/>
-  <%= label :post, :title, 'Director', :class => 'col-form-label' %>
-  <%= text_field :post, 'director', :class => 'form-control' %>
-  <br/>
-  <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
-  <%= link_to 'Cancel', posts_path, :class => 'btn btn-secondary' %>
-<% end %>

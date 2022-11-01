@@ -5,8 +5,8 @@ class PostsController < ApplicationController
     if session[:user_id] == nil
       redirect_to "/signin"
     end
-    id = params[:id] # retrieve post ID from URI route
-    @post = Post.find(id) # look up post by unique ID
+    # id = params[:id] # retrieve post ID from URI route
+    # @post = Post.find(id) # look up post by unique ID
   end
 
   def index
@@ -64,20 +64,6 @@ class PostsController < ApplicationController
       end
     end
     @posts = res
-
-    # byebug
-    if params[:categories]
-      session[:categories] = params[:categories]
-    end
-    if params[:keyword]
-      session[:keyword] = params[:keyword]
-    end
-    if params[:min_price]
-      session[:min_price] = params[:min_price]
-    end
-    if params[:max_price]
-      session[:max_price] = params[:max_price]
-    end
   end
 
   def new
@@ -90,7 +76,7 @@ class PostsController < ApplicationController
       redirect_to "/signin"
     end
     @post = Post.create!(post_params)
-    flash[:notice] = "#{@post.item} was successfully created."
+    flash[:notice] = "Post #{@post.item} was successfully created."
     redirect_to posts_path
   end
 
@@ -109,7 +95,7 @@ class PostsController < ApplicationController
     end
     @post = Post.find params[:id]
     @post.update_attributes!(post_params)
-    flash[:notice] = "#{@post.item} was successfully updated."
+    flash[:notice] = "Post #{@post.item} was successfully updated."
     redirect_to post_path(@post)
   end
 
