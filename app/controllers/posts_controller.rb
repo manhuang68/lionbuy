@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     @categories_to_show = params[:categories] ? params[:categories].keys : @all_categories
     # @title_header_hilite_to_show = params[:sort] == 'title' ? 'hilite bg-warning' : ''
     # @release_date_header_hilite_to_show = params[:sort] == 'release_date' ? 'hilite bg-warning' : ''
-    
+
     # @posts = Post.with_categories(@categories_to_show)
     # if params[:sort]
     #   @posts = @posts.order(params[:sort])
