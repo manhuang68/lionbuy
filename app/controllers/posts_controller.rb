@@ -3,10 +3,10 @@ class PostsController < ApplicationController
   def show
     # Prevent hacker
     if session[:user_id] == nil
-      redirect_to "/signin"
+      redirect_to "/signin" and return
     end
-    # id = params[:id] # retrieve post ID from URI route
-    # @post = Post.find(id) # look up post by unique ID
+    id = params[:id] # retrieve post ID from URI route
+    @post = Post.find(id) # look up post by unique ID
   end
 
   def index
@@ -14,7 +14,7 @@ class PostsController < ApplicationController
     session.delete(:max_price)
     # Prevent hacker
     if session[:user_id] == nil
-      redirect_to "/signin"
+      redirect_to "/signin" and return
     end
 
     @posts = Post.all
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
         params[:keyword] = session[:keyword]
         params[:min_price] = session[:min_price]
         params[:max_price] = session[:max_price]
-        redirect_to posts_path({:categories => params[:categories], :keyword => params[:keyword], :min_price => params[:min_price], :max_price => params[:max_price]})
+        redirect_to posts_path({:categories => params[:categories], :keyword => params[:keyword], :min_price => params[:min_price], :max_price => params[:max_price]}) and return
         return
       end
     end
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
     if @min_price.length != 0 or @max_price.length != 0
       if (not @min_price.match?(/[[:digit:]]/) and not @max_price.match?(/[[:digit:]]/))
         flash[:notice] = "Invalid price range"
-        redirect_to posts_path
+        redirect_to posts_path and return
       end
     end
 
@@ -64,6 +64,20 @@ class PostsController < ApplicationController
       end
     end
     @posts = res
+
+    # byebug
+    if params[:categories]
+      session[:categories] = params[:categories]
+    end
+    if params[:keyword]
+      session[:keyword] = params[:keyword]
+    end
+    if params[:min_price]
+      session[:min_price] = params[:min_price]
+    end
+    if params[:max_price]
+      session[:max_price] = params[:max_price]
+    end
   end
 
   def new
@@ -73,17 +87,17 @@ class PostsController < ApplicationController
   def create
     # Prevent hacker
     if session[:user_id] == nil
-      redirect_to "/signin"
+      redirect_to "/signin" and return
     end
     @post = Post.create!(post_params)
-    flash[:notice] = "Post #{@post.item} was successfully created."
-    redirect_to posts_path
+    flash[:notice] = "#{@post.item} was successfully created."
+    redirect_to posts_path and return
   end
 
   def edit
       # Prevent hacker
       if session[:user_id] == nil
-        redirect_to "/signin"
+        redirect_to "/signin" and return
       end
     @post = Post.find params[:id]
   end
@@ -91,23 +105,23 @@ class PostsController < ApplicationController
   def update
     # Prevent hacker
     if session[:user_id] == nil
-      redirect_to "/signin"
+      redirect_to "/signin" and return
     end
     @post = Post.find params[:id]
     @post.update_attributes!(post_params)
-    flash[:notice] = "Post #{@post.item} was successfully updated."
-    redirect_to post_path(@post)
+    flash[:notice] = "#{@post.item} was successfully updated."
+    redirect_to post_path(@post) and return
   end
 
   def destroy
     # Prevent hacker
     if session[:user_id] == nil
-      redirect_to "/signin"
+      redirect_to "/signin" and return
     end
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "Post '#{@post.item}' deleted."
-    redirect_to posts_path
+    redirect_to posts_path and return
   end
 
   private
