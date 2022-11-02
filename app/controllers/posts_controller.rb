@@ -10,8 +10,6 @@ class PostsController < ApplicationController
   end
 
   def index
-    session.delete(:min_price)
-    session.delete(:max_price)
     # Prevent hacker
     if session[:user_id] == nil
       redirect_to "/signin" and return
@@ -28,10 +26,6 @@ class PostsController < ApplicationController
         return
       end
     end
-    session.delete(:categories)
-    session.delete(:keyword)
-    session.delete(:min_price)
-    session.delete(:max_price)
 
     @all_categories = Post.all_categories
     @categories_to_show = params[:categories] ? params[:categories].keys : @all_categories
