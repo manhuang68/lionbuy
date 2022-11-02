@@ -8,6 +8,16 @@ class SessionsController < ApplicationController
       #puts test.email
       #puts test.password
     end
+    if login_params[:email].empty?
+      flash[:notice] = 'Email cannot be empty!'
+      redirect_to "/signin" and return
+    end
+
+    if login_params[:password].empty?
+      flash[:notice] = 'Password cannot be empty!'
+      redirect_to "/signin" and return
+    end
+
     user = User.find_by(email: login_params[:email])
     #puts "the us "
     if user == nil

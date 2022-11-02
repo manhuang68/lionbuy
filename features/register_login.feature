@@ -105,3 +105,11 @@ Scenario: Signin with a wrong account and flash an error
         Then I fill in "password" with "123"
         And  I press "Sign in"
         Then I should see "Account does not exist!"
+
+Scenario: Signin with a wrong account and flash an error
+        Given I am on the signin page
+        Then I should see "Log in"
+        Then I fill in "email" with ""
+        Then I fill in "password" with "123"
+        And  I press "Sign in"
+        Then I should see "Email cannot be empty!"
