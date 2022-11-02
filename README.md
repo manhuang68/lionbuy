@@ -24,11 +24,11 @@ For Project Iteration 1, we have identified our minimal features, as follows:
 
 ### Setup Your Working Environment
 
-​```
+```
 bundle install --without production 
 rake db:setup *# shorthand for db:create, db:migrate, db:seed* 
 rails server -b 0.0.0.0
-​```
+```
 
 ### User Login
 
@@ -57,5 +57,5 @@ rails server -b 0.0.0.0
 ```
 rake cucumber
 rake spec
-​```
+```
 
