@@ -9,6 +9,16 @@ RSpec.describe PostsController, :type => :controller do
       Post.create(:item => 'Queen size bed frame', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'SamAlexander', :email => 'sa6156@columbia.edu', :category => 'Bedding')
       Post.create(:item => 'Chemical Engineering Textbooks', :description => 'Textbooks for freshman to senior year', :price => '10', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education')
     end
+    describe "delete a post" do
+      it "Failed to delete the post due to out of session" do
+        session[:user_id] = nil
+        post = Post.find_by(:item =>'Laptop MAC')
+        tmp = post.id
+        get :destroy, {:id => post.id}
+        expect(response).to redirect_to signin_path
+        #expect(flash[:notice]).to match(/Post 'Laptop MAC' deleted./)
+      end
+  end
 
     describe "delete a post" do
         it "take a post and destroy" do
@@ -20,6 +30,7 @@ RSpec.describe PostsController, :type => :controller do
           expect(flash[:notice]).to match(/Post 'Laptop MAC' deleted./)
         end
     end
+
 
     describe "creating new post" do
       it "posts with valid parameters" do
@@ -33,7 +44,7 @@ RSpec.describe PostsController, :type => :controller do
     end
 
     describe "updating posts" do
-      it "checking posts" do
+      it "Succeed to update the posts" do
         session[:user_id] = "1"
         post = Post.find_by(:item =>'Chemical Engineering Textbooks')
         get :update, {:id => post.id, :post =>{:category => "Book"}}
@@ -41,6 +52,50 @@ RSpec.describe PostsController, :type => :controller do
         expect(flash[:notice]).to match(/Chemical Engineering Textbooks was successfully updated./)
         post.destroy
       end
+
     end
+    describe "updating posts" do
+      it "Failed to update the post due to out of session" do
+        session[:user_id] = nil
+        post = Post.find_by(:item =>'Chemical Engineering Textbooks')
+        get :update, {:id => post.id, :post =>{:category => "Book"}}
+        expect(response).to redirect_to signin_path
+      end
+    end
+
+    describe "Editing posts" do
+      it "Editing the post" do
+        session[:user_id] = "1"
+        post = Post.find_by(:item =>'Chemical Engineering Textbooks')
+        get :edit, {:id => post.id, :post =>{:category => "Book"}}
+        #expect(response).to redirect_to post_path(post)
+        #expect(flash[:notice]).to match(/Chemical Engineering Textbooks was successfully updated./)
+        post.destroy
+      end
+    end
+
+    describe "Editing posts" do
+      it "Session expired" do
+        session[:user_id] = nil
+        post = Post.find_by(:item =>'Chemical Engineering Textbooks')
+        get :edit, {:id => post.id, :post =>{:category => "Book"}}
+        expect(response).to redirect_to signin_path
+        #expect(flash[:notice]).to match(/Chemical Engineering Textbooks was successfully updated./)
+        post.destroy
+      end
+    end
+
+
+    describe "Checking login status" do
+      it "If the user is not logged should return to signin page" do
+        session[:user_id] = nil
+        get :index
+        expect(response).to redirect_to signin_path
+      end
+
+    end
+
+
+
 
 end
