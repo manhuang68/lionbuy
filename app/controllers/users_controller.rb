@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     #puts "this is"
     #puts (user_params[:email].include? "@columbia.edu")
     if (!user_params[:email].include? "@columbia.edu") and (!user_params[:email].include? "@barnard.edu")
-      flash[:notice] = 'Please use Columbia / Barnard Email to register!'
+      flash[:notice] = 'Please use Columbia or Barnard Email to register!'
       redirect_to "/signup" and return
     end
     if user_params[:fname].empty? or user_params[:lname].empty?

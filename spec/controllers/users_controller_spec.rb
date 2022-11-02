@@ -25,5 +25,26 @@ RSpec.describe UsersController, :type => :controller do
          expect(flash[:notice]).to match(/Email already exist!/)
          #User.find_by(:email => "125@columbia.edu").destroy
        end
+       it "warns the user if the email is not columbia or barnard email" do
+         get :create, {:user => {:password => "123", :email => "125@harvard.edu", :fname => "hello", :lname => "hi"}}
+         #pending response
+         expect(response).to redirect_to signup_path
+         expect(flash[:notice]).to match('Please use Columbia or Barnard Email to register!')
+         #User.find_by(:email => "125@columbia.edu").destroy
+       end
+       it "warns the user if the first name or last name is empty" do
+         get :create, {:user => {:password => "123", :email => "125@barnard.edu", :fname => "", :lname => ""}}
+         #pending response
+         expect(response).to redirect_to signup_path
+         expect(flash[:notice]).to match('Fields cannot be empty!')
+         #User.find_by(:email => "125@columbia.edu").destroy
+       end
+       it "warns the user if the password does not match" do
+         get :create, {:user => {:password => "123",:password_confirmation => "123456", :email => "125@barnard.edu", :fname => "John", :lname => "Ho"}}
+         #pending response
+         expect(response).to redirect_to signup_path
+         expect(flash[:notice]).to match('Password does not match!')
+         #User.find_by(:email => "125@columbia.edu").destroy
+       end
      end
   end

@@ -9,6 +9,7 @@ log/
 tmp/
 vendor/bundle
 hello.txt
+Gemfile.lock
+Gemfile
 db/development.sqlite3
 coverage/
-.bundle/config
