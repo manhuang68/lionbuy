@@ -1,0 +1,20 @@
+<h2>
+  Registration
+</h2>
+<br>
+<form action="/users" method="POST">
+  <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <%= label :post, :title, 'Email address', :class => 'col-form-label' %>
+  <input class='form-control' type ="email" name="user[email]" placeholder="email">
+  <small id="emailHelp" class="form-text text-muted">Only Columbia / Barnard email</small>
+  <%= label :post, :title, 'First Name', :class => 'col-form-label' %>
+  <input class='form-control' id="fname" type ="text" name="user[fname]" placeholder="First Name">
+  <%= label :post, :title, 'Last Name', :class => 'col-form-label' %>
+  <input class='form-control' id ="lname" type ="text" name="user[lname]" placeholder="Last name">
+  <%= label :post, :title, 'Password', :class => 'col-form-label' %>
+  <input class='form-control' type ="password" name="user[password]" placeholder="password">
+  <%= label :post, :title, 'Retype Password', :class => 'col-form-label' %>
+  <input class='form-control' id="password_confirmation" type ="password" name="user[password_confirmation]" placeholder="password confirmation">
+  <br>
+    <button class= 'btn btn-primary'  type="submit" name="submit" class="submit">Register</button>
+</form>

@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.6.6'
 gem 'rails', '4.2.10'
 
-# for Heroku deployment 
+# for Heroku deployment
 group :development, :test do
   gem 'sqlite3', '1.3.11'
   gem 'byebug'
@@ -12,6 +12,8 @@ group :development, :test do
   gem 'launchy'
   gem 'rspec-rails', '3.7.2'
   gem 'ZenTest', '4.11.2'
+  gem 'execjs'
+  gem 'therubyracer'
 end
 
 group :test do

@@ -1,0 +1,42 @@
+<h2>Log in</h2>
+
+<br>
+<form action="/sessions" method="POST">
+  <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <%= label :post, :title, 'Email address', :class => 'col-form-label' %>
+  <input class='form-control' type ="email" name="login[email]" placeholder="email">
+    <small id="emailHelp" class="form-text text-muted">Enter Columbia or Barnard email</small>
+    <%= label :post, :title, 'Password', :class => 'col-form-label' %>
+  <input class='form-control' type ="password" name="login[password]" placeholder="password">
+  <br>
+  <button class= 'btn btn-primary' type="submit" name="submit" class="submit">Sign in</button>
+</form>
+<!--
+https://codepen.io/Kerrys7777/pen/QWgwEeG
+<div class="card" style="width: 18rem;">
+  <img src="https://www.w3schools.com/bootstrap4/img_avatar6.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+
+
+<div class="card" style="width: 18rem;">
+  <img src="https://www.w3schools.com/bootstrap4/img_avatar6.png" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+-->
