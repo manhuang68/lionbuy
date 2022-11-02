@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.6.6'
 gem 'rails', '4.2.10'
 
-# for Heroku deployment 
+# for Heroku deployment
 group :development, :test do
   gem 'sqlite3', '1.3.11'
   gem 'byebug'
@@ -22,7 +22,7 @@ group :test do
   gem 'simplecov', :require => false
 end
 group :production do
-  gem 'pg'
+  gem 'pg', '~> 0.21'
 end
 
 # Gems used only for assets and not required
