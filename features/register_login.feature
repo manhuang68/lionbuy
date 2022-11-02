@@ -49,7 +49,7 @@ Scenario: Register with a existing account and flash an error
   And  I press "Register"
   Then I should see "Email already exist!"
 
-Scenario: Register with a non Columbia / Barnard email and flash an error
+Scenario: Register with a non Columbia or Barnard email and flash an error
     Given I am on the signup page
     Then I should see "Registration"
     Then I fill in "email" with "hello@gmail.com"
@@ -58,7 +58,7 @@ Scenario: Register with a non Columbia / Barnard email and flash an error
     Then I fill in "password" with "123456fefe"
     Then I fill in "password_confirmation" with "123456fefe"
     And  I press "Register"
-    Then I should see "Please use Columbia / Barnard Email to register!"
+    Then I should see "Please use Columbia or Barnard Email to register!"
 
 Scenario: Register with a wrong password and flash an error
         Given I am on the signup page
