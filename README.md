@@ -26,7 +26,9 @@ For Project Iteration 1, we have identified our minimal features, as follows:
 
 ```
 bundle install --without production 
-rake db:setup *# shorthand for db:create, db:migrate, db:seed* 
+bundle exec rake db:setup 
+bundle exec rake db:migrate
+bundle exec rake db:test:prepare
 rails server -b 0.0.0.0
 ```
 
