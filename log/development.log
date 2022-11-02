@@ -2485,3 +2485,5 @@ Processing by MoviesController#index as HTML
   Rendered movies/index.html.erb within layouts/application (18.4ms)
   Rendered layouts/_flash.erb (0.1ms)
 Completed 200 OK in 31ms (Views: 14.5ms | ActiveRecord: 16.1ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.0ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
