@@ -45,9 +45,9 @@ class UsersController < ApplicationController
       session[:lname] = user.lname
       flash[:notice] = 'Account registered successfully!'
       redirect_to root_url and return
-    else
-      flash[:notice] = user.errors.full_messages
-      redirect_to "/signup" and return
+    #else
+    #  flash[:notice] = user.errors.full_messages
+    #  redirect_to "/signup" and return
     end
   end
 

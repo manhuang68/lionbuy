@@ -22,6 +22,13 @@ RSpec.describe SessionsController, type: :controller do
           #User.find_by(:email => "125@columbia.edu").destroy
         end
         it "warns the user if the email does not exist" do
+          get :create, {:login => {:password => "", :email => "987644@columbia.edu"}}
+          #pending response
+          expect(response).to redirect_to signin_path
+          expect(flash[:notice]).to match('Password cannot be empty!')
+          #User.find_by(:email => "125@columbia.edu").destroy
+        end
+        it "warns the user if the email does not exist" do
           get :create, {:login => {:password => "123", :email => ""}}
           expect(response).to redirect_to signin_path
           expect(flash[:notice]).to match('Email cannot be empty!')

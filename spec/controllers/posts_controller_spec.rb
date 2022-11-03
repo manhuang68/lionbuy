@@ -41,6 +41,15 @@ RSpec.describe PostsController, :type => :controller do
         post = Post.find_by(item:'Water Bottle')
         post.destroy
       end
+      it "Failed to create the post due to out of session" do
+        session[:user_id] = nil
+        get :create, {:post => {:item => 'Water Bottle', :description => 'brand new disney bottle', :price => '5', :user => 'KevinWang', :email => 'kw1252@columbia.edu'}}
+      #  expect(response).to redirect_to posts_path
+      #  expect(flash[:notice]).to match(/Water Bottle was successfully created./)
+        #post = Post.find_by(item:'Water Bottle')
+        expect(response).to redirect_to signin_path
+      #  post.destroy
+      end
     end
 
     describe "updating posts" do
