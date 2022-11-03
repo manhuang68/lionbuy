@@ -33,7 +33,7 @@ RSpec.describe SessionsController, type: :controller do
           expect(flash[:notice]).to match('Account does not exist!')
           #User.find_by(:email => "125@columbia.edu").destroy
         end
-        it "warns the user if the email does not exist" do
+        it "warns the user if the password is wrong" do
           get :create, {:login => {:password => "123456", :email => "125@columbia.edu"}}
           #pending response
           expect(response).to redirect_to signin_path
