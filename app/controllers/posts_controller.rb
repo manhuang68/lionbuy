@@ -10,29 +10,12 @@ class PostsController < ApplicationController
   end
 
   def index
-    session.delete(:min_price)
-    session.delete(:max_price)
     # Prevent hacker
     if session[:user_id] == nil
       redirect_to "/signin" and return
     end
 
     @posts = Post.all
-    if not params[:categories] and not params[:keyword] and not params[:min_price] and not params[:max_price]
-      if session[:categories] or session[:keyword] or (session[:min_price] and session[:max_price])
-        params[:categories] = session[:categories]
-        params[:keyword] = session[:keyword]
-        params[:min_price] = session[:min_price]
-        params[:max_price] = session[:max_price]
-        redirect_to posts_path({:categories => params[:categories], :keyword => params[:keyword], :min_price => params[:min_price], :max_price => params[:max_price]}) and return
-        return
-      end
-    end
-    session.delete(:categories)
-    session.delete(:keyword)
-    session.delete(:min_price)
-    session.delete(:max_price)
-
     @all_categories = Post.all_categories
     @categories_to_show = params[:categories] ? params[:categories].keys : @all_categories
     @posts = Post.with_categories(@categories_to_show)
