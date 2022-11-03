@@ -1,13 +1,6 @@
 class PostsController < ApplicationController
 
-  def show
-    # Prevent hacker
-    if session[:user_id] == nil
-      redirect_to "/signin" and return
-    end
-    id = params[:id] # retrieve post ID from URI route
-    @post = Post.find(id) # look up post by unique ID
-  end
+
 
   def index
     # Prevent hacker
