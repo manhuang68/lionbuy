@@ -2,7 +2,8 @@ Feature: Login and Register
 
   Here it shows the step of login
   and register an account
-
+  When I attach the file "app/assets/images/F22.png" to "user_image"
+  Then I should see the image "F22.png"
 Background: users in database
 
   Given the following users exist:

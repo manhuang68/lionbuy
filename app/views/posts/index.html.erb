@@ -17,6 +17,16 @@
   <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-primary'%>
 <% end %>
 
+<% if false %>
+<%= session[:user_id] %>
+<br>
+<%= image_tag session[:image] %>
+<%= form_for @user, html: { multipart: true } do |form| %>
+<%= form.label :image%>
+  <%= form.file_field :image%>
+  <%= form.submit %>
+<% end %>
+<% end %>
 <br>
 <div class="container">
   <div class="row">

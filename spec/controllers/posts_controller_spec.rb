@@ -9,6 +9,7 @@ RSpec.describe PostsController, :type => :controller do
       Post.create(:item => 'Queen size bed frame', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'SamAlexander', :email => 'sa6156@columbia.edu', :category => 'Bedding')
       Post.create(:item => 'Chemical Engineering Textbooks', :description => 'Textbooks for freshman to senior year', :price => '10', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education')
     end
+
     describe "delete a post" do
       it "Failed to delete the post due to out of session" do
         session[:user_id] = nil
@@ -100,6 +101,15 @@ RSpec.describe PostsController, :type => :controller do
         session[:user_id] = nil
         get :index
         expect(response).to redirect_to signin_path
+      end
+
+    end
+
+    describe "Should go to index" do
+      it "If the user is not logged should return to signin page" do
+        session[:user_id] = "1"
+        get :index, {:post => {:min_price => 2}}
+      #  expect(response).to redirect_to
       end
 
     end

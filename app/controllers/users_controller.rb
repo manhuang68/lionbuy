@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-
+    @user = User.new
   end
 
   def create
@@ -38,11 +38,12 @@ class UsersController < ApplicationController
     #puts user_params
     r = user_params.except(:password_confirmation)
     #puts r
-    user = User.new(r)
+    user = User.create(r)
     if user.save
       session[:user_id] = user.id
       session[:fname] = user.fname
       session[:lname] = user.lname
+    #  session[:image] = user.image.url(:medium)
       flash[:notice] = 'Account registered successfully!'
       redirect_to root_url and return
     #else
@@ -51,12 +52,12 @@ class UsersController < ApplicationController
     end
   end
 
-  def signup
+  def update
 
   end
 
   private
   def user_params
-    params.require(:user).permit(:email, :password,:password_confirmation, :fname, :lname)
+    params.require(:user).permit(:image, :email, :password,:password_confirmation, :fname, :lname)
   end
 end
