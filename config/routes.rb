@@ -7,9 +7,9 @@ Rottenpotatoes::Application.routes.draw do
   post '/users' => 'users#create', as: :register
   post '/sessions' => 'sessions#create', as: :login
   get '/logout' => 'sessions#destroy', as: :signout
-
   get '/posts' => 'users#update', as: :users
-
   #bidding
   post '/bids' => 'bids#create', as: :bidding
+  #show bid history
+  get '/bids/history/:id' => 'bids#history'
 end

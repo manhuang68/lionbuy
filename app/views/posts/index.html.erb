@@ -44,12 +44,12 @@
             <% if post.start_bid == post.current_bid %>
                 <div class="card-text ">Starting Bid: <b>$<%= post.start_bid %> </b>
             <% else %>
-                <div class="card-text ">Current Bid: <b>$<%= post.current_bid %> </b>
+                <div class="card-text ">Current Bid: <b>$<%= post.current_bid %>  &nbsp; <a href='/bids/history/<%= post.id %>'> Bid History </a></b>
             <% end %>
                 <form action="/bids" method="POST">
                   <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-                  <input class='form-control' type ="text" name="bid[amount]" placeholder="Bid amount">
-                  <input class='form-control' type ="hidden" name="bid[product_id]" placeholder="Bid amount" value =<% post.id %>>
+                  <input class='form-control' type ="text" name="bid[bid]" placeholder="Bid amount">
+                  <input class='form-control' type ="hidden" name="bid[product_id]" placeholder="Bid amount" value =<%= post.id %>>
                 <% if post.start_bid == post.current_bid %>
                     <small id="emailHelp" class="form-text text-muted">Enter US $<%= post.start_bid %> or more</small>
                 <% else %>
@@ -58,10 +58,7 @@
                   <button class= 'btn btn-primary' type="submit" name="submit" class="submit">Place a bid</button>
                 </form>
               </div>
-
             <% end %>
-
-
             <% if post.buy_now %>
             <br>
               <div class="card-text ">Price: <b>$<%= post.price %> </b> <button type="button" class="btn btn-primary">Buy it now</button> </div>

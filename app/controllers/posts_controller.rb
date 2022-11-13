@@ -7,7 +7,16 @@ class PostsController < ApplicationController
     if session[:user_id] == nil
       redirect_to "/signin" and return
     end
-  #  @user = User.new
+  #  @user = User.new\
+
+    @bidding = Bid.all
+
+    @bidding.each do |b|
+      puts b.user_id
+      puts b.product_id
+      puts b.bid
+    #  puts b.timestamps
+    end
     @posts = Post.all
     @all_categories = Post.all_categories
     @categories_to_show = params[:categories] ? params[:categories].keys : @all_categories
