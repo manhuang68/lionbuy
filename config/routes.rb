@@ -1,7 +1,6 @@
 Rottenpotatoes::Application.routes.draw do
   resources :posts
   # map '/' to be a redirect to '/movies'
-
   root :to => redirect('/posts')
   get '/signup' => 'users#signup', as: :signup
   get '/signin' => 'users#index', as: :signin
@@ -10,4 +9,7 @@ Rottenpotatoes::Application.routes.draw do
   get '/logout' => 'sessions#destroy', as: :signout
 
   get '/posts' => 'users#update', as: :users
+
+  #bidding
+  post '/bids' => 'bids#create', as: :bidding
 end
