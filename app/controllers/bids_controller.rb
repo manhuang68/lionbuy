@@ -3,6 +3,8 @@ class BidsController < ApplicationController
   def history
     @record = Bid.sorting(params[:id])
     @item = Post.find_by(id: params[:id])
+    puts "you are the higher"
+    puts @record[0].bid
   end
 
   def create
@@ -53,7 +55,7 @@ class BidsController < ApplicationController
         end
         redirect_to posts_path and return
       else
-        flash[:notice] = 'The Bid amount must be equal or greater than '+@current_bid
+        flash[:notice] = 'The Bid amount must be greater than '+@current_bid
         @sorted = Bid.sorting(bid_params[:product_id])
         redirect_to posts_path and return
       end

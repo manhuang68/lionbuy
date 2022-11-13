@@ -13,11 +13,13 @@
     <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
       <h1 class="title">Lionbuy!</h1>
       <div>&nbsp;&nbsp;</div>
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
       <% if session[:user_id] == nil %>  <%= link_to 'Sign in', signin_path(), :class => 'btn btn-primary col-2'  %> <% end %>
       <% if session[:user_id] == nil %>  <%= link_to 'Sign up', signup_path(), :class => 'btn btn-primary col-2'  %> <% end %>
+      <% if session[:user_id] != nil %> <h2 class="ml-auto">  <%= "Welcome " + session[:fname] + " " + session[:lname]  %> &nbsp; &nbsp;</h2> <% end %>
       <% if session[:user_id] != nil %>  <%=  link_to 'Log out', signout_path(), :class => 'btn btn-danger col-2' %> <% end %>
-        <% if session[:user_id] != nil %> <h2>&nbsp;  <%= "Welcome " + session[:fname] + " " + session[:lname] %> </h2> <% end %>
 
+      </div>
     </nav>
     <div class="container">
       <%# Render "flash" messages in our application. This loads _flash.erb %>

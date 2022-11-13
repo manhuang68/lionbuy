@@ -4,10 +4,12 @@
   <h5><%= @item.item  %></h5>
   <div><%= @item.description %></div>
   <div>Current bid :  &nbsp;    <b>  $<%= @item.current_bid  %></b></div>
-
-
+  <br>
+<% if @record[0].user_id == session[:user_id].to_s %>
+  <div class="p-3 mb-2 bg-success text-white"><b>You're the highest bidder!</b></div>
+<% end %>
 </div>
-<br>
+
 <table class="table table-striped col-md-12" id="movies">
   <thead>
     <tr>
@@ -32,5 +34,7 @@
     <% end %>
   </tbody>
 </table>
-
 <%= link_to 'Back to Post list', posts_path, :class => 'btn btn-primary col-2' %>
+<br>
+
+<br>

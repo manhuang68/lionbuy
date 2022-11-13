@@ -8,7 +8,7 @@ class Bid < ActiveRecord::Base
       end
     end
     puts "we are"
-    tmp = tmp.sort_by { |h| h[:id] }.reverse
+    tmp = tmp.sort_by { |h| h[:bid] }.reverse
     return tmp
   end
 end
