@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
 
-
+  def show
+    if session[:user_id] == nil
+      redirect_to "/signin" and return
+    end
+    @item = Post.find_by(id: params[:id])
+  end
 
   def index
     # Prevent hacker

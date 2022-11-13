@@ -34,6 +34,7 @@
     <% end %>
   </tbody>
 </table>
+<%= link_to "Return to details for #{@item.item}", post_path(@item), :class => 'btn btn-primary', :id => "See details for #{@item.item}" %>
 <%= link_to 'Back to Post list', posts_path, :class => 'btn btn-primary col-2' %>
 <br>
 
