@@ -6,14 +6,19 @@ class CreatePosts < ActiveRecord::Migration
       t.string :user
       t.string :email
       t.string :category
+      
       # Add fields that let Rails automatically keep track
       #bid:
       t.boolean :bid
       t.string :start_bid
       t.string :current_bid
+      
       #price
       t.boolean :buy_now
       t.string :price
+
+      t.boolean :closed
+      
       # of when movies are added or modified:
       t.timestamps
     end

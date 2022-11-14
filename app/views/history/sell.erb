@@ -1,0 +1,34 @@
+<h2>Sell History</h2>
+
+<table class="table table-striped col-md-12" id="sell_histories">
+  <thead>
+    <tr>
+      <th>Item id</th>
+      <th>Deal Price</th>
+      <th>Seller</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% (@sell_histories).each do |h| %>
+      <tr>
+        <td>
+          <%= h.item %>
+        </td>
+        <td>
+          $<%= h.price %>
+        </td>
+        <td>
+          <%= h.buyer %>
+        </td>
+        <td>
+          <%= h.created_at.strftime("%B %d, %Y %H:%M:%S %Z") %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back to Post list', posts_path, :class => 'btn btn-primary col-2' %>
+<br>
+<br>
