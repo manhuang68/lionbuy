@@ -11,5 +11,5 @@ Rottenpotatoes::Application.routes.draw do
   #bidding
   post '/bids' => 'bids#create', as: :bidding
   #show bid history
-  get '/bids/history/:id' => 'bids#history'
+  get '/bids/history/:id' => 'bids#history', as: :bid_history
 end

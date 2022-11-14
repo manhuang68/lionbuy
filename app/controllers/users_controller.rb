@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @user = User.new
+    #@user = User.new
   end
 
   def create

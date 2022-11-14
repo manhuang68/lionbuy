@@ -46,5 +46,10 @@ RSpec.describe UsersController, :type => :controller do
          expect(flash[:notice]).to match('Password does not match!')
          #User.find_by(:email => "125@columbia.edu").destroy
        end
+       it "warns the user if the password are empty" do
+         get :create, {:user => {:password => "",:password_confirmation => "", :email => "125@barnard.edu", :fname => "John", :lname => "Ho"}}
+         expect(response).to redirect_to signup_path
+         expect(flash[:notice]).to match('Password cannot be empty!')
+       end
      end
   end
