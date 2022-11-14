@@ -16,5 +16,4 @@ Rottenpotatoes::Application.routes.draw do
   # user history 
   get '/history/buy' => 'history#buy'
   get '/history/sell' => 'history#sell'
-  # get '/sell_history' => 'users#sell_history', as: :sell_history
 end

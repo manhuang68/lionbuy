@@ -25,7 +25,7 @@ module NavigationHelpers
       edit_post_path(post_id)
 
     when /^the details page for "(.*)"$/
-      post_id = Post.find_by(title: $1).id
+      post_id = Post.find_by(item: $1).id
       post_path(post_id)
     when /^the Similar Posts page for "(.+)"/
       search_similar_posts_path($1)

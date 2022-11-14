@@ -1,19 +1,17 @@
 class BidsController < ApplicationController
 
   def history
+    puts "the name is"
+    puts session[:fname]
     @record = Bid.sorting(params[:id])
     @item = Post.find_by(id: params[:id])
+    puts @record[0]
     puts "you are the higher"
-    puts @record[0].bid
+    #puts @record[0].bid
   end
 
   def create
-    @bidding = Bid.all
-    @bidding.each do |b|
-      puts b.user_id
-      puts b.product_id
-      puts b.bid
-    end
+
     #@bidding_historydd = Bid.find_by(id: 2)
     #puts "dfds"
     #puts @bidding_historydd.created_at
@@ -23,41 +21,34 @@ class BidsController < ApplicationController
     parameter = bid_params
     parameter[:user_id] = session[:user_id]
   #  puts parameter
+    puts "bid : " + bid_params[:bid]
+    puts "current bid : " 
+    puts @current_bid
     if @bidding_history == nil
       if bid_params[:bid].to_f >= @current_bid.to_f
         Bid.create(parameter)
         @post = Post.find_by(id: bid_params[:product_id])
         @post.update_attribute(:current_bid , bid_params[:bid])
-        flash[:notice] = 'You placed a bid of '+bid_params[:bid]
-        redirect_to posts_path and return
+        flash[:notice] = 'You placed a bid of $'+bid_params[:bid]
+        redirect_to post_path(@post) and return
       else
-        flash[:notice] = 'The Bid amount must be equal or greater than '+@current_bid
-        redirect_to posts_path and return
+        flash[:notice] = 'The Bid amount must be equal or greater than $'+@current_bid
+        redirect_to post_path(@current_post) and return
       end
     else
       if bid_params[:bid].to_f > @current_bid.to_f
-        flash[:notice] = 'You placed a bid of '+bid_params[:bid]
+        flash[:notice] = 'You placed a bid of $'+bid_params[:bid]
         Bid.create(parameter)
         @post = Post.find_by(id: bid_params[:product_id])
         @post.update_attribute(:current_bid , bid_params[:bid])
 
         @sorted = Bid.sorting(bid_params[:product_id])
-        puts "the sorted are"
-        @sorted.each do |b|
-          puts "id is"
-          puts b.user_id
-          puts "product id is"
-          puts b.product_id
-          puts "bid is"
-          puts b.bid
-          puts b.created_at
-        #  puts b.timestamps
-        end
-        redirect_to posts_path and return
+
+        redirect_to post_path(@post) and return
       else
-        flash[:notice] = 'The Bid amount must be greater than '+@current_bid
+        flash[:notice] = 'The Bid amount must be greater than $'+@current_bid
         @sorted = Bid.sorting(bid_params[:product_id])
-        redirect_to posts_path and return
+        redirect_to post_path(@current_post) and return
       end
     end
   end

@@ -65,6 +65,11 @@ When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
 
+When /^(?:|I )press "([^"]*)" id$/ do |button|
+find('a','#posting2').click
+#find.("find("[name=posting2]").click
+#  find("."+button).click
+end
 # Use this to fill in an entire form with data from a table. Example:
 #
 #   When I fill in the following:
