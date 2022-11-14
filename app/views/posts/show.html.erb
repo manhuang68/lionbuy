@@ -24,10 +24,10 @@
     </div>
     <div class="col">
       <% if @item.bid %>
-      <% if @item.start_bid == @item.current_bid %>
+      <% if @item.start_bid == @item.current_bid and Bid.find_by(product_id: @item.id) == nil %>
           <div class="det"><div class="detail">Starting Bid: <b>US $<%= @item.start_bid %> </b></div>
       <% else %>
-          <div class="det"><div class="detail">Current Bid: <b>US $<%= @item.current_bid %>  &nbsp; <a href='/bids/history/<%= @item.id %>'>View Bid History </a></b></div>
+          <div class="det"><div class="detail">Current Bid: <b>US $<%= @item.current_bid %>  &nbsp; <a href='/bids/history/<%= @item.id %>'>View Bid History</a></b></div>
       <% end %>
           <form action="/bids" method="POST">
             <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
@@ -35,7 +35,7 @@
               <div class="container">
                 <div class="row">
                   <div class="col">
-                    <input class='form-control' type ="text" name="bid[bid]" placeholder="Bid amount">
+                    <input class='form-control' type ="text" name="bid[bid]" id="amount" placeholder="Bid amount">
                   </div>
                   <div class="col">
                     <button class= 'btn btn-primary' type="submit" name="submit" class="submit">Place a bid</button>

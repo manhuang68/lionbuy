@@ -28,15 +28,15 @@ class BidsController < ApplicationController
         Bid.create(parameter)
         @post = Post.find_by(id: bid_params[:product_id])
         @post.update_attribute(:current_bid , bid_params[:bid])
-        flash[:notice] = 'You placed a bid of '+bid_params[:bid]
-        redirect_to posts_path and return
+        flash[:notice] = 'You placed a bid of $'+bid_params[:bid]
+        redirect_to post_path(@post) and return
       else
-        flash[:notice] = 'The Bid amount must be equal or greater than '+@current_bid
-        redirect_to posts_path and return
+        flash[:notice] = 'The Bid amount must be equal or greater than $'+@current_bid
+        redirect_to post_path(@current_post) and return
       end
     else
       if bid_params[:bid].to_f > @current_bid.to_f
-        flash[:notice] = 'You placed a bid of '+bid_params[:bid]
+        flash[:notice] = 'You placed a bid of $'+bid_params[:bid]
         Bid.create(parameter)
         @post = Post.find_by(id: bid_params[:product_id])
         @post.update_attribute(:current_bid , bid_params[:bid])
@@ -53,11 +53,11 @@ class BidsController < ApplicationController
           puts b.created_at
         #  puts b.timestamps
         end
-        redirect_to posts_path and return
+        redirect_to post_path(@post) and return
       else
-        flash[:notice] = 'The Bid amount must be greater than '+@current_bid
+        flash[:notice] = 'The Bid amount must be greater than $'+@current_bid
         @sorted = Bid.sorting(bid_params[:product_id])
-        redirect_to posts_path and return
+        redirect_to post_path(@current_post) and return
       end
     end
   end
