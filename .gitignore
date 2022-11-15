@@ -9,6 +9,5 @@ log/
 tmp/
 vendor/bundle
 hello.txt
-Gemfile.lock
 .rake_tasks~
 db/development.sqlite3

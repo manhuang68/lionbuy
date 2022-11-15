@@ -20,4 +20,6 @@ class HistoryController < ApplicationController
             h.item =  @current_post.item
         end
     end
+
+    
 end

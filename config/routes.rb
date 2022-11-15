@@ -16,4 +16,9 @@ Rottenpotatoes::Application.routes.draw do
   # user history
   get '/history/buy' => 'history#buy', as: :order_history
   get '/history/sell' => 'history#sell', as: :selling_history
+
+  # Ordering
+  post '/ordering' => 'orders#create'
+
+  #  get '/order/:id' => 'orders#update'
 end

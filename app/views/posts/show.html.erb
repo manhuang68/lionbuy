@@ -44,7 +44,7 @@
               </div>
             </div>
             <input class='form-control' type ="hidden" name="bid[product_id]" placeholder="Bid amount" value =<%= @item.id %>>
-              <% if @item.start_bid == @item.current_bid %>
+              <% if @item.start_bid == @item.current_bid and Bid.find_by(product_id: @item.id) == nil %>
                   <small id="emailHelp" class="form-text text-muted detail">Enter US $<%= @item.start_bid %> or more</small>
               <% else %>
                   <small id="emailHelp" class="form-text text-muted detail">Enter a value greater than $<%= @item.current_bid %></small>
@@ -58,8 +58,12 @@
         <br>
       <% end %>
       <% if @item.buy_now %>
+        <form action="/ordering" method="POST">
+          <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+            <div class="card-text center">Price: <b>US $<%= @item.price %> &nbsp;&nbsp;</b> <button type="submit" class="btn btn-primary">Buy it now</button> </div>
+            <input class='form-control' type ="hidden" name="order[product_id]" value=<%= @item.id %>>
+        </form>
 
-        <div class="card-text center">Price: <b>US $<%= @item.price %> &nbsp;&nbsp;</b> <button type="button" class="btn btn-primary">Buy it now</button> </div>
       <% end %>
     </div>
 
