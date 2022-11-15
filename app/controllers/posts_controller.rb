@@ -20,7 +20,8 @@ class PostsController < ApplicationController
     @keyword_to_show = params[:keyword] ? params[:keyword] : ""
     @min_price = params[:min_price] ? params[:min_price] : ""
     @max_price = params[:max_price] ? params[:max_price] : ""
-
+    puts "the keyboard are: "
+    puts params[:categories]
     # Keyword
     res = []
     @posts.each do |post|

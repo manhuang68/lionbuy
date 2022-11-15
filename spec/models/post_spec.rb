@@ -24,6 +24,10 @@ describe Post do
       @post = Post.find_by(item: 'Laptop MAC')
       expect(@post.item).to eq('Laptop MAC')
     end
+		it "Check if contains an item" do
+			@post = Post.find_by(item: 'Laptop MAC')
+			expect(@post.with_keyword('MAC')).to eq(true)
+		end
   end
 
   describe 'check post description' do
@@ -55,6 +59,11 @@ describe Post do
       expect(@post.category).to be_nil
       @post.destroy
     end
+		it "Expect to return all the post" do
+			@post =Post.with_categories("")
+			expect(@post.size()).to eq(Post.all.size())
+			#@post.destroy
+		end
   end
 
   describe 'two posts share same category' do

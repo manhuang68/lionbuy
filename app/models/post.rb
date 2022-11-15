@@ -16,25 +16,25 @@ class Post < ActiveRecord::Base
         min_price = min_price.to_f
         max_price = max_price.to_f
         if max_price == 0
-            max_price = Float::MAX 
+            max_price = Float::MAX
         end
-       
+
         if self.price.to_f.between?(min_price, max_price)
             return true
-        else 
+        else
             return false
         end
     end
 
     def self.with_categories(categories_list)
         if categories_list.length != 0
-            return Post.where(category: categories_list) 
+            return Post.where(category: categories_list)
         else
-            return Post.all 
+            return Post.all
         end
     end
 
     def self.all_categories()
         @all_categories = ['Electronics','Bedding','Education']
-    end 
+    end
 end
