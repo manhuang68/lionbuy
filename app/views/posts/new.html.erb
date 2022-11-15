@@ -1,2 +1,33 @@
-<h2>Create New Post</h2>
+<style type="text/css">
+  .input_form { 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; border:1px solid #ccc; font-size:20px; width:500px; min-height:30px; display:block; margin-bottom:15px; margin-top:5px; outline: none; -webkit-border-radius:5px; border-radius:5px; 
+  } 
+  label{
+    font-size: 20px;
+  }
 
+</style>
+<div class="body">
+  <div class="header">
+    <h2>Create New Post</h2>
+  </div>
+  <div class="wrapper">
+    <form method="POST" action="/create_posts">
+      <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+      <input type="text" hidden name="post[user]" value="<%= @user_name %>">
+      <input type="text" hidden name="post[email]" value="<%= @user_email %>">
+      <div class="one">
+        <input type="text" name="post[item]" class="input_form" placeholder="item..." required="">
+      </div>
+      <div class="one">
+        <input type="text" name="post[description]" class="input_form" placeholder="description..." required="">
+      </div>
+      <div class="one">
+        <input type="text" name="post[price]" class="input_form" placeholder="price..." required="">
+      </div>
+      <input type="submit" value="Submit" style="width: 80px;height: 40px;" />
+    </form>
+    
+    
+  </div>
+</div>

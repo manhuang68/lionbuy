@@ -18,6 +18,7 @@
       <% if session[:user_id] == nil %>  <%= link_to 'Sign up', signup_path(), :class => 'btn btn-primary col-2'  %> <% end %>
       <% if session[:user_id] != nil %>  <%=  link_to 'Order history', order_history_path(), :class => 'btn btn-info col-2' %> <% end %>
       <% if session[:user_id] != nil %>  <%=  link_to 'Selling summary',  selling_history_path(), :class => 'btn btn-info col-2' %> <% end %>
+      <% if session[:user_id] != nil %>  <%=  link_to 'My posts',  my_posts_path(), :class => 'btn btn-info col-2' %> <% end %>
       <% if session[:user_id] != nil %> <h2 class="ml-auto">  <%= "Welcome " + session[:fname] + " " + session[:lname]  %> &nbsp; &nbsp;</h2> <% end %>
       <% if session[:user_id] != nil %>  <%=  link_to 'Log out', signout_path(), :class => 'btn btn-danger col-2' %> <% end %>
 

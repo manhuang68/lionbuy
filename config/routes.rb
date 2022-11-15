@@ -8,6 +8,11 @@ Rottenpotatoes::Application.routes.draw do
   post '/sessions' => 'sessions#create', as: :login
   get '/logout' => 'sessions#destroy', as: :signout
   get '/posts' => 'users#update', as: :users
+  get '/my_posts' => 'posts#my_posts'
+  post '/create_posts' => 'posts#create'
+  get '/edit_post' => "posts#edit"
+  post '/update_post' => "posts#update"
+  get '/destroy_post' => "posts#destroy"
 
   # bidding
   post '/bids' => 'bids#create', as: :bidding

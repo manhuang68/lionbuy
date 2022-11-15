@@ -1,0 +1,145 @@
+<style type="text/css">
+  table {
+    width: 100%;
+    background: #ccc;
+    margin: 10px auto;
+    border-collapse: collapse;
+    /*border-collapse:collapse合并内外边距
+  (去除表格单元格默认的2个像素内外边距*/
+  }
+  th,
+  td {
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+  th {
+    background: #eee;
+    font-weight: normal;
+  }
+  tr {
+    background: #fff;
+  }
+  tr:hover {
+    background: #dcdcdc;
+  }
+  td a {
+    color: #06f;
+    text-decoration: none;
+  }
+  td a:hover {
+    color: #06f;
+    text-decoration: underline;
+  }
+  .btn-default {
+
+    display: inline-block;
+
+    padding: 6px 12px;
+
+    margin-bottom: 0;
+
+    font-size: 14px;
+
+    font-weight: 400;
+
+    line-height: 1.42857143;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    vertical-align: middle;
+
+    -ms-touch-action: manipulation;
+
+    touch-action: manipulation;
+
+    cursor: pointer;
+
+    -webkit-user-select: none;
+
+    -moz-user-select: none;
+
+    -ms-user-select: none;
+
+    user-select: none;
+
+    background-image: none;
+
+    border: 1px solid transparent;
+
+    border-radius: 4px;
+
+    color: #333;
+
+    background-color: #fff;
+
+    border-color: #ccc;
+
+    text-shadow: 0 1px 0 #fff;
+
+    background-image: -webkit-linear-gradient(top, #fff 0, #e0e0e0 100%);
+
+    background-image: -o-linear-gradient(top, #fff 0, #e0e0e0 100%);
+
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e0e0e0));
+
+    background-image: linear-gradient(to bottom, #fff 0, #e0e0e0 100%);
+
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
+
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+
+    background-repeat: repeat-x;
+
+    border-color: #dbdbdb;
+
+    border-color: #ccc;
+
+  }
+
+</style>
+<div class="body">
+  <h2>My Posts(<%= @posts.count %>)</h2>
+  <div class="search">
+    <label>Search:</label>
+    <form method="GET" action="/my_posts">
+      <input type="text" name="item" class="item" placeholder="item...">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="text" name="price" class="price" placeholder="price...">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="submit" value="Search" class="btn-default" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a class="btn-default" href="/posts/new">Add Post</a>
+    </form>
+    
+    
+  </div>
+  <div class="wrapper">
+    <table>
+      <thead>
+        <th>item</th>
+        <th>description</th>
+        <th>price</th>
+        <th>operation</th>
+      </thead>
+      <tbody>
+        <% @posts.each do |post| %>
+          <tr>
+            <td>
+              <%= post.item %>
+            </td>
+            <td>
+              <%= post.description %>
+            </td>
+            <td>
+              <%= post.price %>$
+            </td>
+            <td>
+              <a href="/destroy_post?id=<%= post.id %>">delete</a>/<a href="/edit_post?id=<%= post.id %>">update</a>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

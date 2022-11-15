@@ -64,6 +64,10 @@ class PostsController < ApplicationController
 
   def new
     # default: render 'new' template
+    user_id = session[:user_id]
+    user = User.find_by(id:user_id)
+    @user_name = user.fname+user.lname
+    @user_email = user.email
   end
 
   def create
@@ -73,7 +77,7 @@ class PostsController < ApplicationController
     end
     @post = Post.create!(post_params)
     flash[:notice] = "#{@post.item} was successfully created."
-    redirect_to posts_path and return
+    redirect_to my_posts_path and return
   end
 
   def edit
@@ -103,7 +107,21 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "Post '#{@post.item}' deleted."
-    redirect_to posts_path and return
+    redirect_to my_posts_path and return
+  end
+
+  def my_posts
+    if session[:user_id] == nil
+      redirect_to "/signin" and return
+    end
+    user_id = session[:user_id]
+    user = User.find_by(id:user_id)
+    user_name = user.fname+user.lname
+    user_email = user.email
+    opts = {}
+    opts["item"] = params[:item] if params[:item].present?
+    opts["price"] = params[:item] if params[:price].present?
+    @posts = Post.where(opts).where(user:user_name,email:user_email)
   end
 
   private
