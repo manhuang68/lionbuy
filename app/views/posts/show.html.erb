@@ -62,6 +62,7 @@
           <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
             <div class="card-text center">Price: <b>US $<%= @item.price %> &nbsp;&nbsp;</b> <button type="submit" class="btn btn-primary">Buy it now</button> </div>
             <input class='form-control' type ="hidden" name="order[product_id]" value=<%= @item.id %>>
+            <input class='form-control' type ="hidden" name="order[price]" value=<%= @item.price %>>
         </form>
 
       <% end %>
