@@ -66,7 +66,9 @@ When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
 end
 
 When /^(?:|I )press "([^"]*)" id$/ do |button|
-find('a','#posting2').click
+
+find('#posting4 a[value="See details"]', match: :first).click
+
 #find.("find("[name=posting2]").click
 #  find("."+button).click
 end
