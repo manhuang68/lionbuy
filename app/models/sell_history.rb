@@ -6,7 +6,6 @@ class SellHistory < ActiveRecord::Base
     def item
         @item
     end
-    
     # Classical set method
     def buyer=(buyer)
         @buyer = buyer

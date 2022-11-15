@@ -5,8 +5,10 @@ class OrdersController < ApplicationController
       redirect_to "/signin" and return
     end
     @post = Post.find_by(id: order_params[:product_id])
+    @price = order_params[:price]
+    byebug
     #save buying history
-    ordering = {:product_id => @post.id,  :buyer_id => session[:user_id], :price => @post.price}
+    ordering = {:product_id => @post.id,  :buyer_id => session[:user_id], :price => @price}
     BuyHistory.create!(ordering)
 
     #save selling history
@@ -29,6 +31,6 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:product_id)
+    params.require(:order).permit(:product_id, :price)
   end
 end

@@ -88,16 +88,16 @@ class PostsController < ApplicationController
     @post = Post.find params[:id]
   end
 
-  def update
-    # Prevent hacker
-    if session[:user_id] == nil
-      redirect_to "/signin" and return
-    end
-    @post = Post.find params[:id]
-    @post.update_attributes!(post_params)
-    flash[:notice] = "#{@post.item} was successfully updated."
-    redirect_to post_path(@post) and return
-  end
+  # def update
+  #   # Prevent hacker
+  #   if session[:user_id] == nil
+  #     redirect_to "/signin" and return
+  #   end
+  #   @post = Post.find params[:id]
+  #   @post.update_attributes!(post_params)
+  #   flash[:notice] = "#{@post.item} was successfully updated."
+  #   redirect_to post_path(@post) and return
+  # end
 
   def destroy
     # Prevent hacker
@@ -118,10 +118,10 @@ class PostsController < ApplicationController
     user = User.find_by(id:user_id)
     user_name = user.fname+user.lname
     user_email = user.email
-    opts = {}
-    opts["item"] = params[:item] if params[:item].present?
-    opts["price"] = params[:item] if params[:price].present?
-    @posts = Post.where(opts).where(user:user_name,email:user_email)
+    # opts = {}
+    # opts["item"] = params[:item] if params[:item].present?
+    # opts["price"] = params[:item] if params[:price].present?
+    @posts = Post.where(user:user_name,email:user_email)
   end
 
   private
