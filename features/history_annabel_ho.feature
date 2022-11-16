@@ -44,9 +44,13 @@ Scenario: See the order history
         And I follow "Back to Post list"
         Then I should be on the post page
 
-Scenario: Go to a history page without logging:
+Scenario: Go to selling history page without logging:
         When I follow "Log out"
         When I go to the order history page
         Then I should be on the signin page
 
+Scenario: Go to order history page without logging:
+        When I follow "Log out"
+        When I go to the selling history page
+        Then I should be on the signin page
 
