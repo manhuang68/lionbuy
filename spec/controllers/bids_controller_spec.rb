@@ -5,7 +5,7 @@ RSpec.describe BidsController, type: :controller do
     User.create(:password => "123", :email => "125@columbia.edu", :fname => "John", :lname => "Ho")
     #get :create, {:login => {:password => "123", :email => "125@columbia.edu"}}
     #Sessions.create()
-    Post.create(:item => 'Laptop MAC BOOK', :description => 'Used laptop 2015 good condition', :price => '800', :user => 'JohnHarrison', :email => 'jh4142@columbia.edu', :category => 'Electronics', :buy_now => true, :bid => false, :start_bid => '', :current_bid => '')
+    Post.create(:item => 'Laptop TOSHIBA', :description => 'Used laptop 2015 good condition', :price => '800', :user => 'JohnHarrison', :email => 'jh4142@columbia.edu', :category => 'Electronics', :buy_now => true, :bid => false, :start_bid => '', :current_bid => '')
     Post.create(:item => 'Queen size bed frameswork', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'SamAlexander', :email => 'sa6156@columbia.edu', :category => 'Bedding', :buy_now => true, :bid => true, :start_bid => '100', :current_bid => '105')
     Post.create(:item => 'Math Engineering Textbooks', :description => 'Textbooks for freshman to senior year', :price => '10', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education', :buy_now => false, :bid => true, :start_bid => '5', :current_bid => '5')
       @posting = Post.find_by(item: 'Queen size bed frameswork')
@@ -18,8 +18,8 @@ RSpec.describe BidsController, type: :controller do
       session[:fname] = "John"
       session[:lname] = "Ho"
       #expect(response).to redirect_to root_url
-      @post = Post.find_by(:item =>'Laptop MAC')
-      puts @post.id
+      @post = Post.find_by(:item =>'Laptop TOSHIBA')
+    #  puts @post.id
     #  get :update, {:id => movie.id, assert_redirected_to
       get :history, {:id => @post.id}
       response.should render_template :history

@@ -2,7 +2,9 @@ require "rails_helper"
 
 RSpec.describe PostsController, :type => :controller do
     before(:all) do
-      User.create(:password => "123", :email => "125@columbia.edu", :fname => "John", :lname => "Ho")
+      if User.where(:email => "125@columbia.edu").empty?
+        User.create(:password => "123",:password_confirmation =>"123", :email => "125@columbia.edu", :fname => "PG", :lname => "gfhhfh")
+      end
       Post.create(:item => 'Laptop MAC', :description => 'Used laptop 2015 good condition', :price => '800', :user => 'JohnHarrison', :email => 'jh4142@columbia.edu', :category => 'Electronics')
       Post.create(:item => 'Queen size bed frame', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'SamAlexander', :email => 'sa6156@columbia.edu', :category => 'Bedding')
       Post.create(:item => 'Chemical Engineering Textbooks', :description => 'Textbooks for freshman to senior year', :price => '10', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education')
