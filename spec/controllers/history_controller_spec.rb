@@ -2,8 +2,11 @@ require 'rails_helper'
 
 RSpec.describe HistoryController, type: :controller do
     before(:all) do
-     @tmp = User.create(:password => "123", :email => "125@columbia.edu", :fname => "John", :lname => "Ho")
-     @tmp2 = User.create(:password => "123", :email => "1299@columbia.edu", :fname => "Alexander", :lname => "Ho")
+      User.delete_all
+      Post.delete_all
+      History.delete_all
+     @tmp = User.create(:password => "123", :email => "128549@columbia.edu", :fname => "John", :lname => "Ho")
+     @tmp2 = User.create(:password => "123", :email => "1299yu@columbia.edu", :fname => "Alexander", :lname => "Ho")
     @product = Post.create(:item => 'SAMSUNG', :description => 'Used laptop 2015 good condition', :price => '800', :user => 'AlexanderHo', :email => @tmp2.email, :category => 'Electronics', :buy_now => true, :bid => false, :start_bid => '', :current_bid => '', :closed => true)
      Post.create(:item => 'PRINTER', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'SamAlexander', :email => 'sa6156@columbia.edu', :category => 'Bedding', :buy_now => true, :bid => true, :start_bid => '100', :current_bid => '105', :closed => false)
      Post.create(:item => 'IPHONE 10', :description => 'Textbooks for freshman to senior year', :price => '10', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education', :buy_now => false, :bid => true, :start_bid => '5', :current_bid => '5', :closed => false)

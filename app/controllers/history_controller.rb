@@ -28,7 +28,7 @@ class HistoryController < ApplicationController
 
 
         (@posts).each do |p|
-            if !p.closed 
+            if !p.closed
                 next
             end
             # byebug
@@ -42,5 +42,5 @@ class HistoryController < ApplicationController
             end
         end
     end
-    
+
 end
