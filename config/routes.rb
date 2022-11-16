@@ -2,7 +2,7 @@ Rottenpotatoes::Application.routes.draw do
   resources :posts
   # map '/' to be a redirect to '/movies'
   root :to => redirect('/posts')
-  
+
   # user
   get '/signup' => 'users#signup', as: :signup
   get '/signin' => 'users#index', as: :signin
@@ -14,8 +14,8 @@ Rottenpotatoes::Application.routes.draw do
   # user history
   get '/history/buy' => 'history#buy', as: :order_history
   get '/history/sell' => 'history#sell', as: :selling_history
-  
-  # post 
+
+  # post
   get '/my_posts' => 'posts#my_posts'
   post '/create_posts' => 'posts#create'
   get '/edit_post' => "posts#edit"

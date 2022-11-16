@@ -13,3 +13,47 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+$(document).ready(function(){
+    $("#signin").click(function() {
+        window.location.href = "/signin";
+    })
+
+    $("#signup").click(function() {
+        window.location.href = "/signup";
+    })
+
+    $("#logout").click(function() {
+        window.location.href = '/logout';
+    })
+
+    if ($("#buy_it_now").is(":checked")) {
+        $("#start_price").show();
+    } else {
+        $("#start_price").hide();
+        $('#start_prices').val('');
+    }
+    $(function () {
+       $("#buy_it_now").click(function () {
+           if ($(this).is(":checked")) {
+               $("#start_price").show();
+           } else {
+               $("#start_price").hide();
+               $('#start_prices').val('');
+           }
+       });
+   });
+
+    $(function () {
+       $("#auction").click(function () {
+           if ($(this).is(":checked")) {
+               $("#start_auction").show();
+           } else {
+             $('#start_bidding').val('');
+               $("#start_auction").hide();
+
+           }
+       });
+   });
+
+
+})

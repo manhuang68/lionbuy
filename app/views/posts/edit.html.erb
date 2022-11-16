@@ -1,7 +1,7 @@
 <style type="text/css">
-  .input_form { 
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; border:1px solid #ccc; font-size:20px; width:500px; min-height:30px; display:block; margin-bottom:15px; margin-top:5px; outline: none; -webkit-border-radius:5px; border-radius:5px; 
-  } 
+  .input_form {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; border:1px solid #ccc; font-size:20px; width:500px; min-height:30px; display:block; margin-bottom:15px; margin-top:5px; outline: none; -webkit-border-radius:5px; border-radius:5px;
+  }
   label{
     font-size: 20px;
   }
@@ -14,7 +14,7 @@
   <div class="wrapper">
     <form method="POST" action="/update_post">
       <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-      <input type="text" hidden name="id" value="<%= @post.id %>">
+      <input type="text" hidden name="post[id]" value="<%= @post.id %>">
       <input type="text" hidden name="post[user]" value="<%= @post.user %>">
       <input type="text" hidden name="post[email]" value="<%= @post.email %>">
       <div class="one">
@@ -24,11 +24,16 @@
         <input type="text" name="post[description]" class="input_form" placeholder="description..." value="<%= @post.description %>" required="">
       </div>
       <div class="one">
+        <small id="emailHelp" class="form-text text-muted">Buyers can purchase immediately at this price.</small>
         <input type="text" name="post[price]" class="input_form" placeholder="price..." value="<%= @post.price %>" required="">
+      </div>
+      <div class="one">
+        <small id="emailHelp" class="form-text text-muted">Set a starting amount and let buyers compete for your item. To attract buyers and increase competition for your item, consider a low starting bid</small>
+        <input type="text" name="post[start_bid]" class="input_form" placeholder="bid..." value="<%= @post.start_bid %>" required="">
       </div>
       <input type="submit" value="Submit" style="width: 80px;height: 40px;" />
     </form>
-    
-    
+
+
   </div>
 </div>

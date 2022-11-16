@@ -66,7 +66,9 @@ When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
 end
 
 When /^(?:|I )press "([^"]*)" id$/ do |button|
-find('a','#posting2').click
+
+find('#posting4 a[value="See details"]', match: :first).click
+
 #find.("find("[name=posting2]").click
 #  find("."+button).click
 end
@@ -261,4 +263,8 @@ end
 
 Then /^show me the page$/ do
   save_and_open_page
+end
+
+Then /^I am out of time$/ do
+ session_to("ff")
 end
