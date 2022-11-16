@@ -54,9 +54,4 @@ Scenario: See the order history
         And I follow "Back to Post list"
         Then I should be on the post page
 
-Scenario: Go to a hostry page without logging:
-        When I follow "Log out"
-        When I go to the details page for "Desk Lamp"
-        Then I should be on the signin page
-
 

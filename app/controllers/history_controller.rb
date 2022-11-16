@@ -28,17 +28,14 @@ class HistoryController < ApplicationController
 
 
         (@posts).each do |p|
-            if !p.closed 
-                next
-            end
-            # byebug
-
-            his = History.find_by(product_id: p.id)
-            if his != nil
-                buyer = User.find_by(id: his.buyer_id)
-                his.buyer = buyer.fname + buyer.lname
-                his.item =  p.item
-                @sell_histories.append(his)
+            if p.closed 
+                his = History.find_by(product_id: p.id)
+                if his != nil
+                    buyer = User.find_by(id: his.buyer_id)
+                    his.buyer = buyer.fname + buyer.lname
+                    his.item =  p.item
+                    @sell_histories.append(his)
+                end
             end
         end
     end
