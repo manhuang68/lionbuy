@@ -75,8 +75,23 @@ class PostsController < ApplicationController
     if session[:user_id] == nil
       redirect_to "/signin" and return
     end
-    @post = Post.create!(post_params)
-    flash[:notice] = "#{@post.item} was successfully created."
+    puts post_params
+    tmp = post_params
+    tmp[:closed] = false
+    if post_params[:price].length > 0
+      tmp[:buy_now] = true
+    else
+      tmp[:buy_now] = false
+    end
+    if post_params[:start_bid].length > 0
+      tmp[:bid] = true
+    else
+      tmp[:bid] = false
+    end
+    tmp[:current_bid] = post_params[:start_bid]
+    puts tmp
+    Post.create!(tmp)
+    flash[:notice] = "#{tmp[:item]} was successfully created."
     redirect_to my_posts_path and return
   end
 
@@ -88,16 +103,36 @@ class PostsController < ApplicationController
     @post = Post.find params[:id]
   end
 
-  # def update
-  #   # Prevent hacker
-  #   if session[:user_id] == nil
-  #     redirect_to "/signin" and return
-  #   end
-  #   @post = Post.find params[:id]
-  #   @post.update_attributes!(post_params)
-  #   flash[:notice] = "#{@post.item} was successfully updated."
-  #   redirect_to post_path(@post) and return
-  # end
+  def update
+    #  Prevent hacker
+     if session[:user_id] == nil
+       redirect_to "/signin" and return
+     end
+     bidder = Bid.find_by(product_id: post_params[:id])
+     if bidder != nil
+       puts "the id is"
+       puts post_params[:id]
+       flash[:notice] = "You are not allowed to change the start bid when someone bid already. You can delete this post and re-post it again."
+       redirect_to "/edit_post?id="+post_params[:id].to_s  and return
+     end
+     tmp = post_params
+     if post_params[:price].length > 0
+       tmp[:buy_now] = true
+     else
+       tmp[:buy_now] = false
+     end
+     if post_params[:start_bid].length > 0
+       tmp[:bid] = true
+     else
+       tmp[:bid] = false
+     end
+     tmp[:current_bid] = post_params[:start_bid]
+     puts tmp
+     @post = Post.find post_params[:id]
+     @post.update_attributes!(tmp)
+     flash[:notice] = "#{@post.item} was successfully updated."
+     redirect_to post_path(@post) and return
+   end
 
   def destroy
     # Prevent hacker
@@ -128,6 +163,6 @@ class PostsController < ApplicationController
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.
   def post_params
-    params.require(:post).permit(:item, :description, :price, :user, :email)
+    params.require(:post).permit(:item, :description, :price, :user, :email, :start_bid, :id)
   end
 end

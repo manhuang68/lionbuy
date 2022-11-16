@@ -14,9 +14,11 @@
  *= require_self
  */
 .title{
-  background-color: blueviolet;
+  color: white;
 }
-
+.tt{
+    color: yellow;
+}
 .middle-text{
    width: 100%;
    text-align: center;
