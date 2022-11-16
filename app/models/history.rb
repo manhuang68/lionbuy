@@ -1,16 +1,16 @@
 class History < ActiveRecord::Base
-    # Classical get method
-    def seller
-        @seller
-    end
+    # # Classical get method
+    # def seller
+    #     @seller
+    # end
 
-    def buyer
-        @buyer
-    end
+    # def buyer
+    #     @buyer
+    # end
     
-    def item
-        @item
-    end
+    # def item
+    #     @item
+    # end
     
     # Classical set method
     def seller=(seller)
