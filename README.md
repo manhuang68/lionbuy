@@ -26,6 +26,30 @@ For **Project Iteration 1**, we have identified our minimal features, as follows
 - Post Display
 - Item Manipulations (eg. price filtering, keyword searching, and categorization)
 
+### User Login
+
+- You can log onto our premium LionBuy website if you have a registered account
+- Inconsistent email or password will be prompted "Invalid Credentials" 
+
+### User Registration
+
+- Users can only register an account with @columbia.edu or @barnard.edu affiliated email addresses
+- Passwords have to match with the retyped one 
+- Fields cannot be empty
+- Already registered account cannot be double registered
+
+### User Logout
+
+- Users can use the logout button on the top left of our home page
+
+### Item manipulation
+
+- Price filters: users can set a min and max price to find items that fulfill their bugets
+- Categorization: can find items with correct categories
+- Keyword search: can find posts whose description or titles include the keyword.
+
+
+
 For **Project Iteration 2**, we have identified our main features, as follows:
 
 - User History
@@ -33,17 +57,7 @@ For **Project Iteration 2**, we have identified our main features, as follows:
 - Seller Operation
 - Buyer Behaviour 
 
-### Setup Your Working Environment
-
-```
-bundle install --without production 
-bundle exec rake db:setup 
-bundle exec rake db:migrate
-bundle exec rake db:test:prepare
-rails server -b 0.0.0.0
-```
-
-### User History for sales and orders
+### User History
 
 - Users can use "Order history" or "Selling summary" buttons to inspect their past sales or orders
 
@@ -63,6 +77,18 @@ rails server -b 0.0.0.0
 - On desired items, one can click into the details on its associated post
   - Either input a price to bid
   - Or buy it now directly to secure the item
+
+
+
+### Setup Your Working Environment
+
+```
+bundle install --without production 
+bundle exec rake db:setup 
+bundle exec rake db:migrate
+bundle exec rake db:test:prepare
+rails server -b 0.0.0.0
+```
 
 
 
