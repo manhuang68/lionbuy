@@ -1,6 +1,6 @@
-class CreateBuyHistories < ActiveRecord::Migration
+class CreateHistories < ActiveRecord::Migration
   def change
-    create_table :buy_histories do |t|
+    create_table :histories do |t|
       t.string :product_id
       t.string :buyer_id
       t.string :price

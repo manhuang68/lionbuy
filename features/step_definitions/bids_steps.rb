@@ -4,9 +4,3 @@ Given /the following bids exist/ do |bids_table|
     Bid.create user
   end
 end
-
-Given /that I am out of session/ do
-  session[:user_id] = nil
-  session[:fname] =  nil
-  session[:lname] =  nil 
-end
