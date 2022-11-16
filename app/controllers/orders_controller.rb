@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
 
   def create
-    if session[:user_id] == nil
-      redirect_to "/signin" and return
-    end
+    #if session[:user_id] == nil
+    #  redirect_to "/signin" and return
+    #end
     @post = Post.find_by(id: order_params[:product_id])
     @price = order_params[:price]
     #byebug
