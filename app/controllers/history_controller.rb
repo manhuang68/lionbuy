@@ -28,9 +28,9 @@ class HistoryController < ApplicationController
 
 
         (@posts).each do |p|
-            # if !p.closed 
-            #     next
-            # end
+            if !p.closed 
+                next
+            end
             # byebug
 
             his = History.find_by(product_id: p.id)
