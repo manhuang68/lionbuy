@@ -132,14 +132,14 @@
             </td>
             <td>
               <%if post.price != "" %>
-                <%= post.price %>$
+                $<%= post.price %>
               <%else%>
                 <%= "N/A" %>
               <%end%>
             </td>
             <td>
               <%if post.current_bid != "" %>
-                <%= post.current_bid %>$
+                $<%= post.current_bid %>
               <%else%>
                 <%= "N/A" %>
               <%end%>

@@ -1,9 +1,8 @@
-# Project Iteration 1
+# Project Iteration 2
 
-Feature: Post Display
+Feature: Price Bidding
 
-  Here it shows how our users can find posts they like
-  by either categorizing, searcing, or filtering
+  Here it shows how our users can bid on active items
 
 Background: users in database
   Given the following users exist:

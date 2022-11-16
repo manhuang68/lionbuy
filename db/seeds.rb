@@ -35,14 +35,9 @@ bids.each do |bid|
 	Bid.create!(bid)
 end
 
-buy_histories = [{:product_id => "1",  :buyer_id => "6", :price => "800"}]
+histories = [{:product_id => "1",  :buyer_id => "6", :price => "800"}]
 
-buy_histories.each do |h|
-	BuyHistory.create!(h)
+histories.each do |h|
+	History.create!(h)
 end
 
-sell_histories = [{:product_id => "1",  :seller_id => "1", :price => "800"}]
-
-sell_histories.each do |h|
-	SellHistory.create!(h)
-end

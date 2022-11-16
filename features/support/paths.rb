@@ -20,15 +20,18 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
+
     when /^the edit page for "(.*)"$/
       post_id = Post.find_by(title: $1).id
       edit_post_path(post_id)
-
     when /^the details page for "(.*)"$/
       post_id = Post.find_by(item: $1).id
       post_path(post_id)
-    when /^the Similar Posts page for "(.+)"/
-      search_similar_posts_path($1)
+    when /^the selling history page for "(.*)"$/
+      selling_history_path()
+    when /^the order history page for "(.*)"$/
+      order_history_path()
+
     else
       begin
         page_name =~ /^the (.*) page$/
