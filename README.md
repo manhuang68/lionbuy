@@ -6,11 +6,15 @@ Deployment at https://lionbuy.herokuapp.com/
 
 Github repo: https://github.com/manhuang68/lionbuy/
 
+
+
 ## Team members 
 
 \* Huifeng Wu, hw2910
 \* Zelin Wang, zw2852
 \* Man Huang Ho, mh4142
+
+
 
 ## Instructions
 
@@ -59,6 +63,8 @@ rails server -b 0.0.0.0
 - On desired items, one can click into the details on its associated post
   - Either input a price to bid
   - Or buy it now directly to secure the item
+
+
 
 ## Cucumber and  Rspec Tests
 
