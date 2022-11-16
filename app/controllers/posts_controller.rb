@@ -90,6 +90,8 @@ class PostsController < ApplicationController
     end
     tmp[:current_bid] = post_params[:start_bid]
     puts tmp
+    puts "categor ys "
+    puts post_params[:category]
     Post.create!(tmp)
     flash[:notice] = "#{tmp[:item]} was successfully created."
     redirect_to my_posts_path and return
@@ -109,7 +111,7 @@ class PostsController < ApplicationController
        redirect_to "/signin" and return
      end
      bidder = Bid.find_by(product_id: post_params[:id])
-     if bidder != nil
+     if bidder != nil #and bidder.bid != post_params[:start_bid]
        puts "the id is"
        puts post_params[:id]
        flash[:notice] = "You are not allowed to change the start bid when someone bid already. You can delete this post and re-post it again."
@@ -128,6 +130,7 @@ class PostsController < ApplicationController
      end
      tmp[:current_bid] = post_params[:start_bid]
      puts tmp
+
      @post = Post.find post_params[:id]
      @post.update_attributes!(tmp)
      flash[:notice] = "#{@post.item} was successfully updated."
@@ -163,6 +166,6 @@ class PostsController < ApplicationController
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.
   def post_params
-    params.require(:post).permit(:item, :description, :price, :user, :email, :start_bid, :id)
+    params.require(:post).permit(:item, :description, :price, :user, :email, :start_bid, :id, :category)
   end
 end
