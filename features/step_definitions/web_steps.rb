@@ -264,3 +264,7 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
+
+Then /^I am out of time$/ do
+ session_to("ff")
+end
