@@ -19,7 +19,7 @@ Rottenpotatoes::Application.routes.draw do
   get '/my_posts' => 'posts#my_posts'
   post '/create_posts' => 'posts#create'
   get '/edit_post' => "posts#edit"
-  # post '/update_post' => "posts#update"
+  post '/update_post' => "posts#update"
   get '/destroy_post' => "posts#destroy"
 
   # bidding

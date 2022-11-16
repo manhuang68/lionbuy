@@ -27,9 +27,9 @@ module NavigationHelpers
     when /^the details page for "(.*)"$/
       post_id = Post.find_by(item: $1).id
       post_path(post_id)
-    when /^the selling history page for "(.*)"$/
+    when /^the selling history page/
       selling_history_path()
-    when /^the order history page for "(.*)"$/
+    when /^the order history page/
       order_history_path()
 
     else

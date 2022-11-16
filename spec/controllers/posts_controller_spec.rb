@@ -24,7 +24,7 @@ RSpec.describe PostsController, :type => :controller do
           post = Post.find_by(:item =>'Laptop MAC')
           tmp = post.id
           get :destroy, {:id => post.id}
-          expect(response).to redirect_to posts_path
+          expect(response).to redirect_to my_posts_path
           expect(flash[:notice]).to match(/Post 'Laptop MAC' deleted./)
         end
     end
@@ -34,7 +34,7 @@ RSpec.describe PostsController, :type => :controller do
       it "posts with valid parameters" do
         session[:user_id] = "1"
         get :create, {:post => {:item => 'Water Bottle', :description => 'brand new disney bottle', :price => '5', :user => 'KevinWang', :email => 'kw1252@columbia.edu'}}
-        expect(response).to redirect_to posts_path
+        expect(response).to redirect_to my_posts_path
         expect(flash[:notice]).to match(/Water Bottle was successfully created./)
         post = Post.find_by(item:'Water Bottle')
         post.destroy
