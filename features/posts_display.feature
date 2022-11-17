@@ -6,6 +6,11 @@ Feature: Post Display
   by either categorizing, searcing, or filtering
 
 Background: users in database
+  Given that I clean up the post table
+  Given that I clean up the bid table
+  Given that I clean up the user table
+  Given that I clean up the history table
+
   Given the following users exist:
   | email            | password | fname  | lname     |
   | 123@columbia.edu | 123      | John   | Ho        |
