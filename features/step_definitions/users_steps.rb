@@ -7,5 +7,9 @@ end
 Given /that I am out of session/ do
   session[:user_id] = nil
   session[:fname] =  nil
-  session[:lname] =  nil 
+  session[:lname] =  nil
+end
+
+Given /that I clean up the user table/ do
+  User.delete_all
 end

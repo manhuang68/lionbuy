@@ -21,3 +21,7 @@ Then /^the seller of "(.*)" should be "(.*)"/ do |e1, e2|
   seller = Post.find_by(item: e1).seller
   expect(seller).to eq e2
 end
+
+Given /that I clean up the post table/ do
+  Post.delete_all
+end
