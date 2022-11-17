@@ -20,7 +20,8 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
-
+    when /^invalid path "(.*)"$/
+    "/create_posts"
     when /^the edit page for "(.*)"$/
       post_id = Post.find_by(title: $1).id
       edit_post_path(post_id)

@@ -29,7 +29,7 @@ RSpec.describe PostsController, :type => :controller do
           post = Post.find_by(:item =>'Queen size bed frame')
           tmp = post.id
           get :destroy, {:id => post.id}
-          expect(response).to redirect_to my_posts_path
+          expect(response).to redirect_to poster_path
           expect(flash[:notice]).to match(/Post 'Queen size bed frame' deleted./)
         end
     end
@@ -150,7 +150,7 @@ RSpec.describe PostsController, :type => :controller do
       it "posts with buy it now and bid" do
         session[:user_id] = "1"
         get :create, {:post => {:start_bid => "20" ,:item => 'Water Bottle', :description => 'brand new disney bottle', :price => '35', :user => 'KevinWang', :email => 'kw1252@columbia.edu'}}
-        expect(response).to redirect_to my_posts_path
+        expect(response).to redirect_to poster_path
         expect(flash[:notice]).to match(/Water Bottle was successfully created./)
         post = Post.find_by(item:'Water Bottle')
         post.destroy
@@ -158,7 +158,7 @@ RSpec.describe PostsController, :type => :controller do
       it "posts with only buy it now" do
         session[:user_id] = "1"
         get :create, {:post => {:start_bid => "" ,:item => 'Water Bottle', :description => 'brand new disney bottle', :price => '5', :user => 'KevinWang', :email => 'kw1252@columbia.edu'}}
-        expect(response).to redirect_to my_posts_path
+        expect(response).to redirect_to poster_path
         expect(flash[:notice]).to match(/Water Bottle was successfully created./)
         post = Post.find_by(item:'Water Bottle')
         post.destroy
@@ -166,15 +166,10 @@ RSpec.describe PostsController, :type => :controller do
       it "posts with only auction bidding" do
         session[:user_id] = "1"
         get :create, {:post => {:start_bid => "20" ,:item => 'Water Bottle', :description => 'brand new disney bottle', :price => '', :user => 'KevinWang', :email => 'kw1252@columbia.edu'}}
-        expect(response).to redirect_to my_posts_path
+        expect(response).to redirect_to poster_path
         expect(flash[:notice]).to match(/Water Bottle was successfully created./)
         post = Post.find_by(item:'Water Bottle')
         post.destroy
-      end
-      it "Failed to create the post due to out of session" do
-        session[:user_id] = nil
-        get :create, {:post => {:item => 'Water Bottle', :description => 'brand new disney bottle', :price => '5', :user => 'KevinWang', :email => 'kw1252@columbia.edu'}}
-        expect(response).to redirect_to signin_path
       end
     end
 

@@ -32,6 +32,13 @@ $(document).ready(function(){
         $("#start_price").hide();
         $('#start_prices').val('');
     }
+
+    if ($("#auction").is(":checked")) {
+        $("#start_auction").show();
+    } else {
+        $("#start_auction").hide();
+        $('#start_bidding').val('');
+    }
     $(function () {
        $("#buy_it_now").click(function () {
            if ($(this).is(":checked")) {

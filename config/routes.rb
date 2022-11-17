@@ -16,8 +16,8 @@ Rottenpotatoes::Application.routes.draw do
   get '/history/sell' => 'history#sell', as: :selling_history
 
   # post
-  get '/my_posts' => 'posts#my_posts'
-  post '/create_posts' => 'posts#create'
+  get '/my_posts' => 'posts#my_posts', as: :poster
+  post '/create_posts' => 'posts#create', as: :creatingposter
   get '/edit_post' => "posts#edit"
   post '/update_post' => "posts#update"
   get '/destroy_post' => "posts#destroy"

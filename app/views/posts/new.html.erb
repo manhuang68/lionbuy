@@ -17,10 +17,10 @@
       <input type="text" hidden name="post[user]" value="<%= @user_name %>">
       <input type="text" hidden name="post[email]" value="<%= @user_email %>">
       <div class="one">
-        <input type="text" name="post[item]" class="input_form" placeholder="item..." required="">
+        <input type="text" id="item" name="post[item]" class="input_form" placeholder="item..." required="">
       </div>
       <div class="one">
-        <input type="text" name="post[description]" class="input_form" placeholder="description..." required="">
+        <input type="text" id="description" name="post[description]" class="input_form" placeholder="description..." required="">
       </div>
       <label class="form-check-label" for="buy_it_now">Category</label>
       <div class="form-check">
@@ -46,11 +46,12 @@
           <input class="form-check-input" type="checkbox" role="switch" id="buy_it_now" checked>
           <label class="form-check-label" for="buy_it_now">Buy It Now</label>
       </div>
-      <div id="start_price" style="display: none">
+
+      <div id="start_price">
           <small id="emailHelp" class="form-text text-muted">Buyers can purchase immediately at this price.</small>
         <div>
           Price :
-          <input type="number"  step=0.01 id="start_prices" name="post[price]" placeholder="10.0" />
+          <input type="number" step=0.01 id="start_prices" name="post[price]" placeholder="10.0" />
       </div>
       <br>
     </div>
@@ -58,7 +59,7 @@
         <input class="form-check-input" type="checkbox" role="switch" id="auction" >
         <label class="form-check-label" for="auction">Allow Auction</label>
       </div>
-      <div id="start_auction" style="display: none">
+      <div id="start_auction" >
           <small id="emailHelp" class="form-text text-muted">Set a starting amount and let buyers compete for your item. To attract buyers and increase competition for your item, consider a low starting bid</small>
         <div>
           Starting bid :
@@ -66,7 +67,7 @@
       </div>
       <br>
     </div>
-      <input type="submit" value="Submit" style="width: 80px;height: 40px;" />
+      <button class= 'btn btn-primary'  type="submit" name="submit" class="submit">Create</button>
     </form>
 
 

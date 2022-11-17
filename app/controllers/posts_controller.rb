@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   def show
     if session[:user_id] == nil
-      redirect_to "/signin" and return
+      redirect_to signin_path and return
     end
     @item = Post.find_by(id: params[:id])
   end
@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   def index
     # Prevent hacker
     if session[:user_id] == nil
-      redirect_to "/signin" and return
+      redirect_to signin_path and return
     end
 
     @posts = Post.all
@@ -72,9 +72,6 @@ class PostsController < ApplicationController
 
   def create
     # Prevent hacker
-    if session[:user_id] == nil
-      redirect_to "/signin" and return
-    end
     puts post_params
     tmp = post_params
     tmp[:closed] = false
@@ -94,7 +91,7 @@ class PostsController < ApplicationController
     puts post_params[:category]
     Post.create!(tmp)
     flash[:notice] = "#{tmp[:item]} was successfully created."
-    redirect_to my_posts_path and return
+    redirect_to poster_path and return
   end
 
   def edit
@@ -145,7 +142,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "Post '#{@post.item}' deleted."
-    redirect_to my_posts_path and return
+    redirect_to poster_path and return
   end
 
   def my_posts

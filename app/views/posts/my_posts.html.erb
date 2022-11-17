@@ -103,14 +103,14 @@
   <h2>My Posts(<%= @posts.count %>)</h2>
   <div class="search">
     <!-- <label>Search:</label> -->
-    <form method="GET" action="/my_posts">
+
       <!-- <input type="text" name="item" class="item" placeholder="item...">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       <input type="text" name="price" class="price" placeholder="price...">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
       <!-- <input type="submit" value="Search" class="btn-default" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -->
-      <a class="btn-default" href="/posts/new">Add Post</a>
-    </form>
-    
-    
+      <a class="btn-default" href="<%= new_post_path() %>">Add Post</a>
+
+
+
   </div>
   <div class="wrapper">
     <table>
@@ -145,7 +145,7 @@
               <%end%>
             </td>
             <td>
-              <a href="/destroy_post?id=<%= post.id %>">delete</a> / <a href="/edit_post?id=<%= post.id %>">update</a> 
+              <a href="/destroy_post?id=<%= post.id %>">delete</a> / <a href="/edit_post?id=<%= post.id %>">update</a>
               <%if post.current_bid != "" %>
                 / <a href="/ordering?id=<%= post.id %>&price=<%= post.current_bid %> ">accpet deal</a>
               <%end%>

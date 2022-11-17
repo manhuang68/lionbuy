@@ -33,6 +33,8 @@ Scenario: Login to existing account and then sign in to another account
   Then I should see "Welcome John Ho"
   And  I follow "Log out"
   Then I should be on the signin page
+  When I go to the post page
+  Then I should be on the signin page
   Then I fill in "email" with "anabel@barnard.edu"
   Then I fill in "password" with "12345"
   And  I press "Sign in"
