@@ -2,9 +2,7 @@ class Post < ActiveRecord::Base
     def with_keyword(with_keyword)
         with_keyword.downcase!
         if with_keyword.length != 0
-            if (self.description.downcase.include? with_keyword)
-                return true
-            elsif (self.item.downcase.include? with_keyword)
+            if ((self.description.downcase.include? with_keyword) or (self.item.downcase.include? with_keyword))
                 return true
             end
             return false
@@ -29,8 +27,6 @@ class Post < ActiveRecord::Base
     def self.with_categories(categories_list)
         if categories_list.length != 0
             return Post.where(category: categories_list)
-        else
-            return Post.all
         end
     end
 
