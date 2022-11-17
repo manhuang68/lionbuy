@@ -17,24 +17,49 @@
   <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-primary'%>
 <% end %>
 
+<% if false %>
+<%= session[:user_id] %>
+<br>
+<%= image_tag session[:image] %>
+<%= form_for @user, html: { multipart: true } do |form| %>
+<%= form.label :image%>
+  <%= form.file_field :image%>
+  <%= form.submit %>
+<% end %>
+<% end %>
 <br>
 <div class="container">
   <div class="row">
     <% @posts.each do |post| %>
-      <div class="col-md-4  mb-4   d-flex align-items-stretch">
-        <div class="card" style="width: 22rem;">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title"><%= post.item %></h5>
-            <p class="card-text"><%= post.description %></p>
-            <div class="mt-auto">
-            <div class="card-text"><%= post.user %> </div>
-            <div class="card-text">  <%= post.email %> </div>
-            <div class="card-text "><b>$<%= post.price %> </b></div>
+      <% if !post.closed   %>
+        <div class="col-md-4  mb-4   d-flex align-items-stretch">
+          <div class="card" style="width: 22rem;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title"><%= post.item %></h5>
+              <p class="card-text"><%= post.description %></p>
+              <div class="mt-auto">
+              <br>
+              <% if post.bid %>
+              <% if post.start_bid == post.current_bid and Bid.find_by(product_id: post.id) == nil %>
+                  <div class="card-text ">Starting Bid: <b>$<%= post.start_bid %> </b>
+              <% else %>
+                  <div class="card-text ">Current Bid: <b>$<%= post.current_bid %>  &nbsp; <a href='/bids/history/<%= post.id %>'> Bid History </a></b>
+              <% end %>
+                </div>
+              <% end %>
+              <% if post.buy_now %>
+                <div class="card-text ">Price: <b>$<%= post.price %> </b> </div>
+              <% end %>
+              <br>
+              <div class="center">
+               <%= link_to "See details", post_path(post), :class => 'btn btn-info',:name=>"posting#{post.id}", :id => "posting#{post.id}" %>
+               </div>
+              </div>
+        <!--      <a href="#" class="btn btn-primary mt-auto  align-self-start">Go somewhere</a> -->
             </div>
-      <!--      <a href="#" class="btn btn-primary mt-auto  align-self-start">Go somewhere</a> -->
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>

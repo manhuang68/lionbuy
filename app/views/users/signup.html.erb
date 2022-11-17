@@ -2,7 +2,7 @@
   Registration
 </h2>
 <br>
-<form action="/users" method="POST">
+<form class="new_user" id="new_user" enctype="multipart/form-data" action="/users" accept-charset="UTF-8" method="post">
   <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
   <%= label :post, :title, 'Email address', :class => 'col-form-label' %>
   <input class='form-control' type ="email" name="user[email]" placeholder="email">
@@ -15,6 +15,8 @@
   <input class='form-control' type ="password" name="user[password]" placeholder="password">
   <%= label :post, :title, 'Retype Password', :class => 'col-form-label' %>
   <input class='form-control' id="password_confirmation" type ="password" name="user[password_confirmation]" placeholder="password confirmation">
+  <!-- <label for="user_image">Image</label> -->
+  <!--  <input type="file" name="user[image]" id="user_image"> -->
   <br>
     <button class= 'btn btn-primary'  type="submit" name="submit" class="submit">Register</button>
 </form>

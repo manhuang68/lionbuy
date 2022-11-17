@@ -65,6 +65,13 @@ When /^(?:|I )fill in "([^"]*)" for "([^"]*)"$/ do |value, field|
   fill_in(field, :with => value)
 end
 
+When /^(?:|I )press "([^"]*)" id$/ do |button|
+
+find('#posting4 a[value="See details"]', match: :first).click
+
+#find.("find("[name=posting2]").click
+#  find("."+button).click
+end
 # Use this to fill in an entire form with data from a table. Example:
 #
 #   When I fill in the following:
@@ -126,6 +133,11 @@ Then /^(?:|I )should not see "([^"]*)"$/ do |text|
   else
     assert page.has_no_content?(text)
   end
+end
+
+Then /^I should see the image "(.+)"$/ do |image|
+  page.should have_xpath("//img[contains(@src, \"#{image}\")]")
+  #  page.should have_xpath("//img[@src=\"/public/images/#{image}?*"]")
 end
 
 Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
@@ -226,7 +238,7 @@ Then /^the "([^"]*)" checkbox(?: within (.*))? should not be checked$/ do |label
     end
   end
 end
- 
+
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
   if current_path.respond_to? :should
@@ -240,8 +252,8 @@ Then /^(?:|I )should have the following query string:$/ do |expected_pairs|
   query = URI.parse(current_url).query
   actual_params = query ? CGI.parse(query) : {}
   expected_params = {}
-  expected_pairs.rows_hash.each_pair{|k,v| expected_params[k] = v.split(',')} 
-  
+  expected_pairs.rows_hash.each_pair{|k,v| expected_params[k] = v.split(',')}
+
   if actual_params.respond_to? :should
     actual_params.should == expected_params
   else
@@ -251,4 +263,8 @@ end
 
 Then /^show me the page$/ do
   save_and_open_page
+end
+
+Then /^I am out of time$/ do
+ session_to("ff")
 end

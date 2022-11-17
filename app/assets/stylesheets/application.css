@@ -14,5 +14,30 @@
  *= require_self
  */
 .title{
-  background-color: blueviolet;
+  color: white;
+}
+.tt{
+    color: yellow;
+}
+.middle-text{
+   width: 100%;
+   text-align: center;
+   border-bottom: 0.05px solid #000;
+   line-height: 0.05em;
+   margin: 10px 0 20px;
+}
+
+.middle-text span {
+    background:#fff;
+    padding:0 10px;
+    font-weight: bold;
+}
+
+.center{
+  text-align: center;
+}
+
+.detail{
+  margin-left: 15px;
+  margin-bottom: 10px;
 }
