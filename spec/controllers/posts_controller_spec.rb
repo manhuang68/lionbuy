@@ -13,15 +13,6 @@ RSpec.describe PostsController, :type => :controller do
       Bid.create(:product_id => @product2.id , :user_id => "3"  , :bid => "11")
     end
 
-    describe "delete a post" do
-      it "Failed to delete the post due to out of session" do
-        session[:user_id] = nil
-        post = Post.find_by(:item =>'Laptop SAMSUNG')
-        tmp = post.id
-        get :destroy, {:id => post.id}
-        expect(response).to redirect_to signin_path
-      end
-  end
 
     describe "delete a post" do
         it "take a post and destroy" do
@@ -61,25 +52,13 @@ RSpec.describe PostsController, :type => :controller do
         post.destroy
       end
     end
-    describe "updating posts" do
-      it "Failed to update the post due to out of session" do
-        session[:user_id] = nil
-        post = Post.find_by(:item =>'CALCULUS Textbooks')
-        get :update, {:id => post.id, :post =>{:category => "Book"}}
-        expect(response).to redirect_to signin_path
-      end
-    end
+
 
     describe "Go to edit posts" do
       it "Enter the edit post successfully" do
         session[:user_id] = "1"
         get :edit,{:id => @product_id.id}
         response.should render_template :edit
-      end
-      it "Session expired and return to sign in path" do
-        session[:user_id] = nil
-        get :edit, {:id => @product_id.id}
-        expect(response).to redirect_to signin_path
       end
     end
 

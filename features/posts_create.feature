@@ -29,6 +29,29 @@ Background: users in database
   | Air Purifier		            | Brand new. Morningside campus only       | 15     | ShuyuWang         | sw4231@columbia.edu | Electronics |
   | Desk Lamp			            | 3 brightness levels, light bulb included | 25     | JenniferLee       | jl4152@columbia.edu |Electronics |
 
+Scenario: Unable to go to the poster page because log out
+    When I go to the poster page
+    Then I follow "Log out"
+    Then I go to the poster page
+    Then I should be on the signin page
+
+Scenario: Create a post and delete it
+  Then I should be on the post page
+  Then I follow "My posts"
+  Then I should see "Add Post"
+  Then I follow "Add Post"
+  Then I should see "Create New Post"
+  Then I fill in "item" with "Airplane Drone"
+  Then I fill in "description" with "used 2015"
+  Then I check "buy_it_now"
+  Then I fill in "start_prices" with "100"
+  Then I check "auction"
+  Then I fill in "start_bidding" with "50"
+  Then I press "Create"
+  Then I should see "Airplane Drone"
+  Then I should see "delete"
+  Then I follow "delete"
+
 Scenario: Create a post with buy it now and auction
   Then I should be on the post page
   Then I follow "My posts"
@@ -88,7 +111,7 @@ Scenario: Create a post with only buy it now
     Then I press "Create"
     Then I should see "IPHONE CHARGER"
 
-  Scenario: Create a post with only bid
+  Scenario: Create a post with only bid and update the bid
         Then I should be on the post page
         Then I follow "My posts"
         Then I should see "Add Post"
@@ -96,11 +119,21 @@ Scenario: Create a post with only buy it now
         Then I should see "Create New Post"
         Then I fill in "item" with "SAMSUNG CHARGER"
         Then I fill in "description" with "used 2019"
+        Then I check "buy_it_now"
+        Then I fill in "start_prices" with ""
         Then I check "auction"
         Then I fill in "start_bidding" with "100"
         Then I press "Create"
         Then I should see "SAMSUNG CHARGER"
-
+        Then I should see "update"
+        Then I follow "update"
+        Then I should see "Edit Post"
+        Then I fill in "item" with "SAMSUNG CHARGER ORIGINAL"
+        Then I fill in "description" with "unused"
+        Then I fill in "price" with ""
+        Then I fill in "bidding" with "500"
+        Then I press "Submit"
+        Then I should see "SAMSUNG CHARGER ORIGINAL was successfully updated."
 Scenario: Create a post with only buy it now and auction and retunr invalid to update
         Then I should be on the post page
         Then I follow "My posts"

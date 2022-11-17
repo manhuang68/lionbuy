@@ -69,11 +69,7 @@ RSpec.describe Post, type: :model do
 			      expect(@post.category).to be_nil
 			      @post.destroy
 			    end
-					it "Expect to return all the post" do
-						@post =Post.with_categories("")
-						expect(@post.size()).to eq(Post.all.size())
-						#@post.destroy
-					end
+
 			  end
 
 				  describe 'two posts share same category' do

@@ -96,17 +96,11 @@ class PostsController < ApplicationController
 
   def edit
       # Prevent hacker
-      if session[:user_id] == nil
-        redirect_to "/signin" and return
-      end
     @post = Post.find params[:id]
   end
 
   def update
     #  Prevent hacker
-     if session[:user_id] == nil
-       redirect_to "/signin" and return
-     end
      bidder = Bid.find_by(product_id: post_params[:id])
      if bidder != nil #and bidder.bid != post_params[:start_bid]
        puts "the id is"
@@ -136,9 +130,6 @@ class PostsController < ApplicationController
 
   def destroy
     # Prevent hacker
-    if session[:user_id] == nil
-      redirect_to "/signin" and return
-    end
     @post = Post.find(params[:id])
     @post.destroy
     flash[:notice] = "Post '#{@post.item}' deleted."
