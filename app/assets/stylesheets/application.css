@@ -41,3 +41,22 @@
   margin-left: 15px;
   margin-bottom: 10px;
 }
+
+.logo{
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.welcome{
+  font-weight: bold;
+}
+
+.home{
+  color: blue;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.home .nav-link{
+  color: green;
+}
