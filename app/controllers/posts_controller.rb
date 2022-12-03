@@ -58,8 +58,16 @@ class PostsController < ApplicationController
 
     res = []
     @posts.each do |post|
+      # You dont buy your own items
+      user_id = session[:user_id]
+      user = User.find_by(id:user_id)
+      if post.email == user.email 
+        next
+      end
+
+      # Price filter
       if post.with_price_range(@min_price, @max_price)
-          res.append(post)
+        res.append(post)
       end
     end
     @posts = res
