@@ -26,7 +26,7 @@
             <% if session[:user_id] == nil %>
             <div class="btn-group" role="group" aria-label="Basic example">
               <%= link_to 'Sign in', signin_path(), :class => 'btn btn-primary'  %>
-               <%= link_to 'Sign up', signup_path(), :class => 'btn btn-warning'  %> 
+               <%= link_to 'Sign up', signup_path(), :class => 'btn btn-warning'  %>
             </div>
             <% else %>
             <li class="nav-item">
@@ -50,7 +50,7 @@
             <li class="nav-item">
             <% if session[:user_id] != nil %>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                          <button type="button" id="logout" class="btn btn-danger">Log out</button>
+                          <%=  link_to 'Log out', signout_path(), :class => 'btn btn-danger' %>
                         </div>
                 <% end %>
                   </li>

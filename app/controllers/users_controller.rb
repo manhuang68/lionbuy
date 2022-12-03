@@ -43,6 +43,7 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       session[:fname] = user.fname
       session[:lname] = user.lname
+      session[:email] = user.email
     #  session[:image] = user.image.url(:medium)
       flash[:notice] = 'Account registered successfully!'
       redirect_to root_url and return

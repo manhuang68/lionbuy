@@ -20,9 +20,14 @@ class BidsController < ApplicationController
     @current_bid = @current_post.current_bid
     parameter = bid_params
     parameter[:user_id] = session[:user_id]
+
+    if @current_post.email == session[:email]
+      flash[:warning] = 'You are not allowed to bid your own item'
+      redirect_to post_path(@current_post) and return
+    end
   #  puts parameter
     puts "bid : " + bid_params[:bid]
-    puts "current bid : " 
+    puts "current bid : "
     puts @current_bid
     if @bidding_history == nil
       if bid_params[:bid].to_f >= @current_bid.to_f
