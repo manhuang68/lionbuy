@@ -10,67 +10,60 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <!--
+
     <nav class="navbar navbar-expand-lg bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand h1" href="/posts">Lionbuy!</a>
+        <a class="navbar-brand nav-link logo" href="/posts">Lionbuy!</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/posts">Home</a>
+              <a class="nav-link active home" aria-current="page" href="/posts">Home</a>
             </li>
 
             <% if session[:user_id] == nil %>
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" id="signin" class="btn btn-warning">Log in</button>
-              <button type="button" id="signup" class="btn btn-warning">Sign up</button>
+              <%= link_to 'Sign in', signin_path(), :class => 'btn btn-primary'  %>
+               <%= link_to 'Sign up', signup_path(), :class => 'btn btn-warning'  %> 
             </div>
             <% else %>
-
-            <% end %>
             <li class="nav-item">
               <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button type="button" class="btn btn-success">Order history</button>
-                <button type="button" class="btn btn-info">Sold Items</button>
-                <button type="button" class="btn btn-warning">My posts</button>
+                <%=  link_to 'Order history', order_history_path(), :class => 'btn btn-success' %>
+                <%=  link_to 'Selling summary',  selling_history_path(), :class => 'btn btn-primary' %>
+                <%=  link_to 'My posts',  poster_path(), :class => 'btn btn-warning' %>
               </div>
             </li>
+            <% end %>
+
           </ul>
 
         </div>
-        <ul class="nav justify-content-end">
-          <li class="nav-item ">
-            <% if session[:user_id] != nil %> <h5 class="nav-link">  <%= "Welcome " + session[:fname] + " " + session[:lname]  %> &nbsp; &nbsp;</h5> <% end %>
-          </li>
-          <li class="nav-item">
-          <% if session[:user_id] != nil %>
-                      <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" id="logout" class="btn btn-danger">Log out</button>
-                      </div>
-              <% end %>
-                </li>
-        </ul>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item ">
+              <% if session[:user_id] != nil %>
+                <div class="nav-link welcome">  <%= "Welcome " + session[:fname] + " " + session[:lname]  %> &nbsp; &nbsp;</div> <% end %>
+            </li>
+            <li class="nav-item">
+            <% if session[:user_id] != nil %>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                          <button type="button" id="logout" class="btn btn-danger">Log out</button>
+                        </div>
+                <% end %>
+                  </li>
+          </ul>
+        </div>
       </div>
     </nav>
-    -->
+
+
+
     <%# These classes come from the Bootstrap CSS framework. %>
-    <nav class="navbar navbar-expand-lg bg-primary text-white mb-3">
-      <h1 class="title"><a class ="tt" href="/posts">Lionbuy!</a></h1>
-      <div>&nbsp;&nbsp;</div>
-      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-      <% if session[:user_id] == nil %>  <%= link_to 'Sign in', signin_path(), :class => 'btn btn-primary col-2'  %> <% end %>
-      <% if session[:user_id] == nil %>  <%= link_to 'Sign up', signup_path(), :class => 'btn btn-primary col-2'  %> <% end %>
-      <% if session[:user_id] != nil %>  <%=  link_to 'Order history', order_history_path(), :class => 'btn btn-info col-2' %> <% end %>
-      <% if session[:user_id] != nil %>  <%=  link_to 'Selling summary',  selling_history_path(), :class => 'btn btn-info col-2' %> <% end %>
-      <% if session[:user_id] != nil %>  <%=  link_to 'My posts',  poster_path(), :class => 'btn btn-info col-2' %> <% end %>
-      <% if session[:user_id] != nil %> <h2 class="ms-auto">  <%= "Welcome " + session[:fname] + " " + session[:lname]  %> &nbsp; &nbsp;</h2> <% end %>
-      <% if session[:user_id] != nil %>  <%=  link_to 'Log out', signout_path(), :class => 'btn btn-danger col-2' %> <% end %>
-      </div>
-    </nav>
     <div class="container">
+      <br>
       <%# Render "flash" messages in our application. This loads _flash.erb %>
       <%= render 'layouts/flash' %>
       <main id="main">
