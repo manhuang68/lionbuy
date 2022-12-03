@@ -63,20 +63,6 @@ class PostsController < ApplicationController
       end
     end
     @posts = res
-
-    # byebug
-    if params[:categories]
-      session[:categories] = params[:categories]
-    end
-    if params[:keyword]
-      session[:keyword] = params[:keyword]
-    end
-    if params[:min_price]
-      session[:min_price] = params[:min_price]
-    end
-    if params[:max_price]
-      session[:max_price] = params[:max_price]
-    end
   end
 
   def new
