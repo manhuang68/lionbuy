@@ -33,10 +33,27 @@ class PostsController < ApplicationController
 
     # Price Range
     if @min_price.length != 0 or @max_price.length != 0
+      # Digit type match
       if (not @min_price.match?(/[[:digit:]]/) and not @max_price.match?(/[[:digit:]]/))
         flash[:notice] = "Invalid price range"
         redirect_to posts_path and return
       end
+    end
+
+    # consider unfilled
+    if @min_price.length == 0
+      @min_price = Float::MIN
+    end
+    if @max_price.length == 0
+      @max_price = Float::MAX
+    end
+
+    # min_price > max_price comparison
+    @min_price = @min_price.to_f
+    @max_price = @max_price.to_f
+    if (@min_price > @max_price)
+      flash[:notice] = "Invalid price range"
+      redirect_to posts_path and return
     end
 
     res = []
