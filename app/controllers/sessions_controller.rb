@@ -28,6 +28,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       session[:fname] = user.fname
       session[:lname] = user.lname
+      session[:email] = user.email
     #  session[:image] = user.image.url(:medium)
       redirect_to root_url
     else

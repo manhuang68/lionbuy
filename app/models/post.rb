@@ -11,17 +11,18 @@ class Post < ActiveRecord::Base
     end
 
     def with_price_range(min_price, max_price)
-        min_price = min_price.to_f
-        max_price = max_price.to_f
-        if max_price == 0
-            max_price = Float::MAX
+        # display as long as price or highest bid or start bid in the range
+        if self.current_bid.to_f.between?(min_price, max_price)
+            return true
+        end
+        if self.price.to_f.between?(min_price, max_price)
+            return true            
+        end
+        if self.start_bid.to_f.between?(min_price, max_price)
+            return true            
         end
 
-        if self.price.to_f.between?(min_price, max_price)
-            return true
-        else
-            return false
-        end
+        return false
     end
 
     def self.with_categories(categories_list)

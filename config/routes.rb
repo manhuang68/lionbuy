@@ -28,5 +28,6 @@ Rottenpotatoes::Application.routes.draw do
 
   # Ordering
   post '/ordering' => 'orders#create'
+  post '/accept' => 'orders#accept_bid'
   #  get '/order/:id' => 'orders#update'
 end
