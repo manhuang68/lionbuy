@@ -63,7 +63,6 @@ class PostsController < ApplicationController
 
     res = []
     @posts.each do |post|
-      # You dont buy your own items
       # Price filter
       if post.with_price_range(@min_price, @max_price)
         res.append(post)
