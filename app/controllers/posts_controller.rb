@@ -89,6 +89,11 @@ class PostsController < ApplicationController
       puts post_params
       tmp = post_params
       tmp[:closed] = false
+
+      if post_params[:price].to_f < post_params[:start_bid].to_f
+        flash[:notice] = "Price should be greater than the bidding price."
+        redirect_to new_post_path and return
+      end
       if post_params[:price].length > 0
         tmp[:buy_now] = true
       else
@@ -117,6 +122,10 @@ class PostsController < ApplicationController
   def update
     #  Prevent hacker
      if session[:user_id] != nil
+       if post_params[:price].to_f < post_params[:start_bid].to_f
+         flash[:notice] = "Price should be greater than the bidding price."
+         redirect_to edit_post_path(post_params[:id]) and return
+       end
        bidder = Bid.find_by(product_id: post_params[:id])
        if bidder != nil #and bidder.bid != post_params[:start_bid]
          puts "the id is"
