@@ -6,6 +6,7 @@ Deployment at https://lionbuy.herokuapp.com/
 
 Github repo: https://github.com/manhuang68/lionbuy/
 
+Demo link: https://youtu.be/OH3TTk5WJu4
 
 
 ## Team members 
