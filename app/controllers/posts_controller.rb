@@ -5,6 +5,11 @@ class PostsController < ApplicationController
       redirect_to signin_path and return
     end
     @item = Post.find_by(id: params[:id])
+    @history = History.find_by(product_id: params[:id])
+    @buyer = nil
+    if @history != nil
+      @buyer = User.find_by(id: @history.buyer_id)
+    end
   end
 
   def index
@@ -59,12 +64,6 @@ class PostsController < ApplicationController
     res = []
     @posts.each do |post|
       # You dont buy your own items
-      user_id = session[:user_id]
-      user = User.find_by(id:user_id)
-      if post.email == user.email
-        next
-      end
-
       # Price filter
       if post.with_price_range(@min_price, @max_price)
         res.append(post)
@@ -167,7 +166,7 @@ class PostsController < ApplicationController
     # opts = {}
     # opts["item"] = params[:item] if params[:item].present?
     # opts["price"] = params[:item] if params[:price].present?
-    @posts = Post.where(user:user_name,email:user_email)
+    @posts = Post.where(user:user_name,email:user_email,closed:false)
   end
 
   private

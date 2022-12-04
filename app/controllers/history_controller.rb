@@ -28,7 +28,7 @@ class HistoryController < ApplicationController
 
 
         (@posts).each do |p|
-            if p.closed 
+            if p.closed
                 his = History.find_by(product_id: p.id)
                 if his != nil
                     buyer = User.find_by(id: his.buyer_id)
@@ -39,5 +39,5 @@ class HistoryController < ApplicationController
             end
         end
     end
-    
+
 end

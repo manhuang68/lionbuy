@@ -32,8 +32,22 @@ class OrdersController < ApplicationController
 #    @post.update_attribute(:closed, false)
   end
 
-  def bidding
+  def accept_bid
+    if session[:user_id] != nil
+      #  redirect_to "/signin" and return
+      #end
+      @post = Post.find_by(id: order_params[:product_id])
+      @sorted = Bid.sorting(order_params[:product_id])
+      puts @sorted[0]
 
+      ordering = {:product_id => @sorted[0].product_id, :buyer_id => @sorted[0].user_id, :price => @sorted[0].bid}
+      History.create!(ordering)
+      puts ordering
+
+      @post.update_attribute(:closed, true)
+      flash[:notice] = "You accepted the deal for "+ @post.item + " !"
+      redirect_to order_history_path
+    end
   end
 
   private

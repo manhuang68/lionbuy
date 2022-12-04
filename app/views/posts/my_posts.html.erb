@@ -100,7 +100,7 @@
 
 </style>
 <div class="body">
-  <h2>My Posts(<%= @posts.count %>)</h2>
+  <h2>My Active Posts(<%= @posts.count %>)</h2>
   <div class="search">
     <!-- <label>Search:</label> -->
 
@@ -119,7 +119,7 @@
         <th>Description</th>
         <th>Price</th>
         <th>Current Bid</th>
-        <th>Update</th>
+        <th>Action</th>
       </thead>
       <tbody>
         <% @posts.each do |post| %>
@@ -145,10 +145,18 @@
               <%end%>
             </td>
             <td>
-              <a href="/destroy_post?id=<%= post.id %>">delete</a> / <a href="/edit_post?id=<%= post.id %>">update</a>
+               <%= link_to "See details", post_path(post), :class => '',:name=>"posting#{post.id}", :id => "posting#{post.id}" %> /
+               <a href="/destroy_post?id=<%= post.id %>">delete</a> / <a href="/edit_post?id=<%= post.id %>">update</a>
               <%if post.current_bid != "" %>
-                / <a href="/ordering?id=<%= post.id %>&price=<%= post.current_bid %> ">accpet deal</a>
-              <%end%>
+                <% if Bid.find_by(product_id: post.id) != nil or History.find_by(product_id: post.id) != nil  %>
+                   <br>  <form action="/accept" method="POST">
+                          <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+                            <button type="submit" class="btn btn-primary">Accept Deal</button>
+                            <input class='form-control margin-top' type ="hidden" name="order[product_id]" value=<%= post.id %>>
+                        </form>
+
+                <% end %>
+              <% end %>
             </td>
           </tr>
         <% end %>

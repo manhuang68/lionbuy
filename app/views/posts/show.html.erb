@@ -23,12 +23,13 @@
       </p>
     </div>
     <div class="col">
-      <% if @item.bid %>
-      <% if @item.start_bid == @item.current_bid and Bid.find_by(product_id: @item.id) == nil %>
-          <div class="det"><div class="detail">Starting Bid: <b>US $<%= @item.start_bid %> </b></div>
-      <% else %>
-          <div class="det"><div class="detail">Current Bid: <b>US $<%= @item.current_bid %>  &nbsp; <a href='<%= bid_history_path(@item.id) %>'>View Bid History</a></b></div>
-      <% end %>
+      <% if @item.bid and @item.closed == false %>
+        <% if @item.start_bid == @item.current_bid and Bid.find_by(product_id: @item.id) == nil %>
+            <div class="det"><div class="detail">Starting Bid: <b>US $<%= @item.start_bid %> </b></div>
+        <% else %>
+            <div class="det"><div class="detail">Current Bid: <b>US $<%= @item.current_bid %>  &nbsp; <a href='<%= bid_history_path(@item.id) %>'>View Bid History</a></b></div>
+        <% end %>
+      <% if @item.closed == false %>
           <form action="/bids" method="POST">
             <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
             <div>
@@ -50,14 +51,15 @@
                   <small id="emailHelp" class="form-text text-muted detail">Enter a value greater than $<%= @item.current_bid %></small>
               <% end %>
             </form>
+        <% end %>
         </div>
       <% end %>
-      <% if @item.bid and @item.buy_now%>
+      <% if @item.bid and @item.buy_now and  @item.closed == false %>
         <div class="middle-text"><span> Or </span></div>
         <% else %>
         <br>
       <% end %>
-      <% if @item.buy_now %>
+      <% if @item.buy_now and @item.closed == false %>
         <form action="/ordering" method="POST">
           <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
             <div class="card-text center">Price: <b>US $<%= @item.price %> &nbsp;&nbsp;</b> <button type="submit" class="btn btn-primary">Buy it now</button> </div>
@@ -66,6 +68,25 @@
         </form>
 
       <% end %>
+
+      <% if @item.closed == true %>
+        <% if @item.bid %>
+          <% if @item.start_bid == @item.current_bid and Bid.find_by(product_id: @item.id) == nil %>
+              <div class="card-text">The latest bid: <b>US $<%= @item.start_bid %> </b></div>
+          <% else %>
+              <div class="card-text">The latest bid: <b>US $<%= @item.current_bid %>  &nbsp; <a href='<%= bid_history_path(@item.id) %>'>View Bid History</a></b></div>
+          <% end %>
+        <% end %>
+        <% if @item.buy_now %>
+              <div class="card-text">Original Price: <b>US $<%= @item.price %> &nbsp;&nbsp;</b> </div>
+        <% end %>
+        <br>
+          <h6> Price sold :  <b>$<%=  + @history.price  %> </b></h6>
+          <h6>  Buyer id :  <b> <%= + @history.buyer_id %> </b></h6>
+          <h6> Buyer full name :  <b><%= @buyer.fname + " " +  @buyer.lname %> </b></h6>
+          <h6> Buyer email :  <b><%= + @buyer.email %> </b></h6>
+
+        <% end %>
     </div>
 
   </div>
@@ -75,7 +96,7 @@
 <div class="row">
   <%= link_to 'Back to post list', posts_path, :class => 'btn btn-primary col-2 margin-right-button' %>
   <br>
-  <% if @item.email == session[:email]  %>
+  <% if @item.email == session[:email] and @item.closed == false %>
     <%= link_to 'Edit this post', edit_post_path(@item.id), :class => 'btn btn-secondary col-2' %>
   <% end %>
 </div>

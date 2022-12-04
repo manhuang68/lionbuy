@@ -7,6 +7,7 @@
       <th>Deal Price</th>
       <th>Buyer</th>
       <th>Time</th>
+      <th>Action</th>
     </tr>
   </thead>
   <tbody>
@@ -23,6 +24,9 @@
         </td>
         <td>
           <%= h.created_at.strftime("%B %d, %Y %H:%M:%S %Z") %>
+        </td>
+        <td>
+          <%= link_to "See details", post_path(h.product_id), :class => '',:name=>"posting#{h.id}", :id => "posting#{h.id}" %>
         </td>
       </tr>
     <% end %>
