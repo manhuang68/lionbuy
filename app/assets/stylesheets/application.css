@@ -64,3 +64,7 @@
 .margin-right-button{
   margin-right: 10px;
 }
+
+.warning-empty{
+  color:red;
+}

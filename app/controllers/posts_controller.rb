@@ -79,7 +79,7 @@ class PostsController < ApplicationController
     end
     user_id = session[:user_id]
     user = User.find_by(id:user_id)
-    @user_name = user.fname+user.lname
+    @user_name = user.fname+ " " +user.lname
     @user_email = user.email
   end
 
@@ -90,21 +90,32 @@ class PostsController < ApplicationController
       tmp = post_params
       tmp[:closed] = false
 
-      if post_params[:price].to_f < post_params[:start_bid].to_f
-        flash[:notice] = "Price should be greater than the bidding price."
-        redirect_to new_post_path and return
-      end
       if post_params[:price].length > 0
+        if post_params[:price].to_f < post_params[:start_bid].to_f
+          flash[:notice] = "Price should be greater than the bidding price."
+          redirect_to new_post_path and return
+        end
+      end
+
+      if post_params[:price].length == 0 and post_params[:start_bid].length == 0
+        tmp[:current_bid] = post_params[:start_bid]
+        tmp[:price] = "1"
         tmp[:buy_now] = true
-      else
-        tmp[:buy_now] = false
-      end
-      if post_params[:start_bid].length > 0
-        tmp[:bid] = true
-      else
         tmp[:bid] = false
+      else
+        if post_params[:price].length > 0
+          tmp[:buy_now] = true
+        else
+          tmp[:buy_now] = false
+        end
+        if post_params[:start_bid].length > 0
+          tmp[:bid] = true
+        else
+          tmp[:bid] = false
+        end
+        tmp[:current_bid] = post_params[:start_bid]
       end
-      tmp[:current_bid] = post_params[:start_bid]
+
       puts tmp
       puts "categor ys "
       puts post_params[:category]
@@ -122,9 +133,11 @@ class PostsController < ApplicationController
   def update
     #  Prevent hacker
      if session[:user_id] != nil
-       if post_params[:price].to_f < post_params[:start_bid].to_f
-         flash[:notice] = "Price should be greater than the bidding price."
-         redirect_to edit_post_path(post_params[:id]) and return
+       if post_params[:price].length > 0
+         if post_params[:price].to_f < post_params[:start_bid].to_f
+           flash[:notice] = "Price should be greater than the bidding price."
+           redirect_to new_post_path and return
+         end
        end
        bidder = Bid.find_by(product_id: post_params[:id])
        if bidder != nil #and bidder.bid != post_params[:start_bid]
@@ -134,17 +147,24 @@ class PostsController < ApplicationController
          redirect_to "/edit_post?id="+post_params[:id].to_s  and return
        end
        tmp = post_params
-       if post_params[:price].length > 0
+       if post_params[:price].length == 0 and post_params[:start_bid].length == 0
+         tmp[:current_bid] = post_params[:start_bid]
+         tmp[:price] = "1"
          tmp[:buy_now] = true
-       else
-         tmp[:buy_now] = false
-       end
-       if post_params[:start_bid].length > 0
-         tmp[:bid] = true
-       else
          tmp[:bid] = false
+       else
+         if post_params[:price].length > 0
+           tmp[:buy_now] = true
+         else
+           tmp[:buy_now] = false
+         end
+         if post_params[:start_bid].length > 0
+           tmp[:bid] = true
+         else
+           tmp[:bid] = false
+         end
+         tmp[:current_bid] = post_params[:start_bid]
        end
-       tmp[:current_bid] = post_params[:start_bid]
        puts tmp
 
        @post = Post.find post_params[:id]
@@ -175,7 +195,7 @@ class PostsController < ApplicationController
     # opts = {}
     # opts["item"] = params[:item] if params[:item].present?
     # opts["price"] = params[:item] if params[:price].present?
-    @posts = Post.where(user:user_name,email:user_email,closed:false)
+    @posts = Post.where(email:user_email,closed:false)
   end
 
   private
