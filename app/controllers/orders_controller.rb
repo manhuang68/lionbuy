@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
 
       @post.update_attribute(:closed, true)
       flash[:notice] = "You accepted the deal for "+ @post.item + " !"
-      redirect_to order_history_path
+      redirect_to selling_history_path
     end
   end
 
