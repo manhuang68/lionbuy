@@ -49,20 +49,22 @@
               <% if session[:user_id] != nil %>
                 <div class="nav-link welcome">  <%= "Welcome " + session[:fname] + " " + session[:lname]  %> &nbsp;</div> <% end %>
             </li>
-            <li>
-              <div class="dropdown">
-              <button type="button" class="btn btn-danger rounded-pill dropdown-toggle" data-bs-toggle="dropdown">
-                <span class="badge bg-danger center"> <i class="fa fa-bell" style="font-size:16px;color:light-blue"> {@unread_posts.length()} </i></span>
-              </button>
-              <ul class="dropdown-menu">
-                <% @unread_posts.each do |p| %>
-                  <h1>
-                    123
-                  </h1>
-                <% end %>
-              </ul>
-            </div>
-            </li>
+            <% if session[:user_id] != nil %>
+              <li>
+                <div class="dropdown">
+                <button type="button" class="btn btn-danger rounded-pill dropdown-toggle" data-bs-toggle="dropdown">
+                  <span class="badge bg-danger center"> <i class="fa fa-bell" style="font-size:16px;color:light-blue"> {@unread_posts.length()} </i></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <% @unread_posts.each do |p| %>
+                    <h1>
+                      123
+                    </h1>
+                  <% end %>
+                </ul>
+              </div>
+              </li>
+            <% end %>
             &nbsp;
             &nbsp;
             <li class="nav-item">
