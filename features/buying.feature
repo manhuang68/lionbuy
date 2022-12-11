@@ -33,6 +33,7 @@ Background: users in database
   | INTRO TO CS | Textbooks for freshman to senior year	   | 10     | MikeMckenzie      | jh4142@columbia.edu | Education | false | true  | 5   | 5  | false |
   | Air conditioner		            | Brand new. Morningside campus only       | 15     | ShuyuWang         | sw4231@columbia.edu | Electronics |  false | true  | 10   | 10  | false |
   | Monitor	            | 3 brightness levels, light bulb included | 25     | JenniferLee       | jl4152@columbia.edu |Electronics |  true | true  | 15   | 15  | false |
+  | Lenovo Earphone               | Used earphone                      | 30  |   JohnHo|                      123@columbia.edu  |   Electronics |  true | true  | 15   | 15  | false |
 
 Scenario: See the details of a post and make a purchase
     When I fill in "keyword" with "Panasonic TV"
@@ -57,3 +58,15 @@ Scenario: See the details of a post and make a purchase
         Then I should not see "Lenovo PC"
         And I press "Buy it now"
         Then I should see "Monitor"
+
+Scenario: Buy my own item and it shows invalid
+        When I fill in "keyword" with "Lenovo Earphone"
+        And I press "Refresh"
+        Then I should see "Lenovo Earphone"
+        When I follow "See details"
+        Then I should see "JohnHo"
+        Then I should see "123@columbia.edu"
+        Then I should not see "View Bid History"
+        Then I should not see "Laptop MAC"
+        And I press "Buy it now"
+        Then I should see "You are not allowed to buy your own item"
