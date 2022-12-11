@@ -18,18 +18,13 @@ class OrdersController < ApplicationController
       History.create!(ordering)
 
       #save selling history
-    #  @seller = User.find_by(email: @post.email)
-    #  selling = {:product_id => @post.id,  :seller_id => @seller.id, :price => @post.price}
-      #SellHistory.create!(selling)
+      # @seller = User.find_by(email: @post.email)
+      # selling = {:product_id => @post.id,  :seller_id => @seller.id, :price => @post.price}
+      # SellHistory.create!(selling)
       @post.update_attribute(:closed, true)
       flash[:notice] = "Your order for "+ @post.item + " has been placed!"
       redirect_to order_history_path
     end
-  end
-
-  def update
-#    @post = Post.find_by(id: params[:id])
-#    @post.update_attribute(:closed, false)
   end
 
   def accept_bid
