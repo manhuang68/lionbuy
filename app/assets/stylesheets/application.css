@@ -68,3 +68,14 @@
 .warning-empty{
   color:red;
 }
+
+.card img {
+  aspect-ratio: 2/1.2;
+  object-fit: scale-down;
+  width: 5s0%;
+}
+
+.card-img-top {
+    max-height: 100%;
+    object-fit: scale-down;
+}
