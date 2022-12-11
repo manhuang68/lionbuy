@@ -66,8 +66,8 @@ Scenario: Create a post with buy it now and auction
   Then I fill in "start_bidding" with "50"
   Then I press "Create"
   Then I should see "Airplane Drone"
-  Then I should see "update"
-  Then I follow "update"
+  Then I should see "Edit"
+  Then I follow "Edit"
   Then I should see "Edit Post"
   Then I fill in "item" with "Airplane Drone"
   Then I fill in "description" with "used 2015"
@@ -88,8 +88,8 @@ Scenario: Create a post with buy it now and auction
     Then I fill in "start_bidding" with "550"
     Then I press "Create"
     Then I should see "One plus 8t phone"
-    Then I should see "update"
-    Then I follow "update"
+    Then I should see "Edit"
+    Then I follow "Edit"
     Then I should see "Edit Post"
     Then I fill in "item" with "One plus 8t phone"
     Then I fill in "description" with "used 2015"
@@ -111,7 +111,7 @@ Scenario: Create a post with only buy it now
     Then I press "Create"
     Then I should see "IPHONE CHARGER"
 
-  Scenario: Create a post with only bid and update the bid
+Scenario: Create a post with only bid and update the bid
         Then I should be on the post page
         Then I follow "My posts"
         Then I should see "Add Post"
@@ -125,8 +125,8 @@ Scenario: Create a post with only buy it now
         Then I fill in "start_bidding" with "100"
         Then I press "Create"
         Then I should see "SAMSUNG CHARGER"
-        Then I should see "update"
-        Then I follow "update"
+        Then I should see "Edit"
+        Then I follow "Edit"
         Then I should see "Edit Post"
         Then I fill in "item" with "SAMSUNG CHARGER ORIGINAL"
         Then I fill in "description" with "unused"
@@ -134,7 +134,8 @@ Scenario: Create a post with only buy it now
         Then I fill in "bidding" with "500"
         Then I press "Submit"
         Then I should see "SAMSUNG CHARGER ORIGINAL was successfully updated."
-Scenario: Create a post with only buy it now and auction and retunr invalid to update
+
+Scenario: Create a post with only buy it now and auction and return invalid to update
         Then I should be on the post page
         Then I follow "My posts"
         Then I should see "Add Post"
@@ -178,8 +179,8 @@ Scenario: Create a post with only buy it now and auction and retunr invalid to u
         Then I should be on the post page
         Then I follow "My posts"
         Then I should see "Add Post"
-        Then I should see "update"
-        Then I follow "update"
+        Then I should see "Edit"
+        Then I follow "Edit"
         Then I should see "Edit Post"
         Then I fill in "item" with "SAMSUNG CHARGER"
         Then I fill in "description" with "used 2015"
