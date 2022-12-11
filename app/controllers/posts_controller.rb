@@ -12,11 +12,31 @@ class PostsController < ApplicationController
     end
   end
 
+  # method to lable all notifications as read
+  def read_all
+    # Prevent hacker
+    if session[:user_id] == nil
+      redirect_to signin_path and return
+    end
+
+    if @unread_posts != nil
+      @unread_posts.each do |p| 
+        p.read = true
+      end
+    end
+  end
+
   def index
     # Prevent hacker
     if session[:user_id] == nil
       redirect_to signin_path and return
     end
+
+    # Call it every time log in
+    user_id = session[:user_id]
+    user = User.find_by(id:user_id)
+    user_email = user.email
+    @unread_posts = Post.where(email:user_email,read:false)
 
     @posts = Post.all
     @all_categories = Post.all_categories

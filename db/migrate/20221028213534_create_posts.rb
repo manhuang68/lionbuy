@@ -18,6 +18,7 @@ class CreatePosts < ActiveRecord::Migration
       t.string :price
 
       t.boolean :closed
+      t.boolean :read
       
       # of when movies are added or modified:
       t.timestamps

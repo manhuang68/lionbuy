@@ -52,13 +52,14 @@
             <li>
               <div class="dropdown">
               <button type="button" class="btn btn-danger rounded-pill dropdown-toggle" data-bs-toggle="dropdown">
-                <span class="badge bg-danger center"> <i class="fa fa-bell" style="font-size:16px;color:light-blue"></i>
-                      11</span>
+                <span class="badge bg-danger center"> <i class="fa fa-bell" style="font-size:16px;color:light-blue"> {@unread_posts.length()} </i></span>
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Link 1</a></li>
-                <li><a class="dropdown-item" href="#">Link 2</a></li>
-                <li><a class="dropdown-item" href="#">Link 3</a></li>
+                <% @unread_posts.each do |p| %>
+                  <h1>
+                    123
+                  </h1>
+                <% end %>
               </ul>
             </div>
             </li>
