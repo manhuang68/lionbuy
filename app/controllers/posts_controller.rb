@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     end
 
     if @unread_posts != nil
-      @unread_posts.each do |p| 
+      @unread_posts.each do |p|
         p.read = true
       end
     end
@@ -93,13 +93,13 @@ class PostsController < ApplicationController
 
   def new
     # default: render 'new' template
-    if session[:user_id] == nil
-      redirect_to signin_path and return
+    if session[:user_id] != nil
+      #redirect_to signin_path and return
+      user_id = session[:user_id]
+      user = User.find_by(id:user_id)
+      @user_name = user.fname+ " " +user.lname
+      @user_email = user.email
     end
-    user_id = session[:user_id]
-    user = User.find_by(id:user_id)
-    @user_name = user.fname+ " " +user.lname
-    @user_email = user.email
   end
 
   def create
@@ -155,7 +155,7 @@ class PostsController < ApplicationController
        if post_params[:price].length > 0
          if post_params[:price].to_f < post_params[:start_bid].to_f
            flash[:notice] = "Price should be greater than the bidding price."
-           redirect_to new_post_path and return
+           redirect_to "/edit_post?id="+post_params[:id].to_s  and return
          end
        end
        bidder = Bid.find_by(product_id: post_params[:id])

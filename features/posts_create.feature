@@ -49,8 +49,45 @@ Scenario: Create a post and delete it
   Then I fill in "start_bidding" with "50"
   Then I press "Create"
   Then I should see "Airplane Drone"
-  Then I should see "delete"
-  Then I follow "delete"
+  Then I should see "Delete"
+  Then I follow "Delete"
+
+Scenario: Create a post with buy it now and auction but invalid price
+    Then I should be on the post page
+    Then I follow "My posts"
+    Then I should see "Add Post"
+    Then I follow "Add Post"
+    Then I should see "Create New Post"
+    Then I fill in "item" with "Airplane Drone"
+    Then I fill in "description" with "used 2015"
+    Then I check "buy_it_now"
+    Then I fill in "start_prices" with "100"
+    Then I check "auction"
+    Then I fill in "start_bidding" with "250"
+    Then I press "Create"
+    Then I should see "Price should be greater than the bidding price."
+
+Scenario: Create a post with buy it now and auction but leave the price empty
+      Then I should be on the post page
+      Then I follow "My posts"
+      Then I should see "Add Post"
+      Then I follow "Add Post"
+      Then I should see "Create New Post"
+      Then I fill in "item" with "Helicopter Drone"
+      Then I fill in "description" with "used 2021"
+      Then I check "buy_it_now"
+      Then I fill in "start_prices" with ""
+      Then I check "auction"
+      Then I fill in "start_bidding" with ""
+      Then I press "Create"
+      Then I follow "Edit"
+      Then I should see "Edit Post"
+      Then I fill in "item" with "Airplane Mini Drone"
+      Then I fill in "description" with "used 2022"
+      Then I fill in "price" with "10"
+      Then I fill in "bidding" with "100"
+      Then I press "Submit"
+      Then I should see "Price should be greater than the bidding price."
 
 Scenario: Create a post with buy it now and auction
   Then I should be on the post page
@@ -71,12 +108,12 @@ Scenario: Create a post with buy it now and auction
   Then I should see "Edit Post"
   Then I fill in "item" with "Airplane Drone"
   Then I fill in "description" with "used 2015"
-  Then I fill in "price" with "100"
-  Then I fill in "bidding" with "60"
+  Then I fill in "price" with ""
+  Then I fill in "bidding" with ""
   Then I press "Submit"
   Then I should see "Airplane Drone"
 
-Scenario: Create a post with buy it now and auction
+Scenario: Create a post auction and enable buy it now after the edit
     Then I should be on the post page
     Then I follow "My posts"
     Then I should see "Add Post"

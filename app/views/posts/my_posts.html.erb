@@ -146,7 +146,7 @@
             </td>
             <td>
                <%= link_to "See details", post_path(post), :class => '',:name=>"posting#{post.id}", :id => "posting#{post.id}" %> /
-               <a href="/destroy_post?id=<%= post.id %>">delete</a> / <a href="/edit_post?id=<%= post.id %>">Edit</a>
+               <a href="/destroy_post?id=<%= post.id %>">Delete</a> / <a href="/edit_post?id=<%= post.id %>">Edit</a>
               <%if post.current_bid != "" %>
                 <% if Bid.find_by(product_id: post.id) != nil or History.find_by(product_id: post.id) != nil  %>
                    <br>  <form action="/accept" method="POST">
