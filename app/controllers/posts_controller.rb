@@ -19,12 +19,13 @@ class PostsController < ApplicationController
       redirect_to signin_path and return
     end
 
-    if @unread_posts != nil
-      @unread_posts.each do |p|
+    if session[:unread_posts] != nil
+      session[:unread_posts].each do |p|
         p.update_attribute(:read_seller, true)
         p.update_attribute(:read_buyer, true)
       end
     end
+    session[:unread_posts] = nil
   end
 
   def index
