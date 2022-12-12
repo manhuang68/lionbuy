@@ -21,7 +21,8 @@ class PostsController < ApplicationController
 
     if @unread_posts != nil
       @unread_posts.each do |p|
-        p.read = true
+        p.update_attribute(:read_seller, true)
+        p.update_attribute(:read_buyer, true)
       end
     end
   end
@@ -36,7 +37,9 @@ class PostsController < ApplicationController
     user_id = session[:user_id]
     user = User.find_by(id:user_id)
     user_email = user.email
-    @unread_posts = Post.where(email:user_email,read:false)
+    @unread_posts = Post.where(email:user_email, read_seller:false) | Post.where(email:user_email, read_buyer:false)
+    # @unread_posts = Array(Post.find_by(id:1))
+    session[:unread_posts] = @unread_posts
 
     @posts = Post.all
     @all_categories = Post.all_categories

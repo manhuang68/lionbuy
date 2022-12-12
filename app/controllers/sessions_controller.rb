@@ -42,6 +42,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     session[:fname] = nil
     session[:lname] = nil
+    session[:unread_posts] = nil
     redirect_to "/signin"
   end
 

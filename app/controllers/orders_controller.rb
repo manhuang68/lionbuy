@@ -22,6 +22,8 @@ class OrdersController < ApplicationController
       # selling = {:product_id => @post.id,  :seller_id => @seller.id, :price => @post.price}
       # SellHistory.create!(selling)
       @post.update_attribute(:closed, true)
+      @post.update_attribute(:read_seller, false)
+
       flash[:notice] = "Your order for "+ @post.item + " has been placed!"
       redirect_to order_history_path
     end
@@ -40,6 +42,8 @@ class OrdersController < ApplicationController
       puts ordering
 
       @post.update_attribute(:closed, true)
+      @post.update_attribute(:read_buyer, false)
+
       flash[:notice] = "You accepted the deal for "+ @post.item + " !"
       redirect_to selling_history_path
     end
