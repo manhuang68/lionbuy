@@ -51,9 +51,15 @@
             </li>
             <% if session[:user_id] != nil %>
               <li>
-                <div class="dropdown">
-                  <button type="button" class="btn btn-danger rounded-pill dropdown-toggle" data-bs-toggle="dropdown">
-                    <span class="badge bg-danger center"> <i class="fa fa-bell" style="font-size:16px;color:light-blue"> <% if session[:unread_posts] != nil %> <%= session[:unread_posts].length() =%> <% end %> </i></span>
+                <div id="remove_read" class="dropdown">
+                  <% if session[:unread_posts] != nil %>
+                    <button type="button" class="btn btn-danger rounded-pill dropdown-toggle" id="reader" data-bs-toggle="dropdown">
+                          <span class="badge bg-danger center"> <i class="fa fa-bell" style="font-size:16px;color:light-blue">
+                   <% else %>
+                     <button type="button" class="btn btn-success rounded-pill dropdown-toggle" id="reader" data-bs-toggle="dropdown">
+                            <span class="badge bg-success center"> <i class="fa fa-bell" style="font-size:16px;color:light-blue">
+                   <% end %>
+                   <% if session[:unread_posts] != nil %> <%= session[:unread_posts].length() =%> <% end %> </i></span>
                   </button>
                   <% if session[:unread_posts] != nil && session[:unread_posts].length() != 0 %>
                     <ul class="dropdown-menu">

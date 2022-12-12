@@ -33,6 +33,11 @@ class PostsController < ApplicationController
       end
     end
     session[:unread_posts] = nil
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def index
