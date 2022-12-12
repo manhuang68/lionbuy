@@ -12,6 +12,13 @@ class PostsController < ApplicationController
     end
   end
 
+  def ajaxtest
+    puts "this is ajaxtest"
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
   # method to lable all notifications as read
   def read_all
     # Prevent hacker

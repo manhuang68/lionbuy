@@ -1,4 +1,6 @@
 Rottenpotatoes::Application.routes.draw do
+
+  get '/ajaxtest' => 'posts#ajaxtest', as: :ajaxtest
   resources :posts
   # map '/' to be a redirect to '/movies'
   root :to => redirect('/posts')

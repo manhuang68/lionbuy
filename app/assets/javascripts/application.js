@@ -62,5 +62,22 @@ $(document).ready(function(){
        });
    });
 
+   $(function () {
+      $("#reader").click(function () {
+        alert("this is fff")
+        add_checkout()
+      });
+  });
 
 })
+
+function add_checkout(){
+
+  $.ajax({
+      url: "/ajaxtest",
+      data : {
+        passing: "true"
+      },
+      dataType: "script",
+  });
+}

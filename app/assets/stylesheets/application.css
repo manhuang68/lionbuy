@@ -78,3 +78,7 @@
     max-height: 100%;
     object-fit: scale-down;
 }
+
+.post-img{
+  max-height: 400px;
+}

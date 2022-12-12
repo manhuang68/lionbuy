@@ -52,7 +52,7 @@
             <% if session[:user_id] != nil %>
               <li>
                 <div class="dropdown">
-                  <button type="button" class="btn btn-danger rounded-pill dropdown-toggle" data-bs-toggle="dropdown">
+                  <button type="button" class="btn btn-danger rounded-pill dropdown-toggle reader" id="reader" data-bs-toggle="dropdown">
                     <span class="badge bg-danger center"> <i class="fa fa-bell" style="font-size:16px;color:light-blue"> <% if @unread_posts != nil %> <%= @unread_posts.length() =%> <% end %> </i></span>
                   </button>
                   <% if @unread_posts != nil %>
