@@ -64,7 +64,6 @@ $(document).ready(function(){
 
    $(function () {
       $("#reader").click(function () {
-        alert("this is fff")
         add_checkout()
       });
   });

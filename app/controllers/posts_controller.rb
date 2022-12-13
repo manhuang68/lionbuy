@@ -25,12 +25,23 @@ class PostsController < ApplicationController
     if session[:user_id] == nil
       redirect_to signin_path and return
     end
-
+    @notification = nil
+    #session[:notification] = nil
     if session[:unread_posts] != nil
-      session[:unread_posts].each do |p|
-        p.update_attribute(:read_seller, true)
-        p.update_attribute(:read_buyer, true)
+      if session[:unread_posts].length() != 0
+        @notification = session[:unread_posts].clone
+        puts "the nottificaiton "
+        #puts @notification.read_seller
       end
+
+      session[:unread_posts].each do |p|
+        if p.email == session[:email]
+          p.update_attribute(:read_seller, true)
+        else
+          p.update_attribute(:read_buyer, true)
+        end
+      end
+
     end
     session[:unread_posts] = nil
 
@@ -52,7 +63,12 @@ class PostsController < ApplicationController
     user_email = user.email
     @unread_posts = Post.where(email:user_email, read_seller:false) | Post.where(email:user_email, read_buyer:false)
     # @unread_posts = Array(Post.find_by(id:1))
+
     session[:unread_posts] = @unread_posts
+
+    if @unread_posts.length() == 0
+      session[:unread_posts] = nil
+    end
 
     @posts = Post.all
     @all_categories = Post.all_categories
