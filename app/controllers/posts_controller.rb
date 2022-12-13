@@ -29,21 +29,23 @@ class PostsController < ApplicationController
     #session[:notification] = nil
     if session[:unread_posts] != nil
       if session[:unread_posts].length() != 0
-        @notification = session[:unread_posts].clone
+        @notification = Post.where(email: session[:email], read_seller:false) | Post.where(email: session[:email], read_buyer:false)
         puts "the nottificaiton "
         #puts @notification.read_seller
       end
 
       session[:unread_posts].each do |p|
+        """
         if p.email == session[:email]
           p.update_attribute(:read_seller, true)
         else
           p.update_attribute(:read_buyer, true)
         end
+        """
       end
 
     end
-    session[:unread_posts] = nil
+    #session[:unread_posts] = nil
 
     respond_to do |format|
       format.js
@@ -64,7 +66,7 @@ class PostsController < ApplicationController
     @unread_posts = Post.where(email:user_email, read_seller:false) | Post.where(email:user_email, read_buyer:false)
     # @unread_posts = Array(Post.find_by(id:1))
 
-    session[:unread_posts] = @unread_posts
+    session[:unread_posts] = Post.get_only_id(@unread_posts)
 
     if @unread_posts.length() == 0
       session[:unread_posts] = nil

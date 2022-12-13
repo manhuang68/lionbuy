@@ -36,4 +36,15 @@ class Post < ActiveRecord::Base
     def self.all_categories()
         @all_categories = ['Electronics','Bedding','Education']
     end
+
+    def self.get_only_id(list)
+      tmp = []
+      list.each do |data|
+        puts data.id
+        tmp.append(data.id)
+      end
+      puts "the id are"
+      puts tmp
+      return tmp
+    end
 end

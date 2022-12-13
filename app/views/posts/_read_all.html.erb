@@ -5,11 +5,11 @@
     <ul class="dropdown-menu">
       <% if @notification  != nil && @notification.length() != 0 %>
         <% @notification .each do |p| %>
-          <% if p.read_seller == true %>
-            <li><a class="dropdown-item" href="#">New bid : <%= p.description =%> </a></li>
+          <% if p.read_seller == false %>
+            <li><a class="dropdown-item" href="#">New bid : <%= p.item =%> </a></li>
           <% end %>
           <% if p.read_buyer == false and p.closed == true %>
-            <li><a class="dropdown-item" href="#">Deal accepted : <b>  <%= p.description =%> <b>  </a></li>
+            <li><a class="dropdown-item" href="#">Deal accepted : <b>  <%= p.item =%> <b>  </a></li>
           <% end %>
         <% end %>
         <% else %>
