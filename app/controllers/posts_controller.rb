@@ -123,6 +123,7 @@ class PostsController < ApplicationController
       end
     end
     @posts = res
+    @posts = Kaminari.paginate_array(@posts, total_count: @posts.count).page(params[:page]).per(6)
   end
 
   def new
@@ -248,7 +249,7 @@ class PostsController < ApplicationController
     # opts = {}
     # opts["item"] = params[:item] if params[:item].present?
     # opts["price"] = params[:item] if params[:price].present?
-    @posts = Post.where(email:user_email,closed:false)
+    @posts = Post.where(email:user_email,closed:false).page(params[:page]).per(6)
   end
 
   private
