@@ -3,16 +3,19 @@ class HistoryController < ApplicationController
         if session[:user_id] == nil
             redirect_to "/signin" and return
         end
-
+        puts "tytbbb"
         buyer_id = session[:user_id]
         @buy_histories = History.where(buyer_id: buyer_id)
 
         (@buy_histories).each do |h|
+          puts "thie sovdf  fg "
+          puts h.product_id
             @current_post = Post.find_by(id: h.product_id)
             h.seller =  @current_post.user
             h.item =  @current_post.item
         end
-        @buy_histories = Kaminari.paginate_array(@buy_histories, total_count: @buy_histories.count).page(params[:page]).per(6)
+        #puts @buy_histories
+        @buy_historiest = Kaminari.paginate_array(@buy_histories, total_count: @buy_histories.count).page(params[:page]).per(6)
     end
 
     def sell

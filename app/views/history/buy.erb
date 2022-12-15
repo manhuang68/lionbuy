@@ -2,7 +2,7 @@
 <table class="table table-striped col-md-12" id="buy_histories">
   <thead>
     <tr>
-      <th>Item id</th>
+      <th>Item Name</th>
       <th>Deal Price</th>
       <th>Seller</th>
       <th>Time</th>
@@ -31,7 +31,7 @@
     <% end %>
   </tbody>
 </table>
-<%= paginate @buy_histories %> 
+<%= paginate @buy_historiest %>
 <%= link_to 'Back to Post list', posts_path, :class => 'btn btn-primary col-2' %>
 <br>
 <br>
