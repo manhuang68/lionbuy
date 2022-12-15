@@ -34,3 +34,4 @@ gem 'uglifier', '>= 2.7.1'
 gem 'jquery-rails'
 gem "image_processing", ">= 1.2"
 gem "paperclip", "~> 6.0.0"
+gem 'rails_12factor'
