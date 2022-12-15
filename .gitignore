@@ -11,3 +11,4 @@ vendor/bundle
 hello.txt
 .rake_tasks~
 db/development.sqlite3
+.Gemfile.lock
