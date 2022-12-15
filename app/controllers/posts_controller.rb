@@ -96,8 +96,9 @@ class PostsController < ApplicationController
     session[:deal] = History.where(buyer_id: session[:user_id], read_buyer: false).length()
     puts "the deal is"
     puts session[:deal]
-    if @unread_posts.length() == 0
+    if @unread_posts == nil or @unread_posts.length() == 0
       #session[:unread_posts] = 0
+      session[:unread_posts] = []
     end
 
     @posts = Post.all
