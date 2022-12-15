@@ -4,7 +4,7 @@ class CreateHistories < ActiveRecord::Migration
       t.string :product_id
       t.string :buyer_id
       t.string :price
-
+      t.boolean :read_buyer
       t.timestamps null: false
     end
   end

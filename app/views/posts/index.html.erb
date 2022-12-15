@@ -1,6 +1,5 @@
 <!--  This file is app/views/posts/index.html.erb -->
 <h2>All Posts</h2>
-
 <%= form_tag posts_path, method: :get, id: 'filter_form' do %>
   <% @all_categories.each do |category| %>
     <div class="form-check  form-check-inline">

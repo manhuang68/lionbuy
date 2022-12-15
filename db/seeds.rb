@@ -11,7 +11,7 @@ posts = [{:item => 'Laptop MAC', :description => 'Used laptop 2015 good conditio
 		 {:item => 'Chemical Engineering Textbooks', :description => 'Textbooks for freshman to senior year', :price => '', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education', :buy_now => false, :bid => true, :start_bid => "5", :current_bid => "5", :closed => false, :read_seller => true, :read_buyer => true},
 		 {:item => 'Air Purifier', :description => 'Brand new. Morningside campus only.', :price => '', :user => 'ShuyuWang', :email => 'sw4231@columbia.edu', :category => 'Electronics',:buy_now => false, :bid => true, :start_bid => "10", :current_bid => "10", :closed => false, :read_seller => true, :read_buyer => true},
 		 {:item => 'Desk Lamp', :description => '3 brightness levels, light bulb included', :price => '25', :user => 'JenniferLee', :email => 'jl4152@columbia.edu', :category => 'Electronics', :buy_now => true, :bid => true, :start_bid => "15", :current_bid => "15", :closed => false , :read_seller => true, :read_buyer => true},
-		 {:item => 'IKEA pillows', :description => 'Came in pair. Very firm.', :price => '20', :user => 'JenniferLee', :email => 'jl4152@columbia.edu', :category => 'Bedding', :buy_now => true, :bid => true, :start_bid => "10", :current_bid => "12", :closed => false, :read_seller => true, :read_buyer => true},
+		 {:item => 'IKEA pillows', :description => 'Came in pair. Very firm.', :price => '20', :user => 'JenniferLee', :email => 'jl4152@columbia.edu', :category => 'Bedding', :buy_now => true, :bid => true, :start_bid => "10", :current_bid => "10", :closed => false, :read_seller => true, :read_buyer => true},
 		]
 
 posts.each do |post|
@@ -35,7 +35,7 @@ bids.each do |bid|
 	Bid.create!(bid)
 end
 
-histories = [{:product_id => "1",  :buyer_id => "6", :price => "800"}]
+histories = [{:product_id => "1",  :buyer_id => "6", :price => "800", :read_buyer => true}]
 
 histories.each do |h|
 	History.create!(h)

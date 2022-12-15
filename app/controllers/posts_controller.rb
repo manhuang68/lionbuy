@@ -29,28 +29,54 @@ class PostsController < ApplicationController
     #session[:notification] = nil
     if session[:unread_posts] != nil
       if session[:unread_posts].length() != 0
-        @notification = Post.where(email: session[:email], read_seller:false) | Post.where(email: session[:email], read_buyer:false)
-        puts "the nottificaiton "
-        #puts @notification.read_seller
+        @notification = Post.where(email: session[:email], read_seller:false, closed: false) | Post.where(email: session[:email], read_buyer: false, closed: true)
+
+        puts "the nottificaiton length:"
+        puts @notification.length()
+      end
+    end
+
+    @deal = []
+    tmp = History.where(buyer_id: session[:user_id], read_buyer: false)
+    if tmp != nil and tmp.length() != 0
+      #@deal = []
+      #tmp = Post.where(email:user_email, read_seller:false)
+
+      tmp.each do |p|
+        @deal.append(Post.find_by(id: p.product_id))
+        puts "@deal.item"
       end
 
-      session[:unread_posts].each do |p|
-        """
-        if p.email == session[:email]
-          p.update_attribute(:read_seller, true)
-        else
-          p.update_attribute(:read_buyer, true)
-        end
-        """
-      end
-
+      puts "the deal are"
+      puts @deal[0].id
     end
     #session[:unread_posts] = nil
-
     respond_to do |format|
       format.js
       format.html
     end
+
+    if @notification != nil and @notification.length() > 0
+      @notification.each do |p|
+        #upt = History.find_by(product_id: p.id)
+        #upt.update_attribute(:)
+        #if p.email == session[:email]
+          p.update_attribute(:read_seller, true)
+        #else
+          p.update_attribute(:read_buyer, true)
+        #end
+      end
+    end
+    @unread_posts = Post.where(email: session[:email], read_seller:false) | Post.where(email: session[:email], read_buyer:false)
+    session[:unread_posts] = Post.get_only_id(@unread_posts)
+    if @deal != nil and @deal.length() > 0
+      @deal.each do |p|
+        upt = History.find_by(product_id: p.id)
+        upt.update_attribute(:read_buyer, true)
+      end
+    end
+    session[:deal] = History.where(buyer_id: session[:user_id], read_buyer: false).length()
+    puts "at the end"
   end
 
   def index
@@ -67,9 +93,11 @@ class PostsController < ApplicationController
     # @unread_posts = Array(Post.find_by(id:1))
 
     session[:unread_posts] = Post.get_only_id(@unread_posts)
-
+    session[:deal] = History.where(buyer_id: session[:user_id], read_buyer: false).length()
+    puts "the deal is"
+    puts session[:deal]
     if @unread_posts.length() == 0
-      session[:unread_posts] = nil
+      #session[:unread_posts] = 0
     end
 
     @posts = Post.all
@@ -169,6 +197,9 @@ class PostsController < ApplicationController
         tmp[:current_bid] = post_params[:start_bid]
       end
 
+      tmp[:read_buyer] = true
+      tmp[:read_seller] = true
+
       puts tmp
       puts "categor ys "
       puts post_params[:category]
@@ -218,6 +249,10 @@ class PostsController < ApplicationController
          end
          tmp[:current_bid] = post_params[:start_bid]
        end
+
+       tmp[:read_buyer] = true
+       tmp[:read_seller] = true
+
        puts tmp
 
        @post = Post.find post_params[:id]
