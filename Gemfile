@@ -14,6 +14,7 @@ group :development, :test do
   gem 'ZenTest', '4.11.2'
   gem 'execjs'
   gem 'therubyracer'
+  gem 'kaminari'
 end
 
 group :test do

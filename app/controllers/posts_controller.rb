@@ -12,10 +12,64 @@ class PostsController < ApplicationController
     end
   end
 
+  def ajaxtest
+    puts "this is ajaxtest"
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
+  # method to lable all notifications as read
+  def read_all
+    # Prevent hacker
+    if session[:user_id] == nil
+      redirect_to signin_path and return
+    end
+    @notification = nil
+    #session[:notification] = nil
+    if session[:unread_posts] != nil
+      if session[:unread_posts].length() != 0
+        @notification = Post.where(email: session[:email], read_seller:false) | Post.where(email: session[:email], read_buyer:false)
+        puts "the nottificaiton "
+        #puts @notification.read_seller
+      end
+
+      session[:unread_posts].each do |p|
+        """
+        if p.email == session[:email]
+          p.update_attribute(:read_seller, true)
+        else
+          p.update_attribute(:read_buyer, true)
+        end
+        """
+      end
+
+    end
+    #session[:unread_posts] = nil
+
+    respond_to do |format|
+      format.js
+      format.html
+    end
+  end
+
   def index
     # Prevent hacker
     if session[:user_id] == nil
       redirect_to signin_path and return
+    end
+
+    # Call it every time log in
+    user_id = session[:user_id]
+    user = User.find_by(id:user_id)
+    user_email = user.email
+    @unread_posts = Post.where(email:user_email, read_seller:false) | Post.where(email:user_email, read_buyer:false)
+    # @unread_posts = Array(Post.find_by(id:1))
+
+    session[:unread_posts] = Post.get_only_id(@unread_posts)
+
+    if @unread_posts.length() == 0
+      session[:unread_posts] = nil
     end
 
     @posts = Post.all
@@ -69,17 +123,18 @@ class PostsController < ApplicationController
       end
     end
     @posts = res
+    @posts = Kaminari.paginate_array(@posts, total_count: @posts.count).page(params[:page]).per(6)
   end
 
   def new
     # default: render 'new' template
-    if session[:user_id] == nil
-      redirect_to signin_path and return
+    if session[:user_id] != nil
+      #redirect_to signin_path and return
+      user_id = session[:user_id]
+      user = User.find_by(id:user_id)
+      @user_name = user.fname+ " " +user.lname
+      @user_email = user.email
     end
-    user_id = session[:user_id]
-    user = User.find_by(id:user_id)
-    @user_name = user.fname+ " " +user.lname
-    @user_email = user.email
   end
 
   def create
@@ -135,7 +190,7 @@ class PostsController < ApplicationController
        if post_params[:price].length > 0
          if post_params[:price].to_f < post_params[:start_bid].to_f
            flash[:notice] = "Price should be greater than the bidding price."
-           redirect_to new_post_path and return
+           redirect_to "/edit_post?id="+post_params[:id].to_s  and return
          end
        end
        bidder = Bid.find_by(product_id: post_params[:id])
@@ -194,13 +249,13 @@ class PostsController < ApplicationController
     # opts = {}
     # opts["item"] = params[:item] if params[:item].present?
     # opts["price"] = params[:item] if params[:price].present?
-    @posts = Post.where(email:user_email,closed:false)
+    @posts = Post.where(email:user_email,closed:false).page(params[:page]).per(6)
   end
 
   private
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.
   def post_params
-    params.require(:post).permit(:item, :description, :price, :user, :email, :start_bid, :id, :category)
+    params.require(:post).permit(:image, :item, :description, :price, :user, :email, :start_bid, :id, :category)
   end
 end
