@@ -1,0 +1,67 @@
+<!--  This file is app/views/posts/index.html.erb -->
+<h2>All Posts</h2>
+
+<%= form_tag posts_path, method: :get, id: 'filter_form' do %>
+  <% @all_categories.each do |category| %>
+    <div class="form-check  form-check-inline">
+      <%= label_tag "categories[#{category}]", category, class: 'form-check-label' %>
+      <%= check_box_tag "categories[#{category}]", "1",  @categories_to_show.include?(category), class: 'form-check-input' %>
+    </div>
+  <% end %>
+  <label for="keyword_form">Search:</label>
+  <input type="text" id="keyword" name="keyword">
+  <label for="min_price_form">MIN:</label>
+  <input type="text" id="min_price" name="min_price">
+  <label for="max_price_form">MAX:</label>
+  <input type="text" id="max_price" name="max_price">
+  <%= submit_tag 'Refresh', id: 'categories_submit', class: 'btn btn-primary'%>
+<% end %>
+
+<% if false %>
+<%= session[:user_id] %>
+<br>
+<%= image_tag session[:image] %>
+<%= form_for @user, html: { multipart: true } do |form| %>
+<%= form.label :image%>
+  <%= form.file_field :image%>
+  <%= form.submit %>
+<% end %>
+<% end %>
+<br>
+<div class="container">
+  <div class="row">
+    <% @posts.each do |post| %>
+      <% if !post.closed   %>
+        <div class="col-md-4  mb-4   d-flex align-items-stretch">
+          <div class="card" style="width: 22rem;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title"><%= post.item %></h5>
+              <p class="card-text"><%= post.description %></p>
+              <div class="mt-auto">
+              <br>
+              <% if post.bid %>
+              <% if post.start_bid == post.current_bid and Bid.find_by(product_id: post.id) == nil %>
+                  <div class="card-text ">Starting Bid: <b>$<%= post.start_bid %> </b>
+              <% else %>
+                  <div class="card-text ">Current Bid: <b>$<%= post.current_bid %>  &nbsp; <a href='/bids/history/<%= post.id %>'> Bid History </a></b>
+              <% end %>
+                </div>
+              <% end %>
+              <% if post.buy_now %>
+                <div class="card-text ">Price: <b>$<%= post.price %> </b> </div>
+              <% end %>
+              <br>
+              <div class="center">
+               <%= link_to "See details", post_path(post), :class => 'btn btn-info',:name=>"posting#{post.id}", :id => "posting#{post.id}" %>
+               </div>
+              </div>
+        <!--      <a href="#" class="btn btn-primary mt-auto  align-self-start">Go somewhere</a> -->
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!-- %= link_to 'Add new post', new_post_path, :class => 'btn btn-primary' % -->

@@ -12,7 +12,6 @@ class HistoryController < ApplicationController
             h.seller =  @current_post.user
             h.item =  @current_post.item
         end
-        @buy_histories = Kaminari.paginate_array(@buy_histories, total_count: @buy_histories.count).page(params[:page]).per(6)
     end
 
     def sell
@@ -39,7 +38,6 @@ class HistoryController < ApplicationController
                 end
             end
         end
-        @posts = Kaminari.paginate_array(@posts, total_count: @posts.count).page(params[:page]).per(6)
     end
 
 end
