@@ -14,7 +14,6 @@ group :development, :test do
   gem 'ZenTest', '4.11.2'
   gem 'execjs'
   gem 'therubyracer'
-  gem 'kaminari'
 end
 
 group :test do
@@ -35,3 +34,4 @@ gem 'jquery-rails'
 gem "image_processing", ">= 1.2"
 gem "paperclip", "~> 6.0.0"
 gem 'rails_12factor'
+gem 'kaminari'
