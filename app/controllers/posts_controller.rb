@@ -1,11 +1,9 @@
 class PostsController < ApplicationController
 
   def show
-    """
     if session[:user_id] == nil
       redirect_to signin_path and return
     end
-    """
     @item = Post.find_by(id: params[:id])
     @history = History.find_by(product_id: params[:id])
     @buyer = nil
