@@ -81,6 +81,23 @@ For **Project Iteration 2**, we have identified our main features, as follows:
 
 
 
+For **Project Launch**, we have identified our complete features, as follows:
+
+### Pagination 
+
+- Users can browse through difference pages with our order history, selling summary and home features
+
+### Image
+
+- Users now can upload images when making posts for their selling items
+
+### Notification 
+
+- Sellers are notified either when someone bids on his/her active items, or someone directly use "buy it now" to acquire the items
+- Buyers are notified when his/her bids are accepted by the corresponding sellers
+
+
+
 ### Setup Your Working Environment
 
 ```
