@@ -15,7 +15,6 @@
       <% end %>
       <% if @deal != nil &&  @deal.length() != 0 %>
         <% @deal.each do |p| %>
-        <%= p.read_buyer =%>
             <li><a class="dropdown-item" href="#">Deal Accepted : <b>  <%= p.item =%> <b>  </a></li>
         <% end %>
       <% end %>

@@ -6,13 +6,13 @@ RSpec.describe PostsController, :type => :controller do
       if User.where(:email => "125@columbia.edu").empty?
       @tmp =  User.create(:password => "123",:password_confirmation =>"123", :email => "125@columbia.edu", :fname => "PG", :lname => "gfhhfh")
       end
-    @product_id =  Post.create(:item => 'Laptop SAMSUNG', :description => 'Used laptop 2015 good condition', :price => '800', :user => 'JohnHarrison', :email => 'jh4142@columbia.edu', :category => 'Electronics')
-      Post.create(:item => 'Queen size bed frame', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'SamAlexander', :email => 'sa6156@columbia.edu', :category => 'Bedding')
-    @product2 =  Post.create(:item => 'CALCULUS Textbooks', :description => 'Textbooks for freshman to senior year', :price => '10', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education', :buy_now => true, :bid => true, :start_bid => "10", :current_bid => "11", :closed => false)
-      @product3 =  Post.create(:item => 'ALEXA DEVICE', :description => 'Textbooks for freshman to senior year', :price => '10', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education', :buy_now => true, :bid => true, :start_bid => "10", :current_bid => "10", :closed => false)
+    @product_id =  Post.create(:item => 'Laptop SAMSUNG', :description => 'Used laptop 2015 good condition', :price => '800', :user => 'JohnHarrison', :email => 'jh4142@columbia.edu', :category => 'Electronics', :read_seller => false, :read_buyer =>false)
+      Post.create(:item => 'Queen size bed frame', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'SamAlexander', :email => 'sa6156@columbia.edu', :category => 'Bedding', :read_seller => false, :read_buyer =>false)
+    @product2 =  Post.create(:item => 'CALCULUS Textbooks', :description => 'Textbooks for freshman to senior year', :price => '10', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education', :buy_now => true, :bid => true, :start_bid => "10", :current_bid => "11", :closed => false, :read_seller => false, :read_buyer =>false)
+      @product3 =  Post.create(:item => 'ALEXA DEVICE', :description => 'Textbooks for freshman to senior year', :price => '10', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education', :buy_now => true, :bid => true, :start_bid => "10", :current_bid => "10", :closed => false, :read_seller => false, :read_buyer =>false)
       Bid.create(:product_id => @product2.id , :user_id => "3"  , :bid => "11")
-      @product4 = Post.create(:item => 'pencil sharpener', :description => 'Textbooks for freshman to senior year', :price => '500', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education', :buy_now => true, :bid => true, :start_bid => "10", :current_bid => "10", :closed => true)
-      History.create({:product_id => @product4.id,  :buyer_id => @tmp.id, :price => "500"})
+      @product4 = Post.create(:item => 'pencil sharpener', :description => 'Textbooks for freshman to senior year', :price => '500', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education', :buy_now => true, :bid => true, :start_bid => "10", :current_bid => "10", :closed => true, :read_seller => false, :read_buyer =>false)
+      History.create({:product_id => @product4.id,  :buyer_id => @tmp.id, :price => "500",:read_buyer => false})
     end
 
     describe "delete a post" do
@@ -91,6 +91,7 @@ RSpec.describe PostsController, :type => :controller do
     describe "Valid input" do
       it "Valid input for min range and max range" do
         session[:user_id] = "1"
+        session[:email] =  @product3.email
         get :index, {:min_price => "100" , :max_price => "200"}
         response.should render_template :index
       end
@@ -118,6 +119,14 @@ RSpec.describe PostsController, :type => :controller do
         get :index, {:min_price => "200", :max_price => "100"}
         expect(flash[:notice]).to match(/Invalid price range/)
         expect(response).to redirect_to posts_path
+      end
+    end
+
+    describe "see notification" do
+      it "Click the notification" do
+        session[:user_id] = nil
+        session[:email] =  @product4.email
+        get :read_all, xhr: true
       end
     end
 

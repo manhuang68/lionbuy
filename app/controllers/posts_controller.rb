@@ -12,73 +12,37 @@ class PostsController < ApplicationController
     end
   end
 
-  def ajaxtest
-    puts "this is ajaxtest"
-    respond_to do |format|
-      format.js
-      format.html
-    end
-  end
   # method to lable all notifications as read
   def read_all
-    # Prevent hacker
-    if session[:user_id] == nil
-      redirect_to signin_path and return
-    end
-    @notification = nil
+    #@notification = nil
     #session[:notification] = nil
-    if session[:unread_posts] != nil
-      if session[:unread_posts].length() != 0
-        @notification = Post.where(email: session[:email], read_seller:false, closed: false) | Post.where(email: session[:email], read_buyer: false, closed: true)
-
-        puts "the nottificaiton length:"
-        puts @notification.length()
-      end
-    end
-
+    #if session[:unread_posts] != nil and session[:unread_posts].length() != 0
+    @notification = Post.where(email: session[:email], read_seller:false, closed: false) | Post.where(email: session[:email], read_buyer: false, closed: true)
+      #  puts "the nottificaiton length:"
+      #  puts @notification.length()
+    #end
     @deal = []
     tmp = History.where(buyer_id: session[:user_id], read_buyer: false)
-    if tmp != nil and tmp.length() != 0
+    tmp.each { |p|  @deal.append(Post.find_by(id: p.product_id)) } if tmp != nil and tmp.length() != 0
       #@deal = []
       #tmp = Post.where(email:user_email, read_seller:false)
 
-      tmp.each do |p|
-        @deal.append(Post.find_by(id: p.product_id))
-        puts "@deal.item"
-      end
-
-      puts "the deal are"
-      puts @deal[0].id
-    end
-    #session[:unread_posts] = nil
-    respond_to do |format|
-      #puts "format is"
-      #puts format.js
-      format.js
-      format.html
-    end
+      #  puts "@deal.item"}
+    #end
+    respond_to{ |format| format.html { render '_read_all.html.erb' }
+      format.js { render 'read_all.js.erb' }}
 
     if @notification != nil and @notification.length() > 0
-      @notification.each do |p|
-        #upt = History.find_by(product_id: p.id)
-        #upt.update_attribute(:)
-        #if p.email == session[:email]
-          p.update_attribute(:read_seller, true)
-        #else
+      @notification.each{ |p|  p.update_attribute(:read_seller, true)
           p.update_attribute(:read_buyer, true)
-        #end
-      end
+      }
     end
     @unread_posts = Post.where(email: session[:email], read_seller:false) | Post.where(email: session[:email], read_buyer:false)
     session[:unread_posts] = Post.get_only_id(@unread_posts)
-    if @deal != nil and @deal.length() > 0
-      @deal.each do |p|
-        upt = History.find_by(product_id: p.id)
-        upt.update_attribute(:read_buyer, true)
-      end
-    end
+     @deal.each{ |p|  History.find_by(product_id: p.id).update_attribute(:read_buyer, true) } if @deal != nil and @deal.length() > 0
+
+  #  end
     session[:deal] = History.where(buyer_id: session[:user_id], read_buyer: false).length()
-    puts "at the end"
   end
 
   def index
@@ -90,7 +54,7 @@ class PostsController < ApplicationController
     # Call it every time log in
     user_id = session[:user_id]
     user = User.find_by(id:user_id)
-    user_email = user.email
+    user_email = session[:email]
     @unread_posts = Post.where(email:user_email, read_seller:false) | Post.where(email:user_email, read_buyer:false)
     # @unread_posts = Array(Post.find_by(id:1))
 
@@ -149,7 +113,7 @@ class PostsController < ApplicationController
     res = []
     @posts.each do |post|
       # Price filter
-      if post.with_price_range(@min_price, @max_price)
+      if post.with_price_range(@min_price, @max_price) and post.closed == false
         res.append(post)
       end
     end

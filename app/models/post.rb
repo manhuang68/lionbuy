@@ -20,9 +20,6 @@ class Post < ActiveRecord::Base
         if self.price.to_f.between?(min_price, max_price)
             return true
         end
-        if self.start_bid.to_f.between?(min_price, max_price)
-            return true
-        end
 
         return false
     end

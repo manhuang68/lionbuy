@@ -24,12 +24,12 @@ Background: users in database
   Then I should be on the post page
 
   Given the following posts exist:
-  | item                            | description                              | price  | user              | email               | category |
-  | Laptop MAC	                    | Used laptop 2015 good condition	       | 800    | JohnHarrison      | jh4142@columbia.edu | Electronics |
-  | Queen size bed frame		    | Metal Platform Bed Frame with Headboard  | 120    | JohnHarrison      | jh4142@columbia.edu | Bedding |
-  | Chemical Engineering Textbooks  | Textbooks for freshman to senior year	   | 10     | MikeMckenzie      | jh4142@columbia.edu | Education |
-  | Air Purifier		            | Brand new. Morningside campus only       | 15     | ShuyuWang         | sw4231@columbia.edu | Electronics |
-  | Desk Lamp			            | 3 brightness levels, light bulb included | 25     | JenniferLee       | jl4152@columbia.edu |Electronics |
+  | item                            | description                              | price  | user              | email               | category | closed | read_seller | read_buyer |
+  | Laptop MAC	                    | Used laptop 2015 good condition	       | 800    | JohnHarrison      | jh4142@columbia.edu | Electronics | false | false | false |
+  | Queen size bed frame		    | Metal Platform Bed Frame with Headboard  | 120    | JohnHarrison      | jh4142@columbia.edu | Bedding |  false | false | false |
+  | Chemical Engineering Textbooks  | Textbooks for freshman to senior year	   | 10     | MikeMckenzie      | jh4142@columbia.edu | Education |  false |  false | false |
+  | Air Purifier		            | Brand new. Morningside campus only       | 15     | ShuyuWang         | sw4231@columbia.edu | Electronics |  false | false | false |
+  | Desk Lamp			            | 3 brightness levels, light bulb included | 25     | JohnHo       | 123@columbia.edu |Electronics |  false | false | false |
 
 Scenario: restrict to movies with "Electronics" or "Education" categories
     Given I uncheck the following categories: Bedding
@@ -40,6 +40,7 @@ Scenario: restrict to movies with "Electronics" or "Education" categories
     Then I should see "Laptop MAC"
     Then I should see "Desk Lamp"
     Then I should not see "Queen size bed frame"
+    Then I follow "notifications"
 
 Scenario: all categories selected
     Given I check the following categories: Electronics, Education, Bedding

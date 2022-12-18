@@ -36,8 +36,8 @@ When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
 end
 Given /that I wait/ do
-  page.execute_script("$(#notification).click();")
-#  sleep 3
+#  page.execute_script("$(#notification).trigger('click');")
+  sleep 5
 end
 # Multi-line step scoper
 When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
