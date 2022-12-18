@@ -93,7 +93,7 @@ For **Project Launch**, we have identified our complete features, as follows:
 
 ### Notification 
 
-- Sellers are notified either when someone bids on his/her active items, or someone directly use "buy it now" to acquire the items
+- Sellers are notified when either someone bids on his/her active items, or someone directly use "buy it now" to acquire the items
 - Buyers are notified when his/her bids are accepted by the corresponding sellers
 
 
