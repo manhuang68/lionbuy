@@ -67,13 +67,9 @@ $(document).ready(function(){
         add_checkout()
       });
   });
-
-
-
 })
 
 function add_checkout(){
-$('#torta').html("<div>ejemplo</div>");
 //  alert("testing")
   $.ajax({
       url: "/ajaxtest",

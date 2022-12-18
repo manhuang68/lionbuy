@@ -10,14 +10,6 @@
     <%= stylesheet_link_tag 'application', 'media' => 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
-    <script>
-$(document).ready(function(){
-  $("#not").click(function() {
-  //  window.location.href = '/logout';
-    $('#torta').html("<div>ejemplo</div>");
-  })
-});
-</script>
   </head>
   <body>
 
@@ -66,7 +58,7 @@ $(document).ready(function(){
                         <li><a class="dropdown-item" href="#">Message</a></li>
                       <% end %>
                       <% else %>
-                        <li><a class="dropdown-item" href="#">There are no new notifications yy</a></li>
+                        <li><a class="dropdown-item" href="#">There are no new notifications</a></li>
                     <% end %>
                   </ul>
                 </div>
