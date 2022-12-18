@@ -35,7 +35,10 @@ World(WithinHelpers)
 When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
 end
-
+Given /that I wait/ do
+  page.execute_script("$(#notification).click();")
+#  sleep 3
+end
 # Multi-line step scoper
 When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
   with_scope(parent) { When "#{step}:", table_or_string }

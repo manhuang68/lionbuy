@@ -10,6 +10,14 @@
     <%= stylesheet_link_tag 'application', 'media' => 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
+    <script>
+$(document).ready(function(){
+  $("#not").click(function() {
+  //  window.location.href = '/logout';
+    $('#torta').html("<div>ejemplo</div>");
+  })
+});
+</script>
   </head>
   <body>
 
@@ -43,21 +51,21 @@
             <li>
               <div id="remove_read" class="dropdown">
                 <% if session[:unread_posts].length() > 0 or session[:deal] > 0  %>
-                  <button type="button" class="btn btn-danger rounded-pill dropdown-toggle" id="reader" data-bs-toggle="dropdown">
+                  <input type="button" class="btn btn-danger rounded-pill dropdown-toggle" id="reader" data-bs-toggle="dropdown">
                         <span class="badge bg-danger center"> <i class="fa fa-bell" style="font-size:16px;color:light-blue">
                  <% else %>
-                   <button type="button" class="btn btn-success rounded-pill dropdown-toggle" id="reader" data-bs-toggle="dropdown">
+                   <input type="button" class="btn btn-success rounded-pill dropdown-toggle" id="reader" data-bs-toggle="dropdown">
                           <span class="badge bg-success center"> <i class="fa fa-bell" style="font-size:16px;color:light-blue">
                  <% end %>
                  <% if session[:unread_posts] != nil and session[:deal] != nil %> <%= session[:unread_posts].length() + session[:deal] %>  <% end %> </i></span>
-                </button>
+
                   <ul class="dropdown-menu">
                     <% if session[:unread_posts] != nil && session[:unread_posts].length() != 0 %>
                       <% session[:unread_posts].each do |p| %>
                         <li><a class="dropdown-item" href="#">Message</a></li>
                       <% end %>
                       <% else %>
-                        <li><a class="dropdown-item" href="#">There are no new notifications</a></li>
+                        <li><a class="dropdown-item" href="#">There are no new notifications yy</a></li>
                     <% end %>
                   </ul>
                 </div>

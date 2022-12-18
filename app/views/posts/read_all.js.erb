@@ -1,4 +1,16 @@
 $('#remove_read').html("");
 //alert("testing")
+$('#torta').html("<div>ejemplo</div>");
 $('#remove_read').html("<%= j (render 'read_all') %>");
-$("#reader2").click();
+$("#reader").click();
+$(function () {
+   $("#reader").click(function () {
+     $.ajax({
+         url: "/ajaxtest",
+         data : {
+           passing: "true"
+         },
+         dataType: "script",
+     });
+   });
+});

@@ -1,5 +1,9 @@
 <!--  This file is app/views/posts/index.html.erb -->
 <h2>All Posts</h2>
+
+<a id="notification" href="#">Notification</a>
+<%= link_to "celular", "ajaxtest", remote: true %>
+<div id="torta"></div>
 <%= form_tag posts_path, method: :get, id: 'filter_form' do %>
   <% @all_categories.each do |category| %>
     <div class="form-check  form-check-inline">
@@ -34,7 +38,7 @@
       <% if !post.closed   %>
         <div class="col-md-4  mb-4   d-flex align-items-stretch">
           <div class="card" style="width: 22rem;">
-      
+
             <div class="card-body d-flex flex-column">
               <h5 class="card-title"><%= post.item %></h5>
               <p class="card-text"><%= post.description %></p>

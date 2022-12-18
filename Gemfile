@@ -35,3 +35,5 @@ gem "image_processing", ">= 1.2"
 gem "paperclip", "~> 6.0.0"
 gem 'rails_12factor'
 gem 'kaminari'
+#gem 'selenium-webdriver'
+gem 'aws-sdk', '~> 2.3'

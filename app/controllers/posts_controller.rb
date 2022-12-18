@@ -52,6 +52,8 @@ class PostsController < ApplicationController
     end
     #session[:unread_posts] = nil
     respond_to do |format|
+      #puts "format is"
+      #puts format.js
       format.js
       format.html
     end

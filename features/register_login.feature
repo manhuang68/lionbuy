@@ -40,6 +40,9 @@ Scenario: Login to existing account and then sign in to another account
   And  I press "Sign in"
   Then I should be on the post page
   Then I should see "Welcome Anabel Ho"
+  And I follow "celular"
+  Then I should see "ejemplo"
+  Then I should see "There are no new notifications yy"
 
 Scenario: Register with a existing account and flash an error
   Given I am on the signup page

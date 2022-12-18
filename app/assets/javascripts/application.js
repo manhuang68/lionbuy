@@ -68,10 +68,13 @@ $(document).ready(function(){
       });
   });
 
+
+
 })
 
 function add_checkout(){
-
+$('#torta').html("<div>ejemplo</div>");
+//  alert("testing")
   $.ajax({
       url: "/ajaxtest",
       data : {
@@ -79,4 +82,6 @@ function add_checkout(){
       },
       dataType: "script",
   });
+
+
 }
