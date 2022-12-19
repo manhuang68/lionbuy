@@ -12,7 +12,7 @@
     <h2>Create New Post</h2>
   </div>
   <div class="wrapper">
-    <form method="POST" action="/create_posts">
+    <form method="POST" action="/create_posts" enctype="multipart/form-data">
       <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
       <input type="text" hidden name="post[user]" value="<%= @user_name %>">
       <input type="text" hidden name="post[email]" value="<%= @user_email %>">
@@ -68,6 +68,9 @@
       <br>
     </div>
     <small class="text-danger"><b class="">Note:</b> Leaving empty on the price and bid at the same time will set the minimum price $1.</small>
+    <br><br>
+    <label for="user_image">Image :</label>
+    <input type="file" name="post[image]" id="user_image">
     <br><br>
       <button class= 'btn btn-primary'  type="submit" name="submit" class="submit">Create</button>
     </form>

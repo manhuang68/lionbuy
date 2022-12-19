@@ -14,22 +14,19 @@ class OrdersController < ApplicationController
         redirect_to post_path(@post) and return
       end
 
-      ordering = {:product_id => @post.id,  :buyer_id => session[:user_id], :price => @price}
+      ordering = {:product_id => @post.id,  :buyer_id => session[:user_id], :price => @price, :read_buyer => true}
       History.create!(ordering)
 
       #save selling history
-    #  @seller = User.find_by(email: @post.email)
-    #  selling = {:product_id => @post.id,  :seller_id => @seller.id, :price => @post.price}
-      #SellHistory.create!(selling)
+      # @seller = User.find_by(email: @post.email)
+      # selling = {:product_id => @post.id,  :seller_id => @seller.id, :price => @post.price}
+      # SellHistory.create!(selling)
       @post.update_attribute(:closed, true)
+      @post.update_attribute(:read_buyer, false)
+
       flash[:notice] = "Your order for "+ @post.item + " has been placed!"
       redirect_to order_history_path
     end
-  end
-
-  def update
-#    @post = Post.find_by(id: params[:id])
-#    @post.update_attribute(:closed, false)
   end
 
   def accept_bid
@@ -40,11 +37,14 @@ class OrdersController < ApplicationController
       @sorted = Bid.sorting(order_params[:product_id])
       puts @sorted[0]
 
-      ordering = {:product_id => @sorted[0].product_id, :buyer_id => @sorted[0].user_id, :price => @sorted[0].bid}
+      ordering = {:product_id => @sorted[0].product_id, :buyer_id => @sorted[0].user_id, :price => @sorted[0].bid, :read_buyer => false}
       History.create!(ordering)
       puts ordering
 
       @post.update_attribute(:closed, true)
+      #@post.update_attribute(:read_buyer, false)
+
+
       flash[:notice] = "You accepted the deal for "+ @post.item + " !"
       redirect_to selling_history_path
     end

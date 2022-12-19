@@ -37,8 +37,9 @@ class UsersController < ApplicationController
     #puts "tt"
     #puts user_params
     r = user_params.except(:password_confirmation)
-    #puts r
+    puts r
     user = User.create(r)
+    puts user
     if user.save
       session[:user_id] = user.id
       session[:fname] = user.fname

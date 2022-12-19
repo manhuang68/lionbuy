@@ -1,8 +1,8 @@
 # Project Iteration 1
 
-Feature: Post Display 
+Feature: Post Display
 
-  Here it shows how our users can find posts they like 
+  Here it shows how our users can find posts they like
   by either categorizing, searcing, or filtering
 
 Background: users in database
@@ -24,15 +24,15 @@ Background: users in database
   Then I should be on the post page
 
   Given the following posts exist:
-  | item                            | description                              | price  | user              | email               | category |
-  | Laptop MAC	                    | Used laptop 2015 good condition	       | 800    | JohnHarrison      | jh4142@columbia.edu | Electronics |
-  | Queen size bed frame		    | Metal Platform Bed Frame with Headboard  | 120    | JohnHarrison      | jh4142@columbia.edu | Bedding |
-  | Chemical Engineering Textbooks  | Textbooks for freshman to senior year	   | 10     | MikeMckenzie      | jh4142@columbia.edu | Education |
-  | Air Purifier		            | Brand new. Morningside campus only       | 15     | ShuyuWang         | sw4231@columbia.edu | Electronics |
-  | Desk Lamp			            | 3 brightness levels, light bulb included | 25     | JenniferLee       | jl4152@columbia.edu |Electronics |
+  | item                            | description                              | price  | user              | email               | category | closed | read_seller | read_buyer |
+  | Laptop MAC	                    | Used laptop 2015 good condition	       | 800    | JohnHarrison      | jh4142@columbia.edu | Electronics | false | false | false |
+  | Queen size bed frame		    | Metal Platform Bed Frame with Headboard  | 120    | JohnHarrison      | jh4142@columbia.edu | Bedding |  false | false | false |
+  | Chemical Engineering Textbooks  | Textbooks for freshman to senior year	   | 10     | MikeMckenzie      | jh4142@columbia.edu | Education |  false |  false | false |
+  | Air Purifier		            | Brand new. Morningside campus only       | 15     | ShuyuWang         | sw4231@columbia.edu | Electronics |  false | false | false |
+  | Desk Lamp			            | 3 brightness levels, light bulb included | 25     | JohnHo       | 123@columbia.edu |Electronics |  false | false | false |
 
 Scenario: restrict to movies with "Electronics" or "Education" categories
-    Given I uncheck the following categories: Bedding 
+    Given I uncheck the following categories: Bedding
     And I check the following categories: Electronics, Education
     When I press "Refresh"
     Then I should see "Chemical Engineering Textbooks"
@@ -40,13 +40,14 @@ Scenario: restrict to movies with "Electronics" or "Education" categories
     Then I should see "Laptop MAC"
     Then I should see "Desk Lamp"
     Then I should not see "Queen size bed frame"
+    Then I follow "notifications"
 
 Scenario: all categories selected
     Given I check the following categories: Electronics, Education, Bedding
     When I press "Refresh"
     Then I should see all the posts
 
-Scenario: search with empty keyword 
+Scenario: search with empty keyword
     When I fill in "keyword" with ""
     And I press "Refresh"
     Then I should see all the posts
@@ -82,6 +83,12 @@ Scenario: set MAX price range as 100 only
 
 Scenario: set price range as invalid strings
     When I fill in "max_price" with "hello"
+    And I press "Refresh"
+    Then I should see "Invalid price range"
+
+Scenario: set price range as invalid strings
+    When I fill in "max_price" with "100"
+    And I fill in "min_price" with "200"
     And I press "Refresh"
     Then I should see "Invalid price range"
 

@@ -33,3 +33,9 @@ gem 'uglifier', '>= 2.7.1'
 gem 'jquery-rails'
 gem "image_processing", ">= 1.2"
 gem "paperclip", "~> 6.0.0"
+gem 'rails_12factor'
+gem 'kaminari'
+gem 'selenium-webdriver'
+gem 'webdrivers'
+#gem 'aws-sdk', '~> 2.3'
+#gem 'aws-sdk-s3', '~> 1.0.0.rc1'

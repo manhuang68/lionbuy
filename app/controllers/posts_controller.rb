@@ -12,10 +12,59 @@ class PostsController < ApplicationController
     end
   end
 
+  # method to lable all notifications as read
+  def read_all
+    #@notification = nil
+    #session[:notification] = nil
+    #if session[:unread_posts] != nil and session[:unread_posts].length() != 0
+    @notification = Post.where(email: session[:email], read_seller:false, closed: false) | Post.where(email: session[:email], read_buyer: false, closed: true)
+      #  puts "the nottificaiton length:"
+      #  puts @notification.length()
+    #end
+    @deal = []
+    tmp = History.where(buyer_id: session[:user_id], read_buyer: false)
+    tmp.each { |p|  @deal.append(Post.find_by(id: p.product_id)) } if tmp != nil and tmp.length() != 0
+      #@deal = []
+      #tmp = Post.where(email:user_email, read_seller:false)
+
+      #  puts "@deal.item"}
+    #end
+    respond_to{ |format| format.html { render '_read_all.html.erb' }
+      format.js { render 'read_all.js.erb' }}
+
+    if @notification != nil and @notification.length() > 0
+      @notification.each{ |p|  p.update_attribute(:read_seller, true)
+          p.update_attribute(:read_buyer, true)
+      }
+    end
+    @unread_posts = Post.where(email: session[:email], read_seller:false) | Post.where(email: session[:email], read_buyer:false)
+    session[:unread_posts] = Post.get_only_id(@unread_posts)
+     @deal.each{ |p|  History.find_by(product_id: p.id).update_attribute(:read_buyer, true) } if @deal != nil and @deal.length() > 0
+
+  #  end
+    session[:deal] = History.where(buyer_id: session[:user_id], read_buyer: false).length()
+  end
+
   def index
     # Prevent hacker
     if session[:user_id] == nil
       redirect_to signin_path and return
+    end
+
+    # Call it every time log in
+    user_id = session[:user_id]
+    user = User.find_by(id:user_id)
+    user_email = session[:email]
+    @unread_posts = Post.where(email:user_email, read_seller:false) | Post.where(email:user_email, read_buyer:false)
+    # @unread_posts = Array(Post.find_by(id:1))
+
+    session[:unread_posts] = Post.get_only_id(@unread_posts)
+    session[:deal] = History.where(buyer_id: session[:user_id], read_buyer: false).length()
+    puts "the deal is"
+    puts session[:deal]
+    if @unread_posts == nil or @unread_posts.length() == 0
+      #session[:unread_posts] = 0
+      session[:unread_posts] = []
     end
 
     @posts = Post.all
@@ -64,22 +113,23 @@ class PostsController < ApplicationController
     res = []
     @posts.each do |post|
       # Price filter
-      if post.with_price_range(@min_price, @max_price)
+      if post.with_price_range(@min_price, @max_price) and post.closed == false
         res.append(post)
       end
     end
     @posts = res
+    @posts = Kaminari.paginate_array(@posts, total_count: @posts.count).page(params[:page]).per(6)
   end
 
   def new
     # default: render 'new' template
-    if session[:user_id] == nil
-      redirect_to signin_path and return
+    if session[:user_id] != nil
+      #redirect_to signin_path and return
+      user_id = session[:user_id]
+      user = User.find_by(id:user_id)
+      @user_name = user.fname+ " " +user.lname
+      @user_email = user.email
     end
-    user_id = session[:user_id]
-    user = User.find_by(id:user_id)
-    @user_name = user.fname+ " " +user.lname
-    @user_email = user.email
   end
 
   def create
@@ -115,6 +165,9 @@ class PostsController < ApplicationController
         tmp[:current_bid] = post_params[:start_bid]
       end
 
+      tmp[:read_buyer] = true
+      tmp[:read_seller] = true
+
       puts tmp
       puts "categor ys "
       puts post_params[:category]
@@ -135,7 +188,7 @@ class PostsController < ApplicationController
        if post_params[:price].length > 0
          if post_params[:price].to_f < post_params[:start_bid].to_f
            flash[:notice] = "Price should be greater than the bidding price."
-           redirect_to new_post_path and return
+           redirect_to "/edit_post?id="+post_params[:id].to_s  and return
          end
        end
        bidder = Bid.find_by(product_id: post_params[:id])
@@ -164,6 +217,10 @@ class PostsController < ApplicationController
          end
          tmp[:current_bid] = post_params[:start_bid]
        end
+
+       tmp[:read_buyer] = true
+       tmp[:read_seller] = true
+
        puts tmp
 
        @post = Post.find post_params[:id]
@@ -194,13 +251,13 @@ class PostsController < ApplicationController
     # opts = {}
     # opts["item"] = params[:item] if params[:item].present?
     # opts["price"] = params[:item] if params[:price].present?
-    @posts = Post.where(email:user_email,closed:false)
+    @posts = Post.where(email:user_email,closed:false).page(params[:page]).per(6)
   end
 
   private
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.
   def post_params
-    params.require(:post).permit(:item, :description, :price, :user, :email, :start_bid, :id, :category)
+    params.require(:post).permit(:image, :item, :description, :price, :user, :email, :start_bid, :id, :category)
   end
 end

@@ -1,0 +1,25 @@
+<div>
+  <button type="button" class="btn btn-success rounded-pill dropdown-toggle" id="reader" data-bs-toggle="dropdown">
+    <span class="badge bg-sucess center"> <i class="fa fa-bell" style="font-size:16px;color:light-blue"> <% if session[:unread_posts] != nil %> <%= session[:unread_posts].length() =%> <% end %> </i></span>
+  </button>
+    <ul class="dropdown-menu">
+      <% if @notification  != nil && @notification.length() != 0 %>
+        <% @notification.each do |p| %>
+          <% if p.read_seller == false and p.closed == false %>
+            <li><a class="dropdown-item" href="#">New bid : <%= p.item =%> </a></li>
+          <% end %>
+          <% if p.read_buyer == false and p.closed == true %>
+            <li><a class="dropdown-item" href="#">New Order : <b>  <%= p.item =%> <b>  </a></li>
+          <% end %>
+        <% end %>
+      <% end %>
+      <% if @deal != nil &&  @deal.length() != 0 %>
+        <% @deal.each do |p| %>
+            <li><a class="dropdown-item" href="#">Deal Accepted : <b>  <%= p.item =%> <b>  </a></li>
+        <% end %>
+      <% end %>
+      <% if (@deal == nil or  @deal.length() == 0) and (@notification  == nil or @notification.length() == 0)  %>
+            <li><a class="dropdown-item" href="#">There are no new notifications</a></li>
+      <% end %>
+    </ul>
+</div>

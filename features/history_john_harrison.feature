@@ -32,7 +32,7 @@ Background: users in database
 
   Given that I insert the following data to history table product name "Laptop MAC" , buyer "anabel@barnard.edu" , price "800"
 
-Scenario: See the sell history
+Scenario: See the sell history and see the details page
         When I follow "Selling summary"
         Then I should see "Buyer"
         Then I should see "AnabelHo"
@@ -40,17 +40,15 @@ Scenario: See the sell history
         Then I should see "800"
         Then I should see "Laptop MAC"
         Then I should not see "Desk Lamp"
-        And I follow "Back to Post list"
-        Then I should be on the post page
+        And I follow "See details"
+        Then I should see "You sold this Item !"
 
 Scenario: See the order history
         When I follow "Order history"
         Then I should not see "Desk Lamp"
-        Then I should see "Item id"
+        Then I should see "Item Name"
         Then I should see "Deal Price"
         Then I should see "Seller"
         Then I should see "Time"
         And I follow "Back to Post list"
         Then I should be on the post page
-
-

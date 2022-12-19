@@ -8,6 +8,7 @@ RSpec.describe BidsController, type: :controller do
     Post.create(:item => 'Laptop TOSHIBA', :description => 'Used laptop 2015 good condition', :price => '800', :user => 'JohnHarrison', :email => 'jh4142@columbia.edu', :category => 'Electronics', :buy_now => true, :bid => false, :start_bid => '', :current_bid => '')
     Post.create(:item => 'Queen size bed frameswork', :description => 'Metal Platform Bed Frame with Headboard', :price => '120', :user => 'SamAlexander', :email => 'sa6156@columbia.edu', :category => 'Bedding', :buy_now => true, :bid => true, :start_bid => '100', :current_bid => '105')
     Post.create(:item => 'Math Engineering Textbooks', :description => 'Textbooks for freshman to senior year', :price => '10', :user => 'MikeMckenzie', :email => 'mm4111@columbia.edu', :category => 'Education', :buy_now => false, :bid => true, :start_bid => '5', :current_bid => '5')
+    Post.create(:item => 'CS INTRO JAVA', :description => 'Textbooks used', :price => '10', :user => 'JohnHo', :email => '125@columbia.edu', :category => 'Education', :buy_now => false, :bid => true, :start_bid => '15', :current_bid => '15')
       @posting = Post.find_by(item: 'Queen size bed frameswork')
     Bid.create(:product_id => @posting.id,  :user_id => "1", :bid => "105")
   end
@@ -72,6 +73,18 @@ RSpec.describe BidsController, type: :controller do
     end
   end
 
+  describe "Bidding my own post" do
+    it "Shows invalid notice" do
+      session[:user_id] = 1
+      session[:fname] = "John"
+      session[:lname] = "Ho"
+      session[:email] = "125@columbia.edu"
+      @post = Post.find_by(item: 'CS INTRO JAVA')
+      get :create, {:bid => {:product_id =>@post.id,:bid=>"20"}}
+      expect(response).to redirect_to post_path(@post)
+      expect(flash[:warning]).to match("You are not allowed to bid your own item")
+    end
+  end
 
 
 end

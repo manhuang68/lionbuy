@@ -34,7 +34,7 @@ Rottenpotatoes::Application.configure do
   # config.force_ssl = true
 
   # See everything in the log (default is :info)
-  # config.log_level = :debug
+  config.log_level = :debug
 
   # Use a different logger for distributed setups
   # config.logger = SyslogLogger.new
@@ -53,7 +53,6 @@ Rottenpotatoes::Application.configure do
 
   # Enable threaded mode
   # config.threadsafe!
-
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation can not be found)
   config.i18n.fallbacks = true

@@ -15,6 +15,8 @@
 <div class="container">
   <div class="row">
     <div class="col">
+      <img src="<%= @item.image.url(:medium) %>" class="post-img" alt="..." >
+      <br><br>
       <h5>Seller information :</h5>
       <ul id="details">
         <li>
@@ -98,7 +100,7 @@
 
         <% end %>
     </div>
-
+    <br>
   </div>
 </div>
 
@@ -110,3 +112,4 @@
     <%= link_to 'Edit this post', edit_post_path(@item.id), :class => 'btn btn-secondary col-2' %>
   <% end %>
 </div>
+<br>

@@ -36,7 +36,7 @@ Scenario: See the order history
         When I follow "Order history"
         Then I should not see "Desk Lamp"
         Then I should see "Laptop MAC"
-        Then I should see "Item id"
+        Then I should see "Item Name"
         Then I should see "Deal Price"
         Then I should see "Seller"
         Then I should see "Time"
@@ -52,4 +52,3 @@ Scenario: Go to order history page without logging:
         When I follow "Log out"
         When I go to the selling history page
         Then I should be on the signin page
-
